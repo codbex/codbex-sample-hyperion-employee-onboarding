@@ -1,0 +1,5 @@
+{
+    "module": "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/entities/perspective.js",
+    "extensionPoint": "portal",
+    "description": "codbex-sample-hyperion-employee-onboarding - Perspective - entities"
+}

@@ -1,0 +1,15 @@
+{
+  "files": [
+    {
+      "table": "CODBEX_ONBOARDINGSTATUS",
+      "schema": "PUBLIC",
+      "file": "/codbex-sample-hyperion-employee-onboarding/data/onboarding-task-status.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "'",
+      "distinguishEmptyFromNull": true,
+      "version": ""
+    }
+  ]
+}

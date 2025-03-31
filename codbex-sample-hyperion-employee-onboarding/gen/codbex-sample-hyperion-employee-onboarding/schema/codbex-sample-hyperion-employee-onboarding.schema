@@ -1,0 +1,169 @@
+{
+    "schema": {
+        "structures": [
+            {
+                "name": "CODBEX_EMPLOYEE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "EMPLOYEE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "EMPLOYEE_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 80,
+                        "nullable": true,
+                        "name": "EMPLOYEE_EMAIL"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "EMPLOYEE_DEPARTMENT"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "EMPLOYEE_STARTDATE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "EMPLOYEE_ONBOARDINGSTATUS"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_DEPARTMENT",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "DEPARTMENT_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "DEPARTMENT_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_ONBOARDINGSTATUS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "ONBOARDINGSTATUS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "nullable": true,
+                        "name": "ONBOARDINGSTATUS_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_ONBBOARDINGTASK",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "ONBBOARDINGTASK_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "ONBBOARDINGTASK_EMPLOYEE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "ONBBOARDINGTASK_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "ONBBOARDINGTASK_ASSIGNEE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "ONBBOARDINGTASK_STATUS"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "ONBBOARDINGTASK_COMPLETEDAT"
+                    }
+                ]
+            },
+            {
+                "name": "Employee_Department",
+                "type": "foreignKey",
+                "table": "CODBEX_EMPLOYEE",
+                "constraintName": "Employee_Department",
+                "columns": "EMPLOYEE_DEPARTMENT",
+                "referencedTable": "CODBEX_DEPARTMENT",
+                "referencedColumns": "DEPARTMENT_ID"
+            },
+            {
+                "name": "Employee_OnboardingStatus",
+                "type": "foreignKey",
+                "table": "CODBEX_EMPLOYEE",
+                "constraintName": "Employee_OnboardingStatus",
+                "columns": "EMPLOYEE_ONBOARDINGSTATUS",
+                "referencedTable": "CODBEX_ONBOARDINGSTATUS",
+                "referencedColumns": "ONBOARDINGSTATUS_ID"
+            },
+            {
+                "name": "OnbboardingTask_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_ONBBOARDINGTASK",
+                "constraintName": "OnbboardingTask_Employee",
+                "columns": "ONBBOARDINGTASK_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "OnbboardingTask_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_ONBBOARDINGTASK",
+                "constraintName": "OnbboardingTask_Employee",
+                "columns": "ONBBOARDINGTASK_ASSIGNEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "OnbboardingTask_OnboardingStatus",
+                "type": "foreignKey",
+                "table": "CODBEX_ONBBOARDINGTASK",
+                "constraintName": "OnbboardingTask_OnboardingStatus",
+                "columns": "ONBBOARDINGTASK_STATUS",
+                "referencedTable": "CODBEX_ONBOARDINGSTATUS",
+                "referencedColumns": "ONBOARDINGSTATUS_ID"
+            }
+        ]
+    },
+    "datasource": "DefaultDB"
+}
