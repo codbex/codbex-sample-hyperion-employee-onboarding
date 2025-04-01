@@ -1,0 +1,80 @@
+{
+    "feeds": [],
+    "scripts": [],
+    "code": "",
+    "form": [
+        {
+            "controlId": "header",
+            "groupId": "fb-display",
+            "title": "New hire's details",
+            "size": 2
+        },
+        {
+            "controlId": "input-textfield",
+            "groupId": "fb-controls",
+            "id": "i5d37e8ec-af8e-f5f9-fa95-8a10d2d2cd0f",
+            "label": "Name:",
+            "horizontal": false,
+            "isCompact": false,
+            "placeholder": "Enter name",
+            "type": "text",
+            "model": "",
+            "required": true,
+            "minLength": 0,
+            "maxLength": 100,
+            "validationRegex": "",
+            "errorState": "Incorrect input"
+        },
+        {
+            "controlId": "input-textfield",
+            "groupId": "fb-controls",
+            "id": "i93749da9-bb19-5f72-a09b-2f1161b134f4",
+            "label": "Email",
+            "horizontal": false,
+            "isCompact": false,
+            "placeholder": "Enter email",
+            "type": "email",
+            "model": "",
+            "required": true,
+            "minLength": 0,
+            "maxLength": 150,
+            "validationRegex": "",
+            "errorState": "Incorrect input"
+        },
+        {
+            "controlId": "input-select",
+            "groupId": "fb-controls",
+            "id": "ic814b770-618a-35fe-ec97-688abe6bd066",
+            "label": "Department",
+            "horizontal": false,
+            "isCompact": false,
+            "staticData": false,
+            "model": "",
+            "options": "",
+            "optionLabel": "label",
+            "optionValue": "value",
+            "required": true
+        },
+        {
+            "controlId": "input-date",
+            "groupId": "fb-controls",
+            "id": "i438db449-992c-da4d-0ef4-29a85d2d3395",
+            "label": "Start Date:",
+            "horizontal": false,
+            "isCompact": false,
+            "type": "date",
+            "model": "",
+            "required": true
+        },
+        {
+            "controlId": "button",
+            "groupId": "fb-controls",
+            "label": "Submit",
+            "type": "positive",
+            "sizeToText": false,
+            "isSubmit": true,
+            "isCompact": false,
+            "callback": ""
+        }
+    ]
+}
