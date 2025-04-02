@@ -1,0 +1,87 @@
+{
+    "feeds": [],
+    "scripts": [],
+    "code": "",
+    "form": [
+        {
+            "controlId": "header",
+            "groupId": "fb-display",
+            "title": "HR Confirmation",
+            "size": 2
+        },
+        {
+            "controlId": "paragraph",
+            "groupId": "fb-display",
+            "format": true,
+            "text": "",
+            "model": ""
+        },
+        {
+            "controlId": "header",
+            "groupId": "fb-display",
+            "title": "Onboarding completion checklist:",
+            "size": 3
+        },
+        {
+            "controlId": "paragraph",
+            "groupId": "fb-display",
+            "format": true,
+            "text": "",
+            "model": ""
+        },
+        {
+            "controlId": "container-vbox",
+            "groupId": "fb-containers",
+            "children": [
+                {
+                    "controlId": "header",
+                    "groupId": "fb-display",
+                    "title": " - Contract preparation completed",
+                    "size": 5
+                },
+                {
+                    "controlId": "header",
+                    "groupId": "fb-display",
+                    "title": " - IT setup completed",
+                    "size": 5
+                },
+                {
+                    "controlId": "header",
+                    "groupId": "fb-display",
+                    "title": " - Departmental training completed",
+                    "size": 5
+                }
+            ]
+        },
+        {
+            "controlId": "paragraph",
+            "groupId": "fb-display",
+            "format": true,
+            "text": "",
+            "model": ""
+        },
+        {
+            "controlId": "header",
+            "groupId": "fb-display",
+            "title": "I confirm that all onboarding tasks have been completed successfully",
+            "size": 4
+        },
+        {
+            "controlId": "paragraph",
+            "groupId": "fb-display",
+            "format": true,
+            "text": "",
+            "model": ""
+        },
+        {
+            "controlId": "button",
+            "groupId": "fb-controls",
+            "label": "Confirm",
+            "type": "positive",
+            "sizeToText": false,
+            "isSubmit": true,
+            "isCompact": false,
+            "callback": ""
+        }
+    ]
+}

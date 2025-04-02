@@ -10,6 +10,13 @@
             "size": 2
         },
         {
+            "controlId": "paragraph",
+            "groupId": "fb-display",
+            "format": true,
+            "text": "",
+            "model": ""
+        },
+        {
             "controlId": "input-textfield",
             "groupId": "fb-controls",
             "id": "i5d37e8ec-af8e-f5f9-fa95-8a10d2d2cd0f",
@@ -65,6 +72,13 @@
             "type": "date",
             "model": "",
             "required": true
+        },
+        {
+            "controlId": "paragraph",
+            "groupId": "fb-display",
+            "format": true,
+            "text": "",
+            "model": ""
         },
         {
             "controlId": "button",

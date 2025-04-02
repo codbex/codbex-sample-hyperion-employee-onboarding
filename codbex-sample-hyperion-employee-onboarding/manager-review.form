@@ -1,0 +1,132 @@
+{
+    "feeds": [],
+    "scripts": [],
+    "code": "",
+    "form": [
+        {
+            "controlId": "header",
+            "groupId": "fb-display",
+            "title": "Manager review",
+            "size": 2
+        },
+        {
+            "controlId": "paragraph",
+            "groupId": "fb-display",
+            "format": true,
+            "text": "",
+            "model": ""
+        },
+        {
+            "controlId": "header",
+            "groupId": "fb-display",
+            "title": "Task 1: Contract Preparation",
+            "size": 4
+        },
+        {
+            "controlId": "paragraph",
+            "groupId": "fb-display",
+            "format": true,
+            "text": "",
+            "model": ""
+        },
+        {
+            "controlId": "input-select",
+            "groupId": "fb-controls",
+            "id": "ifaaf354a-2fac-27ca-cf54-28349378aee7",
+            "label": "Employee",
+            "horizontal": false,
+            "isCompact": false,
+            "staticData": false,
+            "model": "",
+            "options": "",
+            "optionLabel": "label",
+            "optionValue": "value",
+            "required": true
+        },
+        {
+            "controlId": "paragraph",
+            "groupId": "fb-display",
+            "format": true,
+            "text": "",
+            "model": ""
+        },
+        {
+            "controlId": "header",
+            "groupId": "fb-display",
+            "title": "Task 2: IT Setup ",
+            "size": 4
+        },
+        {
+            "controlId": "paragraph",
+            "groupId": "fb-display",
+            "format": true,
+            "text": "",
+            "model": ""
+        },
+        {
+            "controlId": "input-select",
+            "groupId": "fb-controls",
+            "id": "ib7118f3c-abd1-95b4-7345-a6df6e07756d",
+            "label": "Employee",
+            "horizontal": false,
+            "isCompact": false,
+            "staticData": false,
+            "model": "",
+            "options": "",
+            "optionLabel": "label",
+            "optionValue": "value",
+            "required": true
+        },
+        {
+            "controlId": "paragraph",
+            "groupId": "fb-display",
+            "format": true,
+            "text": "",
+            "model": ""
+        },
+        {
+            "controlId": "header",
+            "groupId": "fb-display",
+            "title": "Task 3: Departmental Training",
+            "size": 4
+        },
+        {
+            "controlId": "paragraph",
+            "groupId": "fb-display",
+            "format": true,
+            "text": "",
+            "model": ""
+        },
+        {
+            "controlId": "input-select",
+            "groupId": "fb-controls",
+            "id": "ic7d963d7-9e7c-817f-4c7b-f22bbdf984df",
+            "label": "Employee",
+            "horizontal": false,
+            "isCompact": false,
+            "staticData": false,
+            "model": "",
+            "options": "",
+            "optionLabel": "label",
+            "optionValue": "value",
+            "required": true
+        },
+        {
+            "controlId": "paragraph",
+            "groupId": "fb-display",
+            "format": true,
+            "text": "",
+            "model": ""
+        },
+        {
+            "controlId": "button",
+            "groupId": "fb-controls",
+            "label": "Submit",
+            "type": "positive",
+            "sizeToText": false,
+            "isSubmit": true,
+            "isCompact": false,
+            "callback": ""
+        }
+    ]
+}
