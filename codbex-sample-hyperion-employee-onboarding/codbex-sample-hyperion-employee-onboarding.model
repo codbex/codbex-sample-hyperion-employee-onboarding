@@ -232,7 +232,7 @@
                 "properties": [
                     {
                         "dataAutoIncrement": "true",
-                        "dataName": "ONBBOARDINGTASK_ID",
+                        "dataName": "ONBOARDINGTASK_ID",
                         "dataNullable": "true",
                         "dataPrimaryKey": "true",
                         "dataType": "INTEGER",
@@ -245,7 +245,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataName": "ONBBOARDINGTASK_EMPLOYEE",
+                        "dataName": "ONBOARDINGTASK_EMPLOYEE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
@@ -258,14 +258,14 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
-                        "relationshipName": "OnbboardingTask_Employee",
+                        "relationshipName": "OnboardingTask_Employee",
                         "relationshipEntityName": "Employee",
                         "relationshipEntityPerspectiveName": "Employee",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataLength": "100",
-                        "dataName": "ONBBOARDINGTASK_NAME",
+                        "dataName": "ONBOARDINGTASK_NAME",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
                         "description": "",
@@ -278,7 +278,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataName": "ONBBOARDINGTASK_ASSIGNEE",
+                        "dataName": "ONBOARDINGTASK_ASSIGNEE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
@@ -291,13 +291,13 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
-                        "relationshipName": "OnbboardingTask_Employee",
+                        "relationshipName": "OnboardingTask_Employee",
                         "relationshipEntityName": "Employee",
                         "relationshipEntityPerspectiveName": "Employee",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataName": "ONBBOARDINGTASK_STATUS",
+                        "dataName": "ONBOARDINGTASK_STATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
@@ -310,13 +310,13 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
-                        "relationshipName": "OnbboardingTask_OnboardingStatus",
+                        "relationshipName": "OnboardingTask_OnboardingStatus",
                         "relationshipEntityName": "OnboardingStatus",
                         "relationshipEntityPerspectiveName": "entities",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataName": "ONBBOARDINGTASK_COMPLETEDAT",
+                        "dataName": "ONBOARDINGTASK_COMPLETEDAT",
                         "dataNullable": "true",
                         "dataType": "DATE",
                         "description": "",
@@ -329,27 +329,27 @@
                         "widgetType": "DATE"
                     }
                 ],
-                "caption": "Manage entity OnbboardingTask",
-                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}ONBBOARDINGTASK\"",
-                "dataName": "ONBBOARDINGTASK",
+                "caption": "Manage entity OnboardingTask",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}ONBOARDINGTASK\"",
+                "dataName": "ONBOARDINGTASK",
                 "dataQuery": "",
-                "description": "Manage entity OnbboardingTask",
+                "description": "Manage entity OnboardingTask",
                 "generateDefaultRoles": "false",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
-                "menuKey": "onbboardingtask",
-                "menuLabel": "OnbboardingTask",
-                "name": "OnbboardingTask",
+                "menuKey": "onboardingtask",
+                "menuLabel": "OnboardingTask",
+                "name": "OnboardingTask",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/clipboard-blank.svg",
                 "perspectiveLabel": "OnboardingTask",
                 "perspectiveName": "OnboardingTask",
                 "perspectiveOrder": "2",
                 "perspectiveRole": "",
-                "title": "OnbboardingTask",
-                "tooltip": "OnbboardingTask",
+                "title": "OnboardingTask",
+                "tooltip": "OnboardingTask",
                 "type": "PRIMARY"
             }
         ],

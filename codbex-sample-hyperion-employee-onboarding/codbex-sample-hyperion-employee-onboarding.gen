@@ -4,13 +4,14 @@
   "brandUrl": "https://www.codbex.com/",
   "title": "Sample Hyperion Employee Onboarding",
   "description": "Employee Onboarding sample",
+  "fileName": "codbex-sample-hyperion-employee-onboarding",
+  "genFolderName": "codbex-sample-hyperion-employee-onboarding",
+  "dataSource": "DefaultDB",
+  "roles": [],
   "projectName": "codbex-sample-hyperion-employee-onboarding",
   "workspaceName": "workspace",
   "filePath": "codbex-sample-hyperion-employee-onboarding.model",
   "templateId": "template-application-angular/template/template.js",
-  "fileName": "codbex-sample-hyperion-employee-onboarding",
-  "genFolderName": "codbex-sample-hyperion-employee-onboarding",
-  "dataSource": "DefaultDB",
   "perspectives": {
     "Employee": {
       "views": [
@@ -67,30 +68,30 @@
     },
     "OnboardingTask": {
       "views": [
-        "OnbboardingTask",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details",
-        "OnbboardingTask-details"
+        "OnboardingTask",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details",
+        "OnboardingTask-details"
       ],
       "name": "OnboardingTask",
       "label": "OnboardingTask",
@@ -99,7 +100,6 @@
       "role": ""
     }
   },
-  "roles": [],
   "models": [
     {
       "properties": [
@@ -596,7 +596,7 @@
       "properties": [
         {
           "dataAutoIncrement": true,
-          "dataName": "ONBBOARDINGTASK_ID",
+          "dataName": "ONBOARDINGTASK_ID",
           "dataNullable": true,
           "dataPrimaryKey": true,
           "dataType": "INTEGER",
@@ -618,7 +618,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "ONBBOARDINGTASK_EMPLOYEE",
+          "dataName": "ONBOARDINGTASK_EMPLOYEE",
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",
@@ -631,7 +631,7 @@
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "DROPDOWN",
-          "relationshipName": "OnbboardingTask_Employee",
+          "relationshipName": "OnboardingTask_Employee",
           "relationshipEntityName": "Employee",
           "relationshipEntityPerspectiveName": "Employee",
           "relationshipEntityPerspectiveLabel": "Entities",
@@ -648,7 +648,7 @@
         },
         {
           "dataLength": "100",
-          "dataName": "ONBBOARDINGTASK_NAME",
+          "dataName": "ONBOARDINGTASK_NAME",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "description": "",
@@ -673,7 +673,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "ONBBOARDINGTASK_ASSIGNEE",
+          "dataName": "ONBOARDINGTASK_ASSIGNEE",
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",
@@ -686,7 +686,7 @@
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "DROPDOWN",
-          "relationshipName": "OnbboardingTask_Employee",
+          "relationshipName": "OnboardingTask_Employee",
           "relationshipEntityName": "Employee",
           "relationshipEntityPerspectiveName": "Employee",
           "relationshipEntityPerspectiveLabel": "Entities",
@@ -702,7 +702,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "ONBBOARDINGTASK_STATUS",
+          "dataName": "ONBOARDINGTASK_STATUS",
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",
@@ -715,7 +715,7 @@
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "DROPDOWN",
-          "relationshipName": "OnbboardingTask_OnboardingStatus",
+          "relationshipName": "OnboardingTask_OnboardingStatus",
           "relationshipEntityName": "OnboardingStatus",
           "relationshipEntityPerspectiveName": "entities",
           "relationshipEntityPerspectiveLabel": "Entities",
@@ -731,7 +731,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "ONBBOARDINGTASK_COMPLETEDAT",
+          "dataName": "ONBOARDINGTASK_COMPLETEDAT",
           "dataNullable": true,
           "dataType": "DATE",
           "description": "",
@@ -755,27 +755,27 @@
           "inputRule": ""
         }
       ],
-      "caption": "Manage entity OnbboardingTask",
-      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"CODBEX_ONBBOARDINGTASK\"",
-      "dataName": "ONBBOARDINGTASK",
+      "caption": "Manage entity OnboardingTask",
+      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"CODBEX_ONBOARDINGTASK\"",
+      "dataName": "ONBOARDINGTASK",
       "dataQuery": "",
-      "description": "Manage entity OnbboardingTask",
+      "description": "Manage entity OnboardingTask",
       "generateDefaultRoles": "false",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE_MASTER",
       "menuIndex": "100",
-      "menuKey": "onbboardingtask",
-      "menuLabel": "OnbboardingTask",
-      "name": "OnbboardingTask",
+      "menuKey": "onboardingtask",
+      "menuLabel": "OnboardingTask",
+      "name": "OnboardingTask",
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/clipboard-blank.svg",
       "perspectiveLabel": "OnboardingTask",
       "perspectiveName": "OnboardingTask",
       "perspectiveOrder": "2",
       "perspectiveRole": "",
-      "title": "OnbboardingTask",
-      "tooltip": "OnbboardingTask",
+      "title": "OnboardingTask",
+      "tooltip": "OnboardingTask",
       "type": "PRIMARY",
       "dataSource": "DefaultDB",
       "referencedProjections": [],
@@ -785,7 +785,7 @@
       "primaryKeysString": "Id",
       "masterProperties": {
         "title": {
-          "dataName": "ONBBOARDINGTASK_EMPLOYEE",
+          "dataName": "ONBOARDINGTASK_EMPLOYEE",
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",
@@ -798,7 +798,7 @@
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "DROPDOWN",
-          "relationshipName": "OnbboardingTask_Employee",
+          "relationshipName": "OnboardingTask_Employee",
           "relationshipEntityName": "Employee",
           "relationshipEntityPerspectiveName": "Employee",
           "relationshipEntityPerspectiveLabel": "Entities",
@@ -816,7 +816,7 @@
         "properties": [
           {
             "dataLength": "100",
-            "dataName": "ONBBOARDINGTASK_NAME",
+            "dataName": "ONBOARDINGTASK_NAME",
             "dataNullable": true,
             "dataType": "VARCHAR",
             "description": "",
@@ -841,7 +841,7 @@
             "inputRule": ""
           },
           {
-            "dataName": "ONBBOARDINGTASK_ASSIGNEE",
+            "dataName": "ONBOARDINGTASK_ASSIGNEE",
             "dataNullable": true,
             "dataType": "INTEGER",
             "description": "",
@@ -854,7 +854,7 @@
             "widgetLength": "20",
             "widgetSize": "",
             "widgetType": "DROPDOWN",
-            "relationshipName": "OnbboardingTask_Employee",
+            "relationshipName": "OnboardingTask_Employee",
             "relationshipEntityName": "Employee",
             "relationshipEntityPerspectiveName": "Employee",
             "relationshipEntityPerspectiveLabel": "Entities",
@@ -870,7 +870,7 @@
             "inputRule": ""
           },
           {
-            "dataName": "ONBBOARDINGTASK_STATUS",
+            "dataName": "ONBOARDINGTASK_STATUS",
             "dataNullable": true,
             "dataType": "INTEGER",
             "description": "",
@@ -883,7 +883,7 @@
             "widgetLength": "20",
             "widgetSize": "",
             "widgetType": "DROPDOWN",
-            "relationshipName": "OnbboardingTask_OnboardingStatus",
+            "relationshipName": "OnboardingTask_OnboardingStatus",
             "relationshipEntityName": "OnboardingStatus",
             "relationshipEntityPerspectiveName": "entities",
             "relationshipEntityPerspectiveLabel": "Entities",
@@ -899,7 +899,7 @@
             "inputRule": ""
           },
           {
-            "dataName": "ONBBOARDINGTASK_COMPLETEDAT",
+            "dataName": "ONBOARDINGTASK_COMPLETEDAT",
             "dataNullable": true,
             "dataType": "DATE",
             "description": "",

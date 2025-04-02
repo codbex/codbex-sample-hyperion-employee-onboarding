@@ -4,7 +4,7 @@ import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 
-export interface OnbboardingTaskEntity {
+export interface OnboardingTaskEntity {
     readonly Id: number;
     Employee?: number;
     Name?: string;
@@ -13,7 +13,7 @@ export interface OnbboardingTaskEntity {
     CompletedAt?: Date;
 }
 
-export interface OnbboardingTaskCreateEntity {
+export interface OnboardingTaskCreateEntity {
     readonly Employee?: number;
     readonly Name?: string;
     readonly Assignee?: number;
@@ -21,11 +21,11 @@ export interface OnbboardingTaskCreateEntity {
     readonly CompletedAt?: Date;
 }
 
-export interface OnbboardingTaskUpdateEntity extends OnbboardingTaskCreateEntity {
+export interface OnboardingTaskUpdateEntity extends OnboardingTaskCreateEntity {
     readonly Id: number;
 }
 
-export interface OnbboardingTaskEntityOptions {
+export interface OnboardingTaskEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
@@ -84,17 +84,17 @@ export interface OnbboardingTaskEntityOptions {
             CompletedAt?: Date;
         };
     },
-    $select?: (keyof OnbboardingTaskEntity)[],
-    $sort?: string | (keyof OnbboardingTaskEntity)[],
+    $select?: (keyof OnboardingTaskEntity)[],
+    $sort?: string | (keyof OnboardingTaskEntity)[],
     $order?: 'asc' | 'desc',
     $offset?: number,
     $limit?: number,
 }
 
-interface OnbboardingTaskEntityEvent {
+interface OnboardingTaskEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<OnbboardingTaskEntity>;
+    readonly entity: Partial<OnboardingTaskEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -102,45 +102,45 @@ interface OnbboardingTaskEntityEvent {
     }
 }
 
-interface OnbboardingTaskUpdateEntityEvent extends OnbboardingTaskEntityEvent {
-    readonly previousEntity: OnbboardingTaskEntity;
+interface OnboardingTaskUpdateEntityEvent extends OnboardingTaskEntityEvent {
+    readonly previousEntity: OnboardingTaskEntity;
 }
 
-export class OnbboardingTaskRepository {
+export class OnboardingTaskRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_ONBBOARDINGTASK",
+        table: "CODBEX_ONBOARDINGTASK",
         properties: [
             {
                 name: "Id",
-                column: "ONBBOARDINGTASK_ID",
+                column: "ONBOARDINGTASK_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Employee",
-                column: "ONBBOARDINGTASK_EMPLOYEE",
+                column: "ONBOARDINGTASK_EMPLOYEE",
                 type: "INTEGER",
             },
             {
                 name: "Name",
-                column: "ONBBOARDINGTASK_NAME",
+                column: "ONBOARDINGTASK_NAME",
                 type: "VARCHAR",
             },
             {
                 name: "Assignee",
-                column: "ONBBOARDINGTASK_ASSIGNEE",
+                column: "ONBOARDINGTASK_ASSIGNEE",
                 type: "INTEGER",
             },
             {
                 name: "Status",
-                column: "ONBBOARDINGTASK_STATUS",
+                column: "ONBOARDINGTASK_STATUS",
                 type: "INTEGER",
             },
             {
                 name: "CompletedAt",
-                column: "ONBBOARDINGTASK_COMPLETEDAT",
+                column: "ONBOARDINGTASK_COMPLETEDAT",
                 type: "DATE",
             }
         ]
@@ -149,64 +149,64 @@ export class OnbboardingTaskRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(OnbboardingTaskRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(OnboardingTaskRepository.DEFINITION, null, dataSource);
     }
 
-    public findAll(options?: OnbboardingTaskEntityOptions): OnbboardingTaskEntity[] {
-        return this.dao.list(options).map((e: OnbboardingTaskEntity) => {
+    public findAll(options?: OnboardingTaskEntityOptions): OnboardingTaskEntity[] {
+        return this.dao.list(options).map((e: OnboardingTaskEntity) => {
             EntityUtils.setDate(e, "CompletedAt");
             return e;
         });
     }
 
-    public findById(id: number): OnbboardingTaskEntity | undefined {
+    public findById(id: number): OnboardingTaskEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "CompletedAt");
         return entity ?? undefined;
     }
 
-    public create(entity: OnbboardingTaskCreateEntity): number {
+    public create(entity: OnboardingTaskCreateEntity): number {
         EntityUtils.setLocalDate(entity, "CompletedAt");
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_ONBBOARDINGTASK",
+            table: "CODBEX_ONBOARDINGTASK",
             entity: entity,
             key: {
                 name: "Id",
-                column: "ONBBOARDINGTASK_ID",
+                column: "ONBOARDINGTASK_ID",
                 value: id
             }
         });
         return id;
     }
 
-    public update(entity: OnbboardingTaskUpdateEntity): void {
+    public update(entity: OnboardingTaskUpdateEntity): void {
         // EntityUtils.setLocalDate(entity, "CompletedAt");
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_ONBBOARDINGTASK",
+            table: "CODBEX_ONBOARDINGTASK",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "ONBBOARDINGTASK_ID",
+                column: "ONBOARDINGTASK_ID",
                 value: entity.Id
             }
         });
     }
 
-    public upsert(entity: OnbboardingTaskCreateEntity | OnbboardingTaskUpdateEntity): number {
-        const id = (entity as OnbboardingTaskUpdateEntity).Id;
+    public upsert(entity: OnboardingTaskCreateEntity | OnboardingTaskUpdateEntity): number {
+        const id = (entity as OnboardingTaskUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as OnbboardingTaskUpdateEntity);
+            this.update(entity as OnboardingTaskUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -218,22 +218,22 @@ export class OnbboardingTaskRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_ONBBOARDINGTASK",
+            table: "CODBEX_ONBOARDINGTASK",
             entity: entity,
             key: {
                 name: "Id",
-                column: "ONBBOARDINGTASK_ID",
+                column: "ONBOARDINGTASK_ID",
                 value: id
             }
         });
     }
 
-    public count(options?: OnbboardingTaskEntityOptions): number {
+    public count(options?: OnboardingTaskEntityOptions): number {
         return this.dao.count(options);
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_ONBBOARDINGTASK"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_ONBOARDINGTASK"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -244,8 +244,8 @@ export class OnbboardingTaskRepository {
         return 0;
     }
 
-    private async triggerEvent(data: OnbboardingTaskEntityEvent | OnbboardingTaskUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-sample-hyperion-employee-onboarding-OnboardingTask-OnbboardingTask", ["trigger"]);
+    private async triggerEvent(data: OnboardingTaskEntityEvent | OnboardingTaskUpdateEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-sample-hyperion-employee-onboarding-OnboardingTask-OnboardingTask", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -253,6 +253,6 @@ export class OnbboardingTaskRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-sample-hyperion-employee-onboarding-OnboardingTask-OnbboardingTask").send(JSON.stringify(data));
+        producer.topic("codbex-sample-hyperion-employee-onboarding-OnboardingTask-OnboardingTask").send(JSON.stringify(data));
     }
 }
