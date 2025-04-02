@@ -25,21 +25,33 @@
       </extensionElements>
     </serviceTask>
     <sequenceFlow id="sid-F497F5F6-C9BF-41D8-937D-B5D7B762403A" sourceRef="document-generation" targetRef="onboarding-announcement"/>
-    <serviceTask id="task-assignee-announcement" name="Task Assignee Announcement" flowable:async="true"/>
+    <serviceTask id="task-assignee-announcement" name="Task Assignee Announcement" flowable:async="true">
+      <extensionElements>
+        <flowable:field name="handler">
+          <flowable:string><![CDATA[codbex-sample-hyperion-employee-onboarding/tasks/task-assignee-announcement.ts]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
     <serviceTask id="task-completion-announcement" name="Task Completion Announcement" flowable:async="true"/>
     <sequenceFlow id="sid-F497B3E6-9090-42D5-B444-C58055E9B41C" sourceRef="task-completion-announcement" targetRef="onboarding-completion-review"/>
     <serviceTask id="welcome-email" name="Welcome Email" flowable:async="true"/>
     <sequenceFlow id="sid-1425B63F-FDDE-4C2D-8AE9-A60AC58C27A9" sourceRef="onboarding-completion-review" targetRef="welcome-email"/>
     <sequenceFlow id="sid-BC653BEE-55BA-4ED8-B60D-CA0F44097AF7" sourceRef="welcome-email" targetRef="end-event"/>
-    <serviceTask id="task-not-completed" name="Task Not Completed" flowable:async="true"/>
+    <serviceTask id="owners-not-assigned" name="Owners Not Assigned" flowable:async="true">
+      <extensionElements>
+        <flowable:field name="handler">
+          <flowable:string><![CDATA[codbex-sample-hyperion-employee-onboarding/tasks/owners-not-assigned.ts]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
     <sequenceFlow id="sid-E81857CE-2301-49C5-9639-51DD8433B3A8" sourceRef="onboarding-announcement" targetRef="assigning-owners"/>
     <sequenceFlow id="sid-F1EBDA38-E816-46BB-9028-B2A4F0583ADA" sourceRef="assigning-owners" targetRef="sid-3143AABA-6222-4749-9E3D-6F6C62159B34"/>
-    <sequenceFlow id="sid-E1BB9C77-DFFA-4622-8535-B998111CCD35" sourceRef="sid-3143AABA-6222-4749-9E3D-6F6C62159B34" targetRef="task-not-completed"/>
-    <sequenceFlow id="sid-39A12680-8F49-4C79-86CF-7ABC3726301C" sourceRef="task-not-completed" targetRef="onboarding-announcement"/>
+    <sequenceFlow id="sid-E1BB9C77-DFFA-4622-8535-B998111CCD35" sourceRef="sid-3143AABA-6222-4749-9E3D-6F6C62159B34" targetRef="owners-not-assigned"/>
+    <sequenceFlow id="sid-39A12680-8F49-4C79-86CF-7ABC3726301C" sourceRef="owners-not-assigned" targetRef="onboarding-announcement"/>
     <subProcess id="threeple-task-assignment" name="Threeple Task Assignment" flowable:async="true"/>
     <sequenceFlow id="sid-66A54B2C-7F44-4307-BC10-25CF0B1A3D32" sourceRef="sid-3143AABA-6222-4749-9E3D-6F6C62159B34" targetRef="task-assignee-announcement"/>
-    <sequenceFlow id="sid-A7206103-8C21-47F6-972B-D73366B64B80" sourceRef="task-assignee-announcement" targetRef="threeple-task-assignment"/>
-    <sequenceFlow id="sid-830077E8-5220-4C6F-818D-28E8B3A0CD61" sourceRef="threeple-task-assignment" targetRef="task-completion-announcement"/>
+    <sequenceFlow id="sid-B396E375-0345-4086-974A-B9FC7B1D9153" sourceRef="task-assignee-announcement" targetRef="threeple-task-assignment"/>
+    <sequenceFlow id="sid-7C1A0219-AE08-4C8C-A3E9-715352CE35B9" sourceRef="threeple-task-assignment" targetRef="task-completion-announcement"/>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_onboarding-process">
     <bpmndi:BPMNPlane bpmnElement="onboarding-process" id="BPMNPlane_onboarding-process">
@@ -82,11 +94,11 @@
       <bpmndi:BPMNShape bpmnElement="welcome-email" id="BPMNShape_welcome-email">
         <omgdc:Bounds height="80.0" width="100.0" x="235.0" y="1020.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="task-not-completed" id="BPMNShape_task-not-completed">
+      <bpmndi:BPMNShape bpmnElement="owners-not-assigned" id="BPMNShape_owners-not-assigned">
         <omgdc:Bounds height="80.0" width="100.0" x="120.0" y="300.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="threeple-task-assignment" id="BPMNShape_threeple-task-assignment">
-        <omgdc:Bounds height="128.0" width="495.0" x="37.5" y="605.0"/>
+        <omgdc:Bounds height="121.0" width="494.0" x="36.0" y="613.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="sid-797626AE-B2F6-4C00-ABEE-FB30ADC177E4" id="BPMNEdge_sid-797626AE-B2F6-4C00-ABEE-FB30ADC177E4" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="285.0" y="59.949997471848235"/>
@@ -108,9 +120,9 @@
         <omgdi:waypoint x="275.9256900212313" y="402.57294429708224"/>
         <omgdi:waypoint x="219.95" y="369.5063291139241"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sid-830077E8-5220-4C6F-818D-28E8B3A0CD61" id="BPMNEdge_sid-830077E8-5220-4C6F-818D-28E8B3A0CD61" flowable:sourceDockerX="247.5" flowable:sourceDockerY="64.0" flowable:targetDockerX="53.5" flowable:targetDockerY="40.5">
-        <omgdi:waypoint x="286.4773927392739" y="732.9499999999999"/>
-        <omgdi:waypoint x="287.56435643564356" y="780.0"/>
+      <bpmndi:BPMNEdge bpmnElement="sid-B396E375-0345-4086-974A-B9FC7B1D9153" id="BPMNEdge_sid-B396E375-0345-4086-974A-B9FC7B1D9153" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="247.0" flowable:targetDockerY="60.5">
+        <omgdi:waypoint x="287.19436201780417" y="544.95"/>
+        <omgdi:waypoint x="284.97314540059347" y="613.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sid-F497F5F6-C9BF-41D8-937D-B5D7B762403A" id="BPMNEdge_sid-F497F5F6-C9BF-41D8-937D-B5D7B762403A" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="285.0" y="169.95"/>
@@ -128,13 +140,13 @@
         <omgdi:waypoint x="285.0" y="1099.95"/>
         <omgdi:waypoint x="285.0" y="1140.0"/>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-7C1A0219-AE08-4C8C-A3E9-715352CE35B9" id="BPMNEdge_sid-7C1A0219-AE08-4C8C-A3E9-715352CE35B9" flowable:sourceDockerX="247.0" flowable:sourceDockerY="60.5" flowable:targetDockerX="53.5" flowable:targetDockerY="40.5">
+        <omgdi:waypoint x="285.26173469387754" y="733.9499999999999"/>
+        <omgdi:waypoint x="286.984693877551" y="780.0"/>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sid-E81857CE-2301-49C5-9639-51DD8433B3A8" id="BPMNEdge_sid-E81857CE-2301-49C5-9639-51DD8433B3A8" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="334.95" y="281.76120000000003"/>
         <omgdi:waypoint x="360.0" y="301.2"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sid-A7206103-8C21-47F6-972B-D73366B64B80" id="BPMNEdge_sid-A7206103-8C21-47F6-972B-D73366B64B80" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="247.5" flowable:targetDockerY="64.0">
-        <omgdi:waypoint x="287.6463414634146" y="544.95"/>
-        <omgdi:waypoint x="286.36478658536583" y="605.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
