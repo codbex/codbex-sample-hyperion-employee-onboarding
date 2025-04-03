@@ -30,7 +30,7 @@ const content = `
       ">Review & Approve</a>
     </div>
     <p>If you have any questions, please reach out to the HR team.</p>
-    <p>Best regards,</p>
+    <p>Best regards.</p>
   </div>
 `;
 

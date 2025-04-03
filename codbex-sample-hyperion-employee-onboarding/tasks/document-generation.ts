@@ -10,6 +10,9 @@ const execution = process.getExecutionContext();
 const executionId = execution.getId();
 
 const employeeId = process.getVariable(executionId, "Employee");
+const hrLink = process.getVariable(executionId, "HRLink");
+const itLink = process.getVariable(executionId, "ITLink");
+let trainingManagerLink = process.getVariable(executionId, "TrainingManagerLink");
 
 const employee = employeeDao.findById(employeeId);
 if (!employee) {
@@ -19,39 +22,37 @@ if (!employee) {
 const hrTaskBody = {
     "Employee": employeeId,
     "Name": "Contract Preparation",
-    "Status": 1
+    "Status": 1,
+    "Link": hrLink,
 };
 
 const itTaskBody = {
     "Employee": employeeId,
     "Name": "IT Setup",
-    "Status": 1
+    "Status": 1,
+    "Link": itLink,
 };
 
 const managerTaskBody = {
     "Employee": employeeId,
     "Name": "Department Training",
-    "Status": 1
+    "Status": 1,
+    "Link": trainingManagerLink,
 };
 
-const newHrTask = onboardingTaskDao.create(hrTaskBody);
+const tasks = [hrTaskBody, itTaskBody, managerTaskBody];
 
-if (!newHrTask) {
-    throw new Error("HR Task creation failed!");
-}
+tasks.forEach(task => {
+    const newTask = onboardingTaskDao.create(task);
 
-const newItTask = onboardingTaskDao.create(itTaskBody);
+    if (!newTask) {
+        throw new Error("Task creation failed!");
+    }
+})
 
-if (!newItTask) {
-    throw new Error("IT Task creation failed!");
-}
+execution.setVariable("tasks", tasks);
 
-const newManagerTask = onboardingTaskDao.create(managerTaskBody);
-
-if (!newManagerTask) {
-    throw new Error("Manager Task creation failed!");
-}
-
+// Employee status set to In Progres
 employee.OnboardingStatus = 2;
 
 employeeDao.update(employee);
