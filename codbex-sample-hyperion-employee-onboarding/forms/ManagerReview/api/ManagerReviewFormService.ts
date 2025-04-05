@@ -1,7 +1,7 @@
 import { OnboardingTaskRepository as OnboardingTaskDao } from "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/dao/OnboardingTask/OnboardingTaskRepository";
 import { EmployeeRepository as EmployeeDao } from "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/dao/Employee/EmployeeRepository";
 
-import { Controller, Get } from "sdk/http";
+import { Controller, Get, Post } from "sdk/http";
 
 @Controller
 class ManagerReviewFormService {
@@ -18,14 +18,17 @@ class ManagerReviewFormService {
     public tasksData(_: any, ctx: any) {
         const employeeId = ctx.pathParameters.employeeId;
 
-        return this.onboardingTaskDao.findAll({
+        const tasks = this.onboardingTaskDao.findAll({
             $filter: {
                 equals: {
-                    Assignee: undefined,
                     Employee: employeeId
                 }
             }
         });
+
+        const unassignedTasks = tasks.filter(t => typeof t.Assignee !== 'number');
+
+        return unassignedTasks;
     }
 
     @Get("/employeeData")
@@ -36,6 +39,11 @@ class ManagerReviewFormService {
                     OnboardingStatus: 3
                 }
             }
+        }).map(function (value) {
+            return {
+                value: value.Id,
+                text: value.Name
+            };
         });
     }
 
@@ -53,6 +61,17 @@ class ManagerReviewFormService {
                 text: value.Name
             };
         });
+    }
+
+    @Post("/updateAssignee")
+    public updateAssignee(body: any) {
+
+        let task = this.onboardingTaskDao.findById(body.taskId);
+
+        task.Assignee = body.assigneeId;
+
+        this.onboardingTaskDao.update(task);
+
     }
 
 }

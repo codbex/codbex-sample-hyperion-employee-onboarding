@@ -46,23 +46,3 @@
     opacity: 0.5;
     cursor: not-allowed;
 }
-
-.button[dg-type="emphasized"] {
-    background-color: #0a6ed1;
-    color: white;
-}
-
-.button[dg-type="emphasized"]:hover:not([disabled]) {
-    background-color: #0854a0;
-}
-
-.red-button {
-    background-color: transparent;
-    color: #d9534f;
-    border: 1px solid #d9534f;
-}
-
-.red-button:hover {
-    background-color: #d9534f;
-    color: white;
-}
