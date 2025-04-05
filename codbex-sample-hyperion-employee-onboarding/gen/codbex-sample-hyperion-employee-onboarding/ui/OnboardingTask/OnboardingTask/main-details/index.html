@@ -119,14 +119,14 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idCompletedAt" dg-required="true" dg-colon="true">CompletedAt</fd-form-label>
+                        	<fd-form-label for="idCompletedAt" dg-required="false" dg-colon="true">CompletedAt</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--2 ">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['CompletedAt'].$valid }}">
 	                            <fd-input id="idCompletedAt"
 	                                name="CompletedAt"
 	                                state="{{ forms.details['CompletedAt'].$valid ? '' : 'error' }}"
-									ng-required="true"
+									ng-required="false"
 	                                ng-model="entity.CompletedAt"
 	                                ng-readonly="action === 'select'"
 	                                type="date">

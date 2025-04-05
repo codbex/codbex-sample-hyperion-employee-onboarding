@@ -2134,7 +2134,6 @@ components:
         - Employee
         - Name
         - Status
-        - CompletedAt
       properties:
         Id:
           type: integer

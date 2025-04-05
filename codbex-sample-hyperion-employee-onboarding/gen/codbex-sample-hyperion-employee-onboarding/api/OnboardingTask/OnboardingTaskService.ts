@@ -131,9 +131,6 @@ class OnboardingTaskService {
         if (entity.Status === null || entity.Status === undefined) {
             throw new ValidationError(`The 'Status' property is required, provide a valid value`);
         }
-        if (entity.CompletedAt === null || entity.CompletedAt === undefined) {
-            throw new ValidationError(`The 'CompletedAt' property is required, provide a valid value`);
-        }
         for (const next of validationModules) {
             next.validate(entity);
         }
