@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "dashboard-navigations",
-    "module": "codbex-sample-hyperion-employee-onboarding/forms/NewHireDetails/new-hire-details-form.js",
-    "description": "New hire details form"
-}
