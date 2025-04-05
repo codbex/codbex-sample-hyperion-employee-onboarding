@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="templateApp" ng-controller="templateController">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title dg-view-title></title>
+        <script type="text/javascript" src="codbex-sample-hyperion-employee-onboarding/navigations/ManagerReview/service.js"></script>
+        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=ide-view-js"></script>
+        <link type="text/css" rel="stylesheet" href="/services/js/resources-core/services/loader.js?id=ide-view-css" />
+        <theme></theme>
+        <link rel="stylesheet" href="/services/web/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/manager-review-form.css">
+        <link type="text/css" rel="stylesheet" href="/services/js/resources-core/services/loader.js?id=application-view-css" />
+        <script src="/services/web/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/manager-review-form-controller.js">
+        </script>
+    </head>
+
+    <body>
+        <div class="title">Manager Review</div>
+
+        <div class="form-container">
+            <fd-scrollbar class="dg-full-height">
+                <fd-fieldset ng-form="forms.details">
+                    <fd-form-group dg-header="{{formHeaders[action]}}" name="entityForm" class="fd-container fd-form-layout-grid-container">
+
+                        <fd-form-item class="fd-row">
+                            <div class="fd-col fd-col-md--4">
+                                <fd-form-label for="newHire" dg-required="true" dg-colon="true">
+                                    Select New Hire
+                                </fd-form-label>
+                            </div>
+                            <div class="fd-col fd-col-md--8">
+                                <fd-combobox-input id="newHire" name="newHire" ng-required="true" ng-model="entity.selectedNewHire" dg-placeholder="Select New Hire..." dropdown-items="newHireOptions">
+                                </fd-combobox-input>
+                            </div>
+                        </fd-form-item>
+                        <div ng-if="entity.selectedNewHire">
+                            <div class="additional-info-title">
+                                <h3>Additional Info for {{ entity.selectedNewHire.name }}</h3>
+                            </div>
+
+                            <fd-form-item class="fd-row">
+                                <div class="fd-col fd-col-md--4">
+                                    <fd-form-label for="newHireDetails" dg-required="true" dg-colon="true">
+                                        Select NewHire Detail
+                                    </fd-form-label>
+                                </div>
+                                <div class="fd-col fd-col-md--8">
+                                    <fd-combobox-input id="newHireDetails" name="newHireDetails" ng-required="true" ng-model="entity.selectedNewHireDetail" dg-placeholder="Select Detail..." dropdown-items="newHireDetailOptions">
+                                    </fd-combobox-input>
+                                </div>
+                            </fd-form-item>
+                        </div>
+
+
+
+                    </fd-form-group>
+                </fd-fieldset>
+            </fd-scrollbar>
+        </div>
+
+
+    </body>
+
+</html>
