@@ -69,13 +69,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idAssignee" dg-required="true" dg-colon="true">Assignee</fd-form-label>
+                        	<fd-form-label for="idAssignee" dg-required="false" dg-colon="true">Assignee</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idAssignee"
 	                            name="Assignee"
 	                            state="{{ forms.details['Assignee'].$valid ? '' : 'error' }}"
-	                            ng-required="true"
+	                            ng-required="false"
 	                            ng-model="entity.Assignee"
 	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsAssignee"

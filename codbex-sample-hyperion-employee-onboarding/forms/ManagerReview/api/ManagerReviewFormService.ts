@@ -14,12 +14,15 @@ class ManagerReviewFormService {
         this.employeeDao = new EmployeeDao();
     }
 
-    @Get("/tasksData")
-    public tasksData() {
+    @Get("/tasksData/:employeeId")
+    public tasksData(_: any, ctx: any) {
+        const employeeId = ctx.pathParameters.employeeId;
+
         return this.onboardingTaskDao.findAll({
             $filter: {
                 equals: {
-                    Assignee: undefined
+                    Assignee: undefined,
+                    Employee: employeeId
                 }
             }
         });

@@ -282,7 +282,6 @@
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
-                        "isRequiredProperty": "true",
                         "name": "Assignee",
                         "tooltip": "",
                         "widgetDropDownKey": "Id",

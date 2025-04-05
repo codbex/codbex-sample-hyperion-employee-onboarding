@@ -10,29 +10,11 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
     };
 
     const tasksUrl =
-        "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/tasksData";
+        "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/tasksData/";
     const employeeUrl =
         "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/employeeData";
     const newHireUrl =
         "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/newHireData";
-
-    $http.get(tasksUrl)
-        .then(response => {
-            $scope.tasks = response.data;
-        })
-        .catch(function (error) {
-            console.error("Error getting tasks data: ", error);
-            $scope.closeDialog();
-        });
-
-    $http.get(employeeUrl)
-        .then(response => {
-            $scope.employees = response.data;
-        })
-        .catch(function (error) {
-            console.error("Error getting employees data: ", error);
-            $scope.closeDialog();
-        });
 
     $http.get(newHireUrl)
         .then(response => {
@@ -42,6 +24,30 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
             console.error("Error getting new hire data: ", error);
             $scope.closeDialog();
         });
+
+    $scope.logNewHireID = function () {
+        console.log($scope.entity.selectedNewHire);
+
+        const newHireId = $scope.entity.selectedNewHire;
+
+        $http.get(tasksUrl + newHireId)
+            .then(response => {
+                $scope.taskList = response.data;
+                console.log(JSON.stringify($scope.taskList));
+                $http.get(employeeUrl)
+                    .then(response => {
+                        $scope.assigneeOptions = response.data;
+                    })
+                    .catch(function (error) {
+                        console.error("Error getting employees data: ", error);
+                        $scope.closeDialog();
+                    });
+            })
+            .catch(function (error) {
+                console.error("Error getting tasks data: ", error);
+                $scope.closeDialog();
+            });
+    };
 
     $scope.closeDialog = () => {
         $scope.showDialog = false;
