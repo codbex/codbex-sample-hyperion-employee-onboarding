@@ -1,6 +1,7 @@
 const app = angular.module('templateApp', ['ideUI', 'ideView'])
 app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'messageHub', function ($scope, $http, ViewParameters, messageHub) {
     const params = ViewParameters.get();
+    const employeeId = params.id || new URLSearchParams(window.location.search).get('employeeId');
 
     $scope.showDialog = true;
 
@@ -16,46 +17,28 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
         "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/tasksData/";
     const employeeUrl =
         "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/employeeData";
-    const newHireUrl =
-        "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/newHireData";
     const updateAssigneeUrl =
         "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/updateAssignee";
 
-
-    $http.get(newHireUrl)
+    $http.get(tasksUrl + employeeId)
         .then(response => {
-            $scope.newHireOptions = response.data;
+            $scope.taskList = response.data;
+
+            $http.get(employeeUrl)
+                .then(response => {
+
+                    $scope.assigneeOptions = response.data;
+                })
+                .catch(function (error) {
+                    console.error("Error getting employees data: ", error);
+                    $scope.closeDialog();
+                });
+
         })
         .catch(function (error) {
-            console.error("Error getting new hire data: ", error);
+            console.error("Error getting tasks data: ", error);
             $scope.closeDialog();
         });
-
-    $scope.logNewHireID = function () {
-        console.log($scope.entity.selectedNewHire);
-
-        const newHireId = $scope.entity.selectedNewHire;
-
-        $http.get(tasksUrl + newHireId)
-            .then(response => {
-                $scope.taskList = response.data;
-
-                $http.get(employeeUrl)
-                    .then(response => {
-
-                        $scope.assigneeOptions = response.data;
-                    })
-                    .catch(function (error) {
-                        console.error("Error getting employees data: ", error);
-                        $scope.closeDialog();
-                    });
-
-            })
-            .catch(function (error) {
-                console.error("Error getting tasks data: ", error);
-                $scope.closeDialog();
-            });
-    };
 
 
     $scope.submitAssignees = function () {
