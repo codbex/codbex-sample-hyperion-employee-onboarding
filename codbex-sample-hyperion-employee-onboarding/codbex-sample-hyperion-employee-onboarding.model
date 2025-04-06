@@ -41,7 +41,7 @@
                         "name": "Email",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "20",
+                        "widgetLength": "80",
                         "widgetSize": "",
                         "widgetType": "EMAIL"
                     },

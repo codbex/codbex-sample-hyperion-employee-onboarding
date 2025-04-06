@@ -3,7 +3,7 @@ const navigationData = {
     label: "Department",
     group: "company",
     order: 700,
-    link: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/Department/index.html?embedded"
+    link: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/Department/Department/index.html?embedded"
 };
 
 function getNavigation() {

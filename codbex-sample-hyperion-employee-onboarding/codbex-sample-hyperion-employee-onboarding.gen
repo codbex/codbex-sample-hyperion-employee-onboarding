@@ -162,7 +162,7 @@
           "name": "Email",
           "tooltip": "",
           "widgetIsMajor": true,
-          "widgetLength": "20",
+          "widgetLength": "80",
           "widgetSize": "",
           "widgetType": "EMAIL",
           "dataNotNull": false,
@@ -175,7 +175,7 @@
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
           "minLength": 0,
-          "maxLength": 20,
+          "maxLength": 80,
           "inputRule": ""
         },
         {
@@ -327,7 +327,7 @@
             "name": "Email",
             "tooltip": "",
             "widgetIsMajor": true,
-            "widgetLength": "20",
+            "widgetLength": "80",
             "widgetSize": "",
             "widgetType": "EMAIL",
             "dataNotNull": false,
@@ -340,7 +340,7 @@
             "dataTypeJava": "string",
             "dataTypeTypescript": "string",
             "minLength": 0,
-            "maxLength": 20,
+            "maxLength": 80,
             "inputRule": ""
           },
           {
