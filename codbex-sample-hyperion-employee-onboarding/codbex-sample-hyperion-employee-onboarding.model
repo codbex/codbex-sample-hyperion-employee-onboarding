@@ -278,6 +278,19 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataLength": "500",
+                        "dataName": "ONBOARDINGTASK_DESCRIPTION",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "name": "Description",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "500",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
                         "dataName": "ONBOARDINGTASK_ASSIGNEE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",

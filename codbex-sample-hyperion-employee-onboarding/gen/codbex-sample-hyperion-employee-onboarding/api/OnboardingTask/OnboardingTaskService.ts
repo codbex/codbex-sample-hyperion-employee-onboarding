@@ -128,6 +128,9 @@ class OnboardingTaskService {
         if (entity.Name?.length > 100) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [100] characters`);
         }
+        if (entity.Description?.length > 500) {
+            throw new ValidationError(`The 'Description' exceeds the maximum length of [500] characters`);
+        }
         if (entity.Status === null || entity.Status === undefined) {
             throw new ValidationError(`The 'Status' property is required, provide a valid value`);
         }

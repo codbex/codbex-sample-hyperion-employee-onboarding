@@ -54,6 +54,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
+			if (entity.Description) {
+				filter.$filter.contains.Description = entity.Description;
+			}
 			if (entity.Assignee !== undefined) {
 				filter.$filter.equals.Assignee = entity.Assignee;
 			}

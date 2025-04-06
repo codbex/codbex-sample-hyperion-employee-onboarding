@@ -8,6 +8,7 @@ export interface OnboardingTaskEntity {
     readonly Id: number;
     Employee?: number;
     Name?: string;
+    Description?: string;
     Assignee?: number;
     Status?: number;
     CompletedAt?: Date;
@@ -16,6 +17,7 @@ export interface OnboardingTaskEntity {
 export interface OnboardingTaskCreateEntity {
     readonly Employee?: number;
     readonly Name?: string;
+    readonly Description?: string;
     readonly Assignee?: number;
     readonly Status?: number;
     readonly CompletedAt?: Date;
@@ -31,6 +33,7 @@ export interface OnboardingTaskEntityOptions {
             Id?: number | number[];
             Employee?: number | number[];
             Name?: string | string[];
+            Description?: string | string[];
             Assignee?: number | number[];
             Status?: number | number[];
             CompletedAt?: Date | Date[];
@@ -39,6 +42,7 @@ export interface OnboardingTaskEntityOptions {
             Id?: number | number[];
             Employee?: number | number[];
             Name?: string | string[];
+            Description?: string | string[];
             Assignee?: number | number[];
             Status?: number | number[];
             CompletedAt?: Date | Date[];
@@ -47,6 +51,7 @@ export interface OnboardingTaskEntityOptions {
             Id?: number;
             Employee?: number;
             Name?: string;
+            Description?: string;
             Assignee?: number;
             Status?: number;
             CompletedAt?: Date;
@@ -55,6 +60,7 @@ export interface OnboardingTaskEntityOptions {
             Id?: number;
             Employee?: number;
             Name?: string;
+            Description?: string;
             Assignee?: number;
             Status?: number;
             CompletedAt?: Date;
@@ -63,6 +69,7 @@ export interface OnboardingTaskEntityOptions {
             Id?: number;
             Employee?: number;
             Name?: string;
+            Description?: string;
             Assignee?: number;
             Status?: number;
             CompletedAt?: Date;
@@ -71,6 +78,7 @@ export interface OnboardingTaskEntityOptions {
             Id?: number;
             Employee?: number;
             Name?: string;
+            Description?: string;
             Assignee?: number;
             Status?: number;
             CompletedAt?: Date;
@@ -79,6 +87,7 @@ export interface OnboardingTaskEntityOptions {
             Id?: number;
             Employee?: number;
             Name?: string;
+            Description?: string;
             Assignee?: number;
             Status?: number;
             CompletedAt?: Date;
@@ -126,6 +135,11 @@ export class OnboardingTaskRepository {
             {
                 name: "Name",
                 column: "ONBOARDINGTASK_NAME",
+                type: "VARCHAR",
+            },
+            {
+                name: "Description",
+                column: "ONBOARDINGTASK_DESCRIPTION",
                 type: "VARCHAR",
             },
             {
