@@ -1,6 +1,6 @@
 import { OnboardingTaskRepository as OnboardingTaskDao } from "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/dao/OnboardingTask/OnboardingTaskRepository";
 
-import { Controller, Get, Post } from "sdk/http";
+import { Controller, Get } from "sdk/http";
 
 @Controller
 class HRConfirmationService {
@@ -25,6 +25,5 @@ class HRConfirmationService {
         });
         return tasks;
     }
-
 
 }

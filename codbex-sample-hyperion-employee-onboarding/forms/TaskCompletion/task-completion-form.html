@@ -17,6 +17,20 @@
     </head>
 
     <body>
+        <div class="title">Task completion</div>
+
+        <div class="tasks" ng-repeat="next in taskList">
+            <div class="task-content">
+                <div class="taskName">{{ next.Name }}</div>
+                <div class="taskDescription">{{ next.Description }}</div>
+            </div>
+            <div class="button-container">
+                <fd-button class="button" dg-label="Complete" dg-type="emphasized" ng-click="completeTask(next)" state="{{ next.isCompleted ? 'disabled' : '' }}">
+                </fd-button>
+            </div>
+        </div>
+
+
 
     </body>
 

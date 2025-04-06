@@ -69,6 +69,7 @@ class ManagerReviewFormService {
         let task = this.onboardingTaskDao.findById(body.taskId);
 
         task.Assignee = body.assigneeId;
+        task.Status = 2; // in progress
 
         this.onboardingTaskDao.update(task);
 

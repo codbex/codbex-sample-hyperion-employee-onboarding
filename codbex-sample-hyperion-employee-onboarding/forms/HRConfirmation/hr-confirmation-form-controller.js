@@ -28,6 +28,11 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
             $scope.closeDialog();
         });
 
+    $scope.completeOnboarding = function () {
+        //add logic
+
+    }
+
 
     $scope.closeDialog = () => {
         $scope.showDialog = false;
