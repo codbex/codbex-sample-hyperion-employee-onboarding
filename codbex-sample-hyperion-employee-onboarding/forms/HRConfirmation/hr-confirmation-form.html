@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="templateApp" ng-controller="templateController">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title dg-view-title></title>
+        <script type="text/javascript" src="codbex-sample-hyperion-employee-onboarding/navigations/HRConfirmation/service.js"></script>
+        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=ide-view-js"></script>
+        <link type="text/css" rel="stylesheet" href="/services/js/resources-core/services/loader.js?id=ide-view-css" />
+        <theme></theme>
+        <link rel="stylesheet" href="/services/web/codbex-sample-hyperion-employee-onboarding/forms/HRConfirmation/hr-confirmation-form.css">
+        <link type="text/css" rel="stylesheet" href="/services/js/resources-core/services/loader.js?id=application-view-css" />
+        <script src="/services/web/codbex-sample-hyperion-employee-onboarding/forms/HRConfirmation/hr-confirmation-form-controller.js">
+        </script>
+    </head>
+
+    <body>
+
+
+        <div class="title">HR Confirmation</div>
+
+        <div class="subtitle">Onboarding completion checklist</div>
+
+        <div class="tasks" ng-repeat="next in taskList">
+            <i class="sap-icon--accept" role="presentation"></i>
+            <div class="taskName">{{next.Name}}</div>
+        </div>
+
+        <div class="confirmation-section">
+            <label class="checkbox-label">
+                <input type="checkbox" ng-model="checkboxChecked">
+                I confirm that all onboarding tasks have been completed successfully
+            </label>
+
+            <div class="button-container">
+                <fd-button class="button" dg-label="Submit" dg-type="emphasized" ng-click="submitAssignees()" state="{{ checkboxChecked ? '' : 'disabled' }}">
+                </fd-button>
+            </div>
+        </div>
+
+
+
+
+    </body>
+
+</html>
