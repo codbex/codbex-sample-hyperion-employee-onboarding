@@ -1,6 +1,5 @@
 const app = angular.module('templateApp', ['ideUI', 'ideView'])
-app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'messageHub', function ($scope, $http, ViewParameters, messageHub) {
-    const params = ViewParameters.get();
+app.controller('templateController', ['$scope', '$http', 'messageHub', function ($scope, $http, messageHub) {
 
     $scope.showDialog = true;
 
@@ -24,8 +23,6 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
         });
 
     $scope.createNewHire = () => {
-
-        console.log("eee");
 
         const employeeBody = {
             Name: $scope.entity.Name,

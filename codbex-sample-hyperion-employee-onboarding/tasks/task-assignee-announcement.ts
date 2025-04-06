@@ -14,9 +14,9 @@ const processInstanceId = execution.getProcessInstanceId();
 const tasks = process.getVariable(executionId, "tasks");
 
 tasks.forEach(task => {
-  const employee = employeeDao.findById(task.Employee);
+  const employee = employeeDao.findById(task.Owner);
   if (!employee) {
-    throw new Error(`Employee with ID ${task.Employee} not found!`);
+    throw new Error(`Employee with ID ${task.Owner} not found!`);
   }
 
   const subject = task.Name;

@@ -1,11 +1,20 @@
+import { EmployeeRepository as EmployeeDao } from "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/dao/Employee/EmployeeRepository";
+
 import { process } from "sdk/bpm";
 import { sendMail } from "./mail-util";
+
+const employeeDao = new EmployeeDao();
 
 const execution = process.getExecutionContext();
 const executionId = execution.getId();
 
-const recipient = process.getVariable(executionId, "OnboardingInitiator");
+const onboardingInitiatorId = process.getVariable(executionId, "OnboardingInitiator");
 let onboardingInitiatorLink = process.getVariable(executionId, "OnboardingInitiatorLink");
+
+const onboardingInitiator = employeeDao.findById(onboardingInitiatorId);
+if (!onboardingInitiator) {
+  throw new Error(`Employee with ID ${onboardingInitiatorId} not found!`);
+}
 
 const subject = "Employee Onboarding Review";
 const processInstanceId = execution.getProcessInstanceId();
@@ -15,7 +24,7 @@ onboardingInitiatorLink = `${onboardingInitiatorLink}&processId=${processInstanc
 const content = `
   <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
     <h2 style="color: #2c3e50; text-align: center;">Employee Onboarding Approval</h2>
-    <p>Dear ${recipient},</p>
+    <p>Dear ${onboardingInitiator.Name},</p>
     <p>An employee onboarding request requires your review and approval.</p>
     <p>Please click the button below to access your inbox and complete the necessary steps:</p>
     <div style="text-align: center; margin: 20px 0;">
@@ -34,4 +43,4 @@ const content = `
   </div>
 `;
 
-sendMail(recipient, subject, content);
+sendMail(onboardingInitiator.Email, subject, content);

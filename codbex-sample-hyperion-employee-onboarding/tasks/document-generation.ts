@@ -10,9 +10,7 @@ const execution = process.getExecutionContext();
 const executionId = execution.getId();
 
 const employeeId = process.getVariable(executionId, "Employee");
-const hrLink = process.getVariable(executionId, "HRLink");
-const itLink = process.getVariable(executionId, "ITLink");
-let trainingManagerLink = process.getVariable(executionId, "TrainingManagerLink");
+const taskLink = process.getVariable(executionId, "TaskLink");
 
 const employee = employeeDao.findById(employeeId);
 if (!employee) {
@@ -23,21 +21,21 @@ const hrTaskBody = {
     "Employee": employeeId,
     "Name": "Contract Preparation",
     "Status": 1,
-    "Link": hrLink,
+    "Link": taskLink,
 };
 
 const itTaskBody = {
     "Employee": employeeId,
     "Name": "IT Setup",
     "Status": 1,
-    "Link": itLink,
+    "Link": taskLink,
 };
 
 const managerTaskBody = {
     "Employee": employeeId,
     "Name": "Department Training",
     "Status": 1,
-    "Link": trainingManagerLink,
+    "Link": taskLink,
 };
 
 const tasks = [hrTaskBody, itTaskBody, managerTaskBody];
