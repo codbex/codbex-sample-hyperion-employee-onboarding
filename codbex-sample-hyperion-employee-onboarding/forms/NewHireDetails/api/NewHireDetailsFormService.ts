@@ -44,11 +44,7 @@ class NewHireDetailsFormService {
                 return { message: "Failed to create Employee!" };
             }
 
-            console.log("Test: ", newEmployee);
-
             this.startProcess(newEmployee);
-
-            console.log("Test2: ", newEmployee);
 
             response.setStatus(response.CREATED);
             return { message: "Employee created!" };
