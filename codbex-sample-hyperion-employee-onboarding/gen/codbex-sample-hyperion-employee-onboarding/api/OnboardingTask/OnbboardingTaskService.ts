@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { OnboardingTaskRepository, OnboardingTaskEntityOptions } from "../../dao/OnboardingTask/OnboardingTaskRepository";
+import { OnbboardingTaskRepository, OnbboardingTaskEntityOptions } from "../../dao/OnboardingTask/OnbboardingTaskRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-sample-hyperion-employee-onboarding-OnboardingTask-OnboardingTask", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-sample-hyperion-employee-onboarding-OnboardingTask-OnbboardingTask", ["validate"]);
 
 @Controller
-class OnboardingTaskService {
+class OnbboardingTaskService {
 
-    private readonly repository = new OnboardingTaskRepository();
+    private readonly repository = new OnbboardingTaskRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: OnboardingTaskEntityOptions = {
+            const options: OnbboardingTaskEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -30,7 +30,7 @@ class OnboardingTaskService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnboardingTaskService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnbboardingTaskService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +73,7 @@ class OnboardingTaskService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("OnboardingTask not found");
+                HttpUtils.sendResponseNotFound("OnbboardingTask not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +101,7 @@ class OnboardingTaskService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("OnboardingTask not found");
+                HttpUtils.sendResponseNotFound("OnbboardingTask not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -128,11 +128,14 @@ class OnboardingTaskService {
         if (entity.Name?.length > 100) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [100] characters`);
         }
-        if (entity.Description?.length > 500) {
-            throw new ValidationError(`The 'Description' exceeds the maximum length of [500] characters`);
+        if (entity.Assignee === null || entity.Assignee === undefined) {
+            throw new ValidationError(`The 'Assignee' property is required, provide a valid value`);
         }
         if (entity.Status === null || entity.Status === undefined) {
             throw new ValidationError(`The 'Status' property is required, provide a valid value`);
+        }
+        if (entity.CompletedAt === null || entity.CompletedAt === undefined) {
+            throw new ValidationError(`The 'CompletedAt' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

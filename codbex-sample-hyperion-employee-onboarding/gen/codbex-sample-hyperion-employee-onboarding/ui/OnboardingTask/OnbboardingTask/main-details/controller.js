@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-sample-hyperion-employee-onboarding.OnboardingTask.OnboardingTask';
+		messageHubProvider.eventIdPrefix = 'codbex-sample-hyperion-employee-onboarding.OnboardingTask.OnbboardingTask';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnboardingTaskService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnbboardingTaskService.ts";
 	}])
 	.controller('PageController', ['$scope',  '$http', 'Extensions', 'messageHub', 'entityApi', function ($scope,  $http, Extensions, messageHub, entityApi) {
 
@@ -12,15 +12,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "OnboardingTask Details",
-			create: "Create OnboardingTask",
-			update: "Update OnboardingTask"
+			select: "OnbboardingTask Details",
+			create: "Create OnbboardingTask",
+			update: "Update OnbboardingTask"
 		};
 		$scope.action = 'select';
 
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-sample-hyperion-employee-onboarding-custom-action').then(function (response) {
-			$scope.entityActions = response.filter(e => e.perspective === "OnboardingTask" && e.view === "OnboardingTask" && e.type === "entity");
+			$scope.entityActions = response.filter(e => e.perspective === "OnboardingTask" && e.view === "OnbboardingTask" && e.type === "entity");
 		});
 
 		$scope.triggerEntityAction = function (action) {
@@ -92,24 +92,24 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.create = function () {
 			entityApi.create($scope.entity).then(function (response) {
 				if (response.status != 201) {
-					messageHub.showAlertError("OnboardingTask", `Unable to create OnboardingTask: '${response.message}'`);
+					messageHub.showAlertError("OnbboardingTask", `Unable to create OnbboardingTask: '${response.message}'`);
 					return;
 				}
 				messageHub.postMessage("entityCreated", response.data);
 				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("OnboardingTask", "OnboardingTask successfully created");
+				messageHub.showAlertSuccess("OnbboardingTask", "OnbboardingTask successfully created");
 			});
 		};
 
 		$scope.update = function () {
 			entityApi.update($scope.entity.Id, $scope.entity).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("OnboardingTask", `Unable to update OnboardingTask: '${response.message}'`);
+					messageHub.showAlertError("OnbboardingTask", `Unable to update OnbboardingTask: '${response.message}'`);
 					return;
 				}
 				messageHub.postMessage("entityUpdated", response.data);
 				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("OnboardingTask", "OnboardingTask successfully updated");
+				messageHub.showAlertSuccess("OnbboardingTask", "OnbboardingTask successfully updated");
 			});
 		};
 

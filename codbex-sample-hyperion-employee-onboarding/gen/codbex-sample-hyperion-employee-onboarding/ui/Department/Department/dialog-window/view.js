@@ -7,7 +7,7 @@ const viewData = {
     id: "Department-details",
     label: "Department",
     link: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/Department/Department/dialog-window/index.html",
-    perspectiveName: "Department"
+    perspectiveName: "Department",
 };
 
 if (typeof exports !== 'undefined') {

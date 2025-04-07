@@ -6,9 +6,9 @@
 exports.getTile = function () {
     return {
         group: "codbex-sample-hyperion-employee-onboarding",
-        name: "OnboardingTask",
-        caption: "Manage entity OnboardingTask",
-        tooltip: "OnboardingTask",
+        name: "OnbboardingTask",
+        caption: "Manage entity OnbboardingTask",
+        tooltip: "OnbboardingTask",
         type: "PRIMARY",
         report: "false",
         icon: "/services/web/resources/unicons/file.svg",

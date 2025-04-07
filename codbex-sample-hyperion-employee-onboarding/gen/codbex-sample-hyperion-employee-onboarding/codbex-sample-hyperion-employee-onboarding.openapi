@@ -1218,9 +1218,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnboardingTaskService.ts:
+  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnbboardingTaskService.ts:
     get:
-      summary: List OnboardingTask
+      summary: List OnbboardingTask
       parameters:
         - in: query
           name: $limit
@@ -1248,7 +1248,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/OnboardingTask'
+                    $ref: '#/components/schemas/OnbboardingTask'
         400:
           description: Bad Request Error
           content:
@@ -1268,14 +1268,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Create OnboardingTask
+      summary: Create OnbboardingTask
       tags:
         - OnboardingTask
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OnboardingTask'
+              $ref: '#/components/schemas/OnbboardingTask'
         required: true
       responses:
         201:
@@ -1283,7 +1283,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OnboardingTask'
+                $ref: '#/components/schemas/OnbboardingTask'
         400:
           description: Bad Request Error
           content:
@@ -1302,9 +1302,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnboardingTaskService.ts/{id}:
+  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnbboardingTaskService.ts/{id}:
     get:
-      summary: Get OnboardingTask by Id
+      summary: Get OnbboardingTask by Id
       parameters:
         - in: path
           name: id
@@ -1322,7 +1322,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/OnboardingTask'
+                    $ref: '#/components/schemas/OnbboardingTask'
         404:
           description: Entity Not Found
           content:
@@ -1342,7 +1342,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
-      summary: Update OnboardingTask by Id
+      summary: Update OnbboardingTask by Id
       parameters:
         - in: path
           name: id
@@ -1356,7 +1356,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OnboardingTask'
+              $ref: '#/components/schemas/OnbboardingTask'
         required: true
       responses:
         200:
@@ -1364,7 +1364,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OnboardingTask'
+                $ref: '#/components/schemas/OnbboardingTask'
         400:
           description: Bad Request Error
           content:
@@ -1390,7 +1390,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      summary: Delete OnboardingTask by Id
+      summary: Delete OnbboardingTask by Id
       parameters:
         - in: path
           name: id
@@ -1421,9 +1421,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnboardingTaskService.ts/count:
+  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnbboardingTaskService.ts/count:
     get:
-      summary: Count the number of OnboardingTask
+      summary: Count the number of OnbboardingTask
       tags:
         - OnboardingTask
       responses:
@@ -1447,14 +1447,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Count the number of OnboardingTask by OnboardingTaskFilterOptions
+      summary: Count the number of OnbboardingTask by OnbboardingTaskFilterOptions
       tags:
         - OnboardingTask
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OnboardingTaskFilterOptions'
+              $ref: '#/components/schemas/OnbboardingTaskFilterOptions'
             examples:
               countWithMultipleCriteria:
                 summary: Count with multiple criteria
@@ -1464,7 +1464,6 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
-                      Description: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -1487,7 +1486,6 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
-                      Description: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -1533,16 +1531,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnboardingTaskService.ts/search:
+  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnbboardingTaskService.ts/search:
     post:
-      summary: Search OnboardingTask by OnboardingTaskFilterOptions
+      summary: Search OnbboardingTask by OnbboardingTaskFilterOptions
       tags:
         - OnboardingTask
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OnboardingTaskFilterOptions'
+              $ref: '#/components/schemas/OnbboardingTaskFilterOptions'
             examples:
               searchWithMultipleCriteria:
                 summary: Search with multiple criteria
@@ -1552,7 +1550,6 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
-                      Description: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -1575,7 +1572,6 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
-                      Description: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -1609,7 +1605,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/OnboardingTask'
+                    $ref: '#/components/schemas/OnbboardingTask'
         403:
           description: Forbidden Error
           content:
@@ -2132,12 +2128,14 @@ components:
         $limit:
           type: integer
           example: 10
-    OnboardingTask:
+    OnbboardingTask:
       type: object
       required:
         - Employee
         - Name
+        - Assignee
         - Status
+        - CompletedAt
       properties:
         Id:
           type: integer
@@ -2149,10 +2147,6 @@ components:
           type: string
           minLength: 0
           maxLength: 100
-        Description:
-          type: string
-          minLength: 0
-          maxLength: 500
         Assignee:
           type: integer
           format: int32
@@ -2160,7 +2154,7 @@ components:
           type: integer
           format: int32
         CompletedAt:
-    OnboardingTaskFilterOptions:
+    OnbboardingTaskFilterOptions:
       type: object
       properties:
         $filter:
@@ -2196,17 +2190,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 100
-                Description:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 500
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 500
                 Assignee:
                   oneOf:
                     - type: integer
@@ -2255,17 +2238,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 100
-                Description:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 500
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 500
                 Assignee:
                   oneOf:
                     - type: integer
@@ -2293,10 +2265,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 500
                 Assignee:
                 Status:
                 CompletedAt:
@@ -2313,10 +2281,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 500
                 Assignee:
                   type: integer
                   format: int32
@@ -2337,10 +2301,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 500
                 Assignee:
                   type: integer
                   format: int32
@@ -2361,10 +2321,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 500
                 Assignee:
                   type: integer
                   format: int32
@@ -2385,10 +2341,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 500
                 Assignee:
                   type: integer
                   format: int32
@@ -2398,12 +2350,12 @@ components:
                 CompletedAt:
         $select:
           type: array
-          example: ["Id", "Employee", "Name", "Description", "Assignee", "Status", "CompletedAt"]
+          example: ["Id", "Employee", "Name", "Assignee", "Status", "CompletedAt"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Employee,Name,Description,Assignee,Status,CompletedAt"
+            example: "Id,Employee,Name,Assignee,Status,CompletedAt"
         $order:
           type: string
           enum: ["asc", "desc"]

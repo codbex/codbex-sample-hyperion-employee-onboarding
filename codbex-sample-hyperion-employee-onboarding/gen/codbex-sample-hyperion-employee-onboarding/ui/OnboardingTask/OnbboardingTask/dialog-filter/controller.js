@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-sample-hyperion-employee-onboarding.OnboardingTask.OnboardingTask';
+		messageHubProvider.eventIdPrefix = 'codbex-sample-hyperion-employee-onboarding.OnboardingTask.OnbboardingTask';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -54,9 +54,6 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
-			if (entity.Description) {
-				filter.$filter.contains.Description = entity.Description;
-			}
 			if (entity.Assignee !== undefined) {
 				filter.$filter.equals.Assignee = entity.Assignee;
 			}
@@ -83,7 +80,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("OnboardingTask-filter");
+			messageHub.closeDialogWindow("OnbboardingTask-filter");
 		};
 
 		$scope.clearErrorMessage = function () {
