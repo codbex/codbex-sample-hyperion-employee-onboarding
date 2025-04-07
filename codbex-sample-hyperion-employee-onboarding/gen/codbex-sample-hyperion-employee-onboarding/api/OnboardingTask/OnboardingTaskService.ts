@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { OnbboardingTaskRepository, OnbboardingTaskEntityOptions } from "../../dao/OnboardingTask/OnbboardingTaskRepository";
+import { OnboardingTaskRepository, OnboardingTaskEntityOptions } from "../../dao/OnboardingTask/OnboardingTaskRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-sample-hyperion-employee-onboarding-OnboardingTask-OnbboardingTask", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-sample-hyperion-employee-onboarding-OnboardingTask-OnboardingTask", ["validate"]);
 
 @Controller
-class OnbboardingTaskService {
+class OnboardingTaskService {
 
-    private readonly repository = new OnbboardingTaskRepository();
+    private readonly repository = new OnboardingTaskRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: OnbboardingTaskEntityOptions = {
+            const options: OnboardingTaskEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -30,7 +30,7 @@ class OnbboardingTaskService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnbboardingTaskService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnboardingTaskService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +73,7 @@ class OnbboardingTaskService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("OnbboardingTask not found");
+                HttpUtils.sendResponseNotFound("OnboardingTask not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +101,7 @@ class OnbboardingTaskService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("OnbboardingTask not found");
+                HttpUtils.sendResponseNotFound("OnboardingTask not found");
             }
         } catch (error: any) {
             this.handleError(error);

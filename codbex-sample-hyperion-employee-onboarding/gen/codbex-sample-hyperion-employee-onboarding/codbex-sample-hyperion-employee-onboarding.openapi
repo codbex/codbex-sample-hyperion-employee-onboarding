@@ -1218,9 +1218,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnbboardingTaskService.ts:
+  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnboardingTaskService.ts:
     get:
-      summary: List OnbboardingTask
+      summary: List OnboardingTask
       parameters:
         - in: query
           name: $limit
@@ -1248,7 +1248,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/OnbboardingTask'
+                    $ref: '#/components/schemas/OnboardingTask'
         400:
           description: Bad Request Error
           content:
@@ -1268,14 +1268,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Create OnbboardingTask
+      summary: Create OnboardingTask
       tags:
         - OnboardingTask
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OnbboardingTask'
+              $ref: '#/components/schemas/OnboardingTask'
         required: true
       responses:
         201:
@@ -1283,7 +1283,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OnbboardingTask'
+                $ref: '#/components/schemas/OnboardingTask'
         400:
           description: Bad Request Error
           content:
@@ -1302,9 +1302,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnbboardingTaskService.ts/{id}:
+  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnboardingTaskService.ts/{id}:
     get:
-      summary: Get OnbboardingTask by Id
+      summary: Get OnboardingTask by Id
       parameters:
         - in: path
           name: id
@@ -1322,7 +1322,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/OnbboardingTask'
+                    $ref: '#/components/schemas/OnboardingTask'
         404:
           description: Entity Not Found
           content:
@@ -1342,7 +1342,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
-      summary: Update OnbboardingTask by Id
+      summary: Update OnboardingTask by Id
       parameters:
         - in: path
           name: id
@@ -1356,7 +1356,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OnbboardingTask'
+              $ref: '#/components/schemas/OnboardingTask'
         required: true
       responses:
         200:
@@ -1364,7 +1364,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OnbboardingTask'
+                $ref: '#/components/schemas/OnboardingTask'
         400:
           description: Bad Request Error
           content:
@@ -1390,7 +1390,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      summary: Delete OnbboardingTask by Id
+      summary: Delete OnboardingTask by Id
       parameters:
         - in: path
           name: id
@@ -1421,9 +1421,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnbboardingTaskService.ts/count:
+  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnboardingTaskService.ts/count:
     get:
-      summary: Count the number of OnbboardingTask
+      summary: Count the number of OnboardingTask
       tags:
         - OnboardingTask
       responses:
@@ -1447,14 +1447,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Count the number of OnbboardingTask by OnbboardingTaskFilterOptions
+      summary: Count the number of OnboardingTask by OnboardingTaskFilterOptions
       tags:
         - OnboardingTask
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OnbboardingTaskFilterOptions'
+              $ref: '#/components/schemas/OnboardingTaskFilterOptions'
             examples:
               countWithMultipleCriteria:
                 summary: Count with multiple criteria
@@ -1531,16 +1531,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnbboardingTaskService.ts/search:
+  /codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnboardingTaskService.ts/search:
     post:
-      summary: Search OnbboardingTask by OnbboardingTaskFilterOptions
+      summary: Search OnboardingTask by OnboardingTaskFilterOptions
       tags:
         - OnboardingTask
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OnbboardingTaskFilterOptions'
+              $ref: '#/components/schemas/OnboardingTaskFilterOptions'
             examples:
               searchWithMultipleCriteria:
                 summary: Search with multiple criteria
@@ -1605,7 +1605,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/OnbboardingTask'
+                    $ref: '#/components/schemas/OnboardingTask'
         403:
           description: Forbidden Error
           content:
@@ -2128,7 +2128,7 @@ components:
         $limit:
           type: integer
           example: 10
-    OnbboardingTask:
+    OnboardingTask:
       type: object
       required:
         - Employee
@@ -2154,7 +2154,7 @@ components:
           type: integer
           format: int32
         CompletedAt:
-    OnbboardingTaskFilterOptions:
+    OnboardingTaskFilterOptions:
       type: object
       properties:
         $filter:

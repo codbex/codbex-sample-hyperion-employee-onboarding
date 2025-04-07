@@ -1,0 +1,5 @@
+{
+    "module": "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/OnboardingTask/OnboardingTask/dialog-filter/view.js",
+    "extensionPoint": "dialog-window",
+    "description": "codbex-sample-hyperion-employee-onboarding - Application Dialog Window"
+}

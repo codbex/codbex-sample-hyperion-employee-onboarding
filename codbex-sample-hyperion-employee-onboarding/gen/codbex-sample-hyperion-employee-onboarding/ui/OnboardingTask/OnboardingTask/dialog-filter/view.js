@@ -4,9 +4,9 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "OnbboardingTask-filter",
-    label: "OnbboardingTask Filter",
-    link: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/OnboardingTask/OnbboardingTask/dialog-filter/index.html",
+    id: "OnboardingTask-filter",
+    label: "OnboardingTask Filter",
+    link: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/OnboardingTask/OnboardingTask/dialog-filter/index.html",
     perspectiveName: "OnboardingTask"
 };
 

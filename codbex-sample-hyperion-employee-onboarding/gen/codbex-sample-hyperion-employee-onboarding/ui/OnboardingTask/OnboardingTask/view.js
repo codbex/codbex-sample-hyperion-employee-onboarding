@@ -4,11 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "OnbboardingTask",
-    label: "OnbboardingTask",
+    id: "OnboardingTask",
+    label: "OnboardingTask",
     factory: "frame",
     region: "left",
-    link: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/OnboardingTask/OnbboardingTask/index.html",
+    link: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/OnboardingTask/OnboardingTask/index.html",
     perspectiveName: "OnboardingTask"
 };
 

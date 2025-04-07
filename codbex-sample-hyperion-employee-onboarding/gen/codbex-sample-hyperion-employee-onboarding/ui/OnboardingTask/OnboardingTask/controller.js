@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-sample-hyperion-employee-onboarding.OnboardingTask.OnbboardingTask';
+		messageHubProvider.eventIdPrefix = 'codbex-sample-hyperion-employee-onboarding.OnboardingTask.OnboardingTask';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnbboardingTaskService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/OnboardingTask/OnboardingTaskService.ts";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 
@@ -15,7 +15,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-sample-hyperion-employee-onboarding-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "OnboardingTask" && e.view === "OnbboardingTask" && (e.type === "page" || e.type === undefined));
+			$scope.pageActions = response.filter(e => e.perspective === "OnboardingTask" && e.view === "OnboardingTask" && (e.type === "page" || e.type === undefined));
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -77,7 +77,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.selectedEntity = null;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("OnbboardingTask", `Unable to count OnbboardingTask: '${response.message}'`);
+					messageHub.showAlertError("OnboardingTask", `Unable to count OnboardingTask: '${response.message}'`);
 					return;
 				}
 				if (response.data) {
@@ -93,7 +93,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("OnbboardingTask", `Unable to list/filter OnbboardingTask: '${response.message}'`);
+						messageHub.showAlertError("OnboardingTask", `Unable to list/filter OnboardingTask: '${response.message}'`);
 						return;
 					}
 					if ($scope.data == null || $scope.dataReset) {
@@ -150,8 +150,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.deleteEntity = function () {
 			let id = $scope.selectedEntity.Id;
 			messageHub.showDialogAsync(
-				'Delete OnbboardingTask?',
-				`Are you sure you want to delete OnbboardingTask? This action cannot be undone.`,
+				'Delete OnboardingTask?',
+				`Are you sure you want to delete OnboardingTask? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -166,7 +166,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("OnbboardingTask", `Unable to delete OnbboardingTask: '${response.message}'`);
+							messageHub.showAlertError("OnboardingTask", `Unable to delete OnboardingTask: '${response.message}'`);
 							return;
 						}
 						refreshData();
@@ -178,7 +178,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("OnbboardingTask-filter", {
+			messageHub.showDialogWindow("OnboardingTask-filter", {
 				entity: $scope.filterEntity,
 				optionsEmployee: $scope.optionsEmployee,
 				optionsAssignee: $scope.optionsAssignee,
