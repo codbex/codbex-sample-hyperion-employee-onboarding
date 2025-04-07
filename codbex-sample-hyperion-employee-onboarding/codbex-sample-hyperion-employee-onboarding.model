@@ -161,7 +161,7 @@
                 "generateDefaultRoles": "false",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE_MASTER",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "department",
                 "menuLabel": "Department",

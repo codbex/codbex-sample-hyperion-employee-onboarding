@@ -7,7 +7,7 @@ const viewData = {
     id: "Department",
     label: "Department",
     factory: "frame",
-    region: "left",
+    region: "center",
     link: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/Department/Department/index.html",
     perspectiveName: "Department"
 };

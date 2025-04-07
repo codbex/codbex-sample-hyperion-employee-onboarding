@@ -48,30 +48,7 @@
     },
     "Department": {
       "views": [
-        "Department",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details",
-        "Department-details"
+        "Department"
       ],
       "name": "Department",
       "label": "Department",
@@ -515,7 +492,7 @@
       "generateDefaultRoles": "false",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
-      "layoutType": "MANAGE_MASTER",
+      "layoutType": "MANAGE",
       "menuIndex": "100",
       "menuKey": "department",
       "menuLabel": "Department",
@@ -534,36 +511,7 @@
       "primaryKeys": [
         "Id"
       ],
-      "primaryKeysString": "Id",
-      "masterProperties": {
-        "title": {
-          "dataLength": "100",
-          "dataName": "DEPARTMENT_NAME",
-          "dataNullable": true,
-          "dataType": "VARCHAR",
-          "description": "",
-          "isRequiredProperty": true,
-          "name": "Name",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "100",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "Name",
-          "widgetDropdownUrl": "",
-          "dataTypeJava": "string",
-          "dataTypeTypescript": "string",
-          "minLength": 0,
-          "maxLength": 100,
-          "inputRule": ""
-        },
-        "properties": []
-      }
+      "primaryKeysString": "Id"
     },
     {
       "properties": [
