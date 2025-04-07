@@ -63,12 +63,16 @@ class NewHireDetailsFormService {
             }
         });
 
+        console.log("test1");
+
         const protocol = request.getScheme() + "://";
         const domain = request.getHeader("Host")
 
         const taskLink = `${protocol}${domain}/services/web/codbex-sample-hyperion-employee-onboarding/forms/TaskCompletion/task-completion-form.html?employeeId=${employeeId}`;
         const managerLink = `${protocol}${domain}/services/web/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/manager-review-form.html?employeeId=${employeeId}`;
         const onboardingInitiatorLink = `${protocol}${domain}/services/web/codbex-sample-hyperion-employee-onboarding/forms/HRConfirmation/hr-confirmation-form.html?employeeId=${employeeId}`
+
+        console.log("test2");
 
         const processInstanceId = process.start("onboarding-process", {
             Employee: employeeId,
@@ -78,6 +82,8 @@ class NewHireDetailsFormService {
             OnboardingInitiator: users[0].Id,
             OnboardingInitiatorLink: onboardingInitiatorLink
         });
+
+        console.log("test3");
 
         if (!processInstanceId) {
             throw new Error("Failed to start onboarding process!");

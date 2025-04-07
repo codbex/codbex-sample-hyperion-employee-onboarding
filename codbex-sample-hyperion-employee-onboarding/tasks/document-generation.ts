@@ -17,28 +17,28 @@ if (!employee) {
     throw new Error(`Employee with ID ${employeeId} not found!`);
 }
 
-const hrTaskBody = {
+let hrTaskBody = {
     "Employee": employeeId,
     "Name": "Contract Preparation",
     "Status": 1,
     "Link": taskLink,
 };
 
-const itTaskBody = {
+let itTaskBody = {
     "Employee": employeeId,
     "Name": "IT Setup",
     "Status": 1,
     "Link": taskLink,
 };
 
-const managerTaskBody = {
+let managerTaskBody = {
     "Employee": employeeId,
     "Name": "Department Training",
     "Status": 1,
     "Link": taskLink,
 };
 
-const tasks = [hrTaskBody, itTaskBody, managerTaskBody];
+let tasks = [hrTaskBody, itTaskBody, managerTaskBody];
 
 tasks.forEach(task => {
     const newTask = onboardingTaskDao.create(task);

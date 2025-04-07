@@ -2,6 +2,7 @@ const app = angular.module('templateApp', ['ideUI', 'ideView'])
 app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'messageHub', function ($scope, $http, ViewParameters, messageHub) {
     const params = ViewParameters.get();
     const employeeId = params.id || new URLSearchParams(window.location.search).get('employeeId');
+    const processInstanceId = new URLSearchParams(window.location.search).get('processId');
 
     $scope.showDialog = true;
 
@@ -19,6 +20,8 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
         "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/employeeData";
     const updateAssigneeUrl =
         "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/updateAssignee";
+    const completeTaskUrl =
+        "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/completeTask/" + processInstanceId;
 
     $http.get(tasksUrl + employeeId)
         .then(response => {
@@ -49,10 +52,12 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
             if (assigneeId) {
                 const updateData = {
                     taskId: task.Id,
-                    assigneeId: assigneeId
+                    assigneeId: assigneeId,
                 };
 
                 console.log("Updating assignee for task: ", task.Id, "to assignee: ", assigneeId);
+
+                console.log("Assignees: ", $scope.entity.assignees);
 
                 $http.post(updateAssigneeUrl, updateData)
                     .then(response => {
@@ -61,10 +66,26 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
                     .catch(function (error) {
                         console.error("Error updating assignee for task", task.Id, error);
                     });
+
+                console.log("Assignees: ", $scope.entity.assignees);
             } else {
                 console.log("No assignee selected for task with ID: ", task.Id);
             }
         });
+
+        console.log("Assignees: ", $scope.entity.assignees);
+
+        const assigneeIds = Object.values($scope.entity.assignees);
+
+        console.log("AssigneeIds: ", assigneeIds);
+
+        $http.post(completeTaskUrl, assigneeIds)
+            .then(response => {
+                console.log("Task completed: ", response.data);
+            })
+            .catch(function (error) {
+                console.error("Error completing task: ", error);
+            });
     };
 
     $scope.closeDialog = () => {

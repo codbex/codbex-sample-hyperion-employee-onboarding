@@ -2,6 +2,7 @@ import { OnboardingTaskRepository as OnboardingTaskDao } from "codbex-sample-hyp
 import { EmployeeRepository as EmployeeDao } from "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/dao/Employee/EmployeeRepository";
 
 import { Controller, Get, Post } from "sdk/http";
+import { tasks, process } from "sdk/bpm";
 
 @Controller
 class ManagerReviewFormService {
@@ -72,7 +73,31 @@ class ManagerReviewFormService {
         task.Status = 2; // in progress
 
         this.onboardingTaskDao.update(task);
+    }
 
+    @Post("/completeTask/:processInstanceId")
+    public completeTask(body: any, ctx: any) {
+        const processInstanceId = ctx.pathParameters.processInstanceId;
+
+        console.log("test1");
+
+        const task = tasks.list().filter(task => task.data.processInstanceId === processInstanceId);
+
+        let assigneeTasks = process.getVariable(processInstanceId, "tasks");
+
+        for (let i = 0; i < assigneeTasks.length; i++) {
+            assigneeTasks[i]["Assignee"] = body[i];
+        }
+
+        console.log("AssigneeTasks: ", assigneeTasks);
+
+        console.log("test2");
+
+        tasks.complete(task[0].data.id, {
+            tasksAssigned: true
+        });
+
+        console.log("test3");
     }
 
 }
