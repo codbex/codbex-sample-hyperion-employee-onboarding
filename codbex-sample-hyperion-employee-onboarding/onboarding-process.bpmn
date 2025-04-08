@@ -36,7 +36,7 @@
     <sequenceFlow id="sid-E81857CE-2301-49C5-9639-51DD8433B3A8" sourceRef="onboarding-announcement" targetRef="assigning-owners"/>
     <sequenceFlow id="sid-F1EBDA38-E816-46BB-9028-B2A4F0583ADA" sourceRef="assigning-owners" targetRef="sid-3143AABA-6222-4749-9E3D-6F6C62159B34"/>
     <subProcess id="onboarding-tasks-inplementation" name="Onboarding Tasks Inplementation" flowable:async="true">
-      <multiInstanceLoopCharacteristics isSequential="false" flowable:collection="${tasks}" flowable:elementVariable="task">
+      <multiInstanceLoopCharacteristics isSequential="false" flowable:collection="${TaskAssignees}" flowable:elementVariable="task">
         <extensionElements/>
       </multiInstanceLoopCharacteristics>
       <startEvent id="sid-854EB32F-71D2-41FB-A0DA-765EA88FDB8A"/>
@@ -136,7 +136,7 @@
         <omgdi:waypoint x="246.63705360399936" y="604.0873725905944"/>
         <omgdi:waypoint x="323.7132653816505" y="604.0873725905944"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sid-1C075580-5A9E-44AA-A2EF-AD458249F8F7" id="BPMNEdge_sid-1C075580-5A9E-44AA-A2EF-AD458249F8F7" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.000000000000002" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+      <bpmndi:BPMNEdge bpmnElement="sid-1C075580-5A9E-44AA-A2EF-AD458249F8F7" id="BPMNEdge_sid-1C075580-5A9E-44AA-A2EF-AD458249F8F7" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="97.95873584511527" y="604.0873725905944"/>
         <omgdi:waypoint x="146.68705360447214" y="604.0873725905944"/>
       </bpmndi:BPMNEdge>

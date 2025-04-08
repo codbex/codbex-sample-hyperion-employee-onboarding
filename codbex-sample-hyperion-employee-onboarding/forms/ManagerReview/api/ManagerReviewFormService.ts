@@ -85,15 +85,30 @@ class ManagerReviewFormService {
 
         let assigneeTasks = process.getVariable(processInstanceId, "tasks");
 
+        console.log("Assignee Tasks First: ", assigneeTasks);
+
+        let finalTasks = [];
+
         for (let i = 0; i < assigneeTasks.length; i++) {
-            assigneeTasks[i]["Assignee"] = body[i];
+            const taskData = JSON.parse(assigneeTasks[i]);
+
+            const task = {
+                "Employee": taskData.Employee,
+                "Name": taskData.Name,
+                "Status": taskData.Status,
+                "Link": taskData.Link,
+                "Assignee": body[i]
+            };
+
+            finalTasks.push(task);
         }
 
-        console.log("AssigneeTasks: ", assigneeTasks);
+        console.log("AssigneeTasks: ", JSON.stringify(finalTasks));
 
         console.log("test2");
 
         tasks.complete(task[0].data.id, {
+            TaskAssignees: finalTasks,
             tasksAssigned: true
         });
 
