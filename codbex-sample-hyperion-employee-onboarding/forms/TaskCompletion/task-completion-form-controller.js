@@ -1,10 +1,12 @@
 const app = angular.module('templateApp', ['ideUI', 'ideView'])
 app.controller('templateController', ['$scope', '$http', 'messageHub', function ($scope, $http, messageHub) {
+    const employeeId = new URLSearchParams(window.location.search).get('employeeId');
+    const processInstanceId = new URLSearchParams(window.location.search).get('processId');
 
     const tasksUrl =
-        "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/TaskCompletion/api/TaskCompletionFormService.ts/tasksData/1";
+        "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/TaskCompletion/api/TaskCompletionFormService.ts/tasksData/" + employeeId;
     const completeTaskUrl =
-        "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/TaskCompletion/api/TaskCompletionFormService.ts/completeTask";
+        "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/TaskCompletion/api/TaskCompletionFormService.ts/completeTask/" + processInstanceId;
 
     $http.get(tasksUrl)
         .then(response => {

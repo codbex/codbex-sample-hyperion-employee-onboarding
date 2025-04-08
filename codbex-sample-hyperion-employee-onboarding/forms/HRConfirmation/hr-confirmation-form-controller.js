@@ -1,7 +1,7 @@
 const app = angular.module('templateApp', ['ideUI', 'ideView'])
-app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'messageHub', function ($scope, $http, ViewParameters, messageHub) {
-    const params = ViewParameters.get();
-    const employeeId = params.id || new URLSearchParams(window.location.search).get('employeeId');
+app.controller('templateController', ['$scope', '$http', 'messageHub', function ($scope, $http, messageHub) {
+    const employeeId = new URLSearchParams(window.location.search).get('employeeId');
+    const processInstanceId = new URLSearchParams(window.location.search).get('processId');
 
     $scope.showDialog = true;
 
@@ -15,6 +15,8 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
 
     const tasksUrl =
         "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/HRConfirmation/api/HRConfirmationFormService.ts/tasksData/" + employeeId;
+    const completeTaskUrl =
+        "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/HRConfirmation/api/HRConfirmationFormService.ts/completeTask/" + processInstanceId;
 
     $scope.checkboxChecked = false;
 
@@ -29,7 +31,13 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
         });
 
     $scope.completeOnboarding = function () {
-        //add logic
+        $http.post(completeTaskUrl)
+            .then(response => {
+                console.log("Task updated successfully", response.data);
+            })
+            .catch(function (error) {
+                console.error("Error updating task", error);
+            });
 
     }
 

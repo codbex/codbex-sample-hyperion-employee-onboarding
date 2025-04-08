@@ -1,7 +1,6 @@
 const app = angular.module('templateApp', ['ideUI', 'ideView'])
-app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'messageHub', function ($scope, $http, ViewParameters, messageHub) {
-    const params = ViewParameters.get();
-    const employeeId = params.id || new URLSearchParams(window.location.search).get('employeeId');
+app.controller('templateController', ['$scope', '$http', 'messageHub', function ($scope, $http, messageHub) {
+    const employeeId = new URLSearchParams(window.location.search).get('employeeId');
     const processInstanceId = new URLSearchParams(window.location.search).get('processId');
 
     $scope.showDialog = true;

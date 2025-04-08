@@ -21,9 +21,21 @@
         </flowable:field>
       </extensionElements>
     </serviceTask>
-    <serviceTask id="task-completion-announcement" name="Task Completion Announcement" flowable:async="true" flowable:delegateExpression="${JSTask}"/>
+    <serviceTask id="task-completion-announcement" name="Task Completion Announcement" flowable:async="true" flowable:delegateExpression="${JSTask}">
+      <extensionElements>
+        <flowable:field name="handler">
+          <flowable:string><![CDATA[codbex-sample-hyperion-employee-onboarding/tasks/task-completion-announcement.ts]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
     <sequenceFlow id="sid-F497B3E6-9090-42D5-B444-C58055E9B41C" sourceRef="task-completion-announcement" targetRef="onboarding-completion-review"/>
-    <serviceTask id="welcome-email" name="Welcome Email" flowable:async="true" flowable:delegateExpression="${JSTask}"/>
+    <serviceTask id="welcome-email" name="Welcome Email" flowable:async="true" flowable:delegateExpression="${JSTask}">
+      <extensionElements>
+        <flowable:field name="handler">
+          <flowable:string><![CDATA[codbex-sample-hyperion-employee-onboarding/tasks/welcome-email.ts]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
     <sequenceFlow id="sid-1425B63F-FDDE-4C2D-8AE9-A60AC58C27A9" sourceRef="onboarding-completion-review" targetRef="welcome-email"/>
     <sequenceFlow id="sid-BC653BEE-55BA-4ED8-B60D-CA0F44097AF7" sourceRef="welcome-email" targetRef="end-event"/>
     <serviceTask id="owners-not-assigned" name="Owners Not Assigned" flowable:async="true" flowable:delegateExpression="${JSTask}">

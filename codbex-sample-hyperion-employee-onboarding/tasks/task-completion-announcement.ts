@@ -23,7 +23,7 @@ onboardingInitiatorLink = `${onboardingInitiatorLink}&processId=${processInstanc
 
 const content = `
   <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-    <h2 style="color: #2c3e50; text-align: center;">Employee Onboarding Approval</h2>
+    <h2 style="color: #2c3e50; text-align: center;">Employee Onboarding Review</h2>
     <p>Dear ${onboardingInitiator.Name},</p>
     <p>An employee onboarding request requires your review and approval.</p>
     <p>Please click the button below to access your inbox and complete the necessary steps:</p>
