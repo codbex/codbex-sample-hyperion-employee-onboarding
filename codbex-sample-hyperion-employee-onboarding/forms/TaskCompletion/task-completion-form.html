@@ -19,18 +19,27 @@
     <body>
         <div class="title">Task completion</div>
 
+        <div ng-if="completed" class="completed-message">
+            <div class="completed-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="completed-text">
+                <h2>All Employee Tasks Have Been Completed!</h2>
+                <p>Great job! Every task in the list has been successfully completed.</p>
+            </div>
+        </div>
+
+
         <div class="tasks" ng-repeat="next in taskList">
             <div class="task-content">
                 <div class="taskName">{{ next.Name }}</div>
-                <div class="taskDescription">{{ next.Description }}</div>
+                <textarea class="taskDescription" rows="5">{{ next.Description }}</textarea>
             </div>
             <div class="button-container">
                 <fd-button class="button" dg-label="Complete" dg-type="emphasized" ng-click="completeTask(next)" state="{{ next.isCompleted ? 'disabled' : '' }}">
                 </fd-button>
             </div>
         </div>
-
-
 
     </body>
 

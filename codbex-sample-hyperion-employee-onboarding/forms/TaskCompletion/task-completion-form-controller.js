@@ -1,5 +1,5 @@
 const app = angular.module('templateApp', ['ideUI', 'ideView'])
-app.controller('templateController', ['$scope', '$http', 'messageHub', function ($scope, $http, messageHub) {
+app.controller('templateController', ['$scope', '$http', function ($scope, $http) {
     const employeeId = new URLSearchParams(window.location.search).get('employeeId');
     const processInstanceId = new URLSearchParams(window.location.search).get('processId');
 
@@ -11,10 +11,11 @@ app.controller('templateController', ['$scope', '$http', 'messageHub', function 
     $http.get(tasksUrl)
         .then(response => {
             $scope.taskList = response.data;
+            $scope.completed = response.data.length === 0;
+
         })
         .catch(function (error) {
             console.error("Error getting task data: ", error);
-            $scope.closeDialog();
         });
 
     $scope.completeTask = function (task) {
@@ -27,11 +28,6 @@ app.controller('templateController', ['$scope', '$http', 'messageHub', function 
                 console.error("Error updating task", task.Id, error);
             });
 
-    };
-
-    $scope.closeDialog = () => {
-        $scope.showDialog = false;
-        messageHub.closeDialogWindow("task-completion-navigation");
     };
 
 }]);
