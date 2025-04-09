@@ -1,7 +1,5 @@
 const app = angular.module('templateApp', ['ideUI', 'ideView'])
-app.controller('templateController', ['$scope', '$http', 'messageHub', function ($scope, $http, messageHub) {
-
-    $scope.showDialog = true;
+app.controller('templateController', ['$scope', '$http', function ($scope, $http) {
 
     $scope.entity = {};
     $scope.forms = {
@@ -19,7 +17,7 @@ app.controller('templateController', ['$scope', '$http', 'messageHub', function 
         })
         .catch(function (error) {
             console.error("Error getting departments data: ", error);
-            $scope.closeDialog();
+            $scope.resetForm();
         });
 
     $scope.createNewHire = () => {
@@ -32,12 +30,10 @@ app.controller('templateController', ['$scope', '$http', 'messageHub', function 
             OnboardingStatus: 1
         }
 
-        console.log(JSON.stringify(employeeBody));
-
         $http.post(employeeUrl, employeeBody)
             .then(response => {
                 if (response.status == 201) {
-                    $scope.closeDialog();
+                    $scope.resetForm();
                 }
                 else {
                     console.error("Error creating Employee: ", response.data);
@@ -45,13 +41,12 @@ app.controller('templateController', ['$scope', '$http', 'messageHub', function 
             })
             .catch(function (error) {
                 console.error("Error creating Employee: ", error.data);
-                $scope.closeDialog();
+                $scope.resetForm();
             });
     }
 
-    $scope.closeDialog = () => {
-        $scope.showDialog = false;
-        messageHub.closeDialogWindow("employee-onboarding-sample-navigation");
+    $scope.resetForm = () => {
+        $scope.entity = {};
     };
 
 }]);
