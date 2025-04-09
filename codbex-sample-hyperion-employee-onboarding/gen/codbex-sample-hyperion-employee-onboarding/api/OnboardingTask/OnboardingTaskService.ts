@@ -131,6 +131,9 @@ class OnboardingTaskService {
         if (entity.Assignee === null || entity.Assignee === undefined) {
             throw new ValidationError(`The 'Assignee' property is required, provide a valid value`);
         }
+        if (entity.Description?.length > 500) {
+            throw new ValidationError(`The 'Description' exceeds the maximum length of [500] characters`);
+        }
         if (entity.Status === null || entity.Status === undefined) {
             throw new ValidationError(`The 'Status' property is required, provide a valid value`);
         }

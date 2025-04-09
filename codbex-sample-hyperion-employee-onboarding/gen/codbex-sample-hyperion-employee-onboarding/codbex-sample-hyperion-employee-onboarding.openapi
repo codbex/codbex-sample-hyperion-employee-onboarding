@@ -1464,6 +1464,7 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
+                      Description: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -1486,6 +1487,7 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
+                      Description: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -1550,6 +1552,7 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
+                      Description: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -1572,6 +1575,7 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
+                      Description: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -2150,6 +2154,10 @@ components:
         Assignee:
           type: integer
           format: int32
+        Description:
+          type: string
+          minLength: 0
+          maxLength: 500
         Status:
           type: integer
           format: int32
@@ -2198,6 +2206,17 @@ components:
                       items:
                         type: integer
                         format: int32
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 500
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 500
                 Status:
                   oneOf:
                     - type: integer
@@ -2246,6 +2265,17 @@ components:
                       items:
                         type: integer
                         format: int32
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 500
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 500
                 Status:
                   oneOf:
                     - type: integer
@@ -2266,6 +2296,10 @@ components:
                   minLength: 0
                   maxLength: 100
                 Assignee:
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
                 Status:
                 CompletedAt:
             greaterThan:
@@ -2284,6 +2318,10 @@ components:
                 Assignee:
                   type: integer
                   format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
                 Status:
                   type: integer
                   format: int32
@@ -2304,6 +2342,10 @@ components:
                 Assignee:
                   type: integer
                   format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
                 Status:
                   type: integer
                   format: int32
@@ -2324,6 +2366,10 @@ components:
                 Assignee:
                   type: integer
                   format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
                 Status:
                   type: integer
                   format: int32
@@ -2344,18 +2390,22 @@ components:
                 Assignee:
                   type: integer
                   format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
                 Status:
                   type: integer
                   format: int32
                 CompletedAt:
         $select:
           type: array
-          example: ["Id", "Employee", "Name", "Assignee", "Status", "CompletedAt"]
+          example: ["Id", "Employee", "Name", "Assignee", "Description", "Status", "CompletedAt"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Employee,Name,Assignee,Status,CompletedAt"
+            example: "Id,Employee,Name,Assignee,Description,Status,CompletedAt"
         $order:
           type: string
           enum: ["asc", "desc"]

@@ -107,6 +107,12 @@
                         "name": "ONBOARDINGTASK_ASSIGNEE"
                     },
                     {
+                        "type": "VARCHAR",
+                        "length": 500,
+                        "nullable": true,
+                        "name": "ONBOARDINGTASK_DESCRIPTION"
+                    },
+                    {
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "ONBOARDINGTASK_STATUS"

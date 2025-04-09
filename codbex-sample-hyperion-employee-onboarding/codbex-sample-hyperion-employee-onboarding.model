@@ -299,6 +299,19 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "500",
+                        "dataName": "ONBOARDINGTASK_DESCRIPTION",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "name": "Description",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "500",
+                        "widgetSize": "",
+                        "widgetType": "TEXTAREA"
+                    },
+                    {
                         "dataName": "ONBOARDINGTASK_STATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
