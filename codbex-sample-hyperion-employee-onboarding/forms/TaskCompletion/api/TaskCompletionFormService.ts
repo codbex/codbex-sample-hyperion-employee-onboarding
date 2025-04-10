@@ -28,8 +28,6 @@ class TaskCompletionFormService {
             }
         });
 
-        console.log(employeeId);
-
         const tasks = this.onboardingTaskDao.findAll({
             $filter: {
                 equals: {

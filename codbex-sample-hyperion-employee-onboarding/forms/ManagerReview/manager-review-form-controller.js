@@ -53,10 +53,6 @@ app.controller('templateController', ['$scope', '$http', function ($scope, $http
                     assigneeId: assigneeId,
                 };
 
-                console.log("Updating assignee for task: ", task.Id, "to assignee: ", assigneeId);
-
-                console.log("Assignees: ", $scope.entity.assignees);
-
                 $http.post(updateAssigneeUrl, updateData)
                     .then(response => {
                         console.log("Assignee updated successfully for task", task.Id, response.data);
@@ -64,18 +60,13 @@ app.controller('templateController', ['$scope', '$http', function ($scope, $http
                     .catch(function (error) {
                         console.error("Error updating assignee for task", task.Id, error);
                     });
-
-                console.log("Assignees: ", $scope.entity.assignees);
             } else {
                 console.log("No assignee selected for task with ID: ", task.Id);
             }
         });
 
-        console.log("Assignees: ", $scope.entity.assignees);
-
         const assigneeIds = Object.values($scope.entity.assignees);
 
-        console.log("AssigneeIds: ", assigneeIds);
         $http.post(completeTaskUrl, assigneeIds)
             .then(response => {
                 console.log("Tasks completed: ", response.data);

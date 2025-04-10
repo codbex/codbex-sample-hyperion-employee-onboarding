@@ -79,13 +79,9 @@ class ManagerReviewFormService {
     public completeTask(body: any, ctx: any) {
         const processInstanceId = ctx.pathParameters.processInstanceId;
 
-        console.log("test1");
-
         const task = tasks.list().filter(task => task.data.processInstanceId === processInstanceId);
 
         let assigneeTasks = process.getVariable(processInstanceId, "tasks");
-
-        console.log("Assignee Tasks First: ", assigneeTasks);
 
         let finalTasks = [];
 
@@ -103,16 +99,10 @@ class ManagerReviewFormService {
             finalTasks.push(task);
         }
 
-        console.log("AssigneeTasks: ", JSON.stringify(finalTasks));
-
-        console.log("test2");
-
         tasks.complete(task[0].data.id, {
             TaskAssignees: finalTasks,
             tasksAssigned: true
         });
-
-        console.log("test3");
     }
 
 }
