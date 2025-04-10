@@ -51,10 +51,15 @@ const content = `
         border-radius: 5px;
       ">Review & Assign Tasks</a>
     </div>
+    <p style="text-align: center; font-size: 14px; color: #555;">
+      Alternatively, you can access it here: 
+      <a href="${managerLink}" target="_blank" style="color: #007bff; text-decoration: underline;">
+        Review and Assign Onboarding Tasks
+      </a>
+    </p>
     <p>If you have any questions or need assistance, please contact the HR team.</p>
     <p>Best regards,<br>Your HR Team</p>
   </div>
 `;
-
 
 sendMail(manager.Email, subject, content);

@@ -34,7 +34,7 @@ managerLink = `${managerLink}&processId=${processInstanceId}`;
 const content = `
   <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
     <div style="text-align: center; margin-bottom: 20px;">
-      <img src="YOUR_LOGO_URL_HERE" alt="Company Logo" style="max-width: 150px; height: auto;">
+      <img src="https://github.com/codbex/codbex.github.io/blob/main/docs/images/logos/codbex-logo.png" alt="Company Logo" style="max-width: 150px; height: auto;">
     </div>
     <h2 style="color: #2c3e50; text-align: center;">Action Required: Onboarding Task Assignment</h2>
     <p>Dear ${manager.Name},</p>
@@ -52,11 +52,15 @@ const content = `
         border-radius: 5px;
       ">Review & Assign Tasks</a>
     </div>
+    <p style="text-align: center; font-size: 14px; color: #555;">
+      Alternatively, you can access it here: 
+      <a href="${managerLink}" target="_blank" style="color: #007bff; text-decoration: underline;">
+        Review Onboarding Details
+      </a>
+    </p>
     <p>If you have any questions or need assistance, please contact the HR team.</p>
-    <p>Best regards</p>
+    <p>Best regards,<br>Your HR Team</p>
   </div>
 `;
-
-
 
 sendMail(manager.Email, subject, content);

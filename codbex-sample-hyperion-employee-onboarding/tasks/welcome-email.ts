@@ -35,5 +35,4 @@ const content = `
   </div>
 `;
 
-
 sendMail(employee.Email, subject, content);

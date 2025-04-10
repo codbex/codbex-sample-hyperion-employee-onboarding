@@ -51,10 +51,15 @@ const content = `
         border-radius: 5px;
       ">Fulfill Task</a>
     </div>
+    <p style="text-align: center; font-size: 14px; color: #555;">
+      Alternatively, you can access it here: 
+      <a href="${finalLink}" target="_blank" style="color: #007bff; text-decoration: underline;">
+        Fulfill Your Onboarding Task
+      </a>
+    </p>
     <p>If you have any questions or need support, please contact the HR team.</p>
     <p>Best regards,<br>Your HR Team</p>
   </div>
 `;
-
 
 sendMail(employee.Email, subject, content);

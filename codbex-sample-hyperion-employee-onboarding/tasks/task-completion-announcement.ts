@@ -51,10 +51,15 @@ const content = `
         border-radius: 5px;
       ">Review & Approve</a>
     </div>
+    <p style="text-align: center; font-size: 14px; color: #555;">
+      Alternatively, you can access it here: 
+      <a href="${onboardingInitiatorLink}" target="_blank" style="color: #007bff; text-decoration: underline;">
+        Review and Approve Onboarding
+      </a>
+    </p>
     <p>If you have any questions or need assistance, please reach out to the HR team.</p>
     <p>Best regards,<br>Your HR Team</p>
   </div>
 `;
-
 
 sendMail(onboardingInitiator.Email, subject, content);
