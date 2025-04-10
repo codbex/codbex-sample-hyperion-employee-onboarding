@@ -1,4 +1,5 @@
 import { OnboardingTaskRepository as OnboardingTaskDao } from "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/dao/OnboardingTask/OnboardingTaskRepository";
+import { EmployeeRepository as EmployeeDao } from "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/dao/Employee/EmployeeRepository";
 
 import { Controller, Get, Post } from "sdk/http";
 import { tasks } from "sdk/bpm";
@@ -7,9 +8,11 @@ import { tasks } from "sdk/bpm";
 class HRConfirmationService {
 
     private readonly onboardingTaskDao;
+    private readonly employeeDao;
 
     constructor() {
         this.onboardingTaskDao = new OnboardingTaskDao();
+        this.employeeDao = new EmployeeDao();
     }
 
     @Get("/tasksData/:employeeId")
@@ -24,7 +27,19 @@ class HRConfirmationService {
                 }
             }
         });
-        return tasks;
+
+        const employees = this.employeeDao.findAll({
+            $filter: {
+                equals: {
+                    Id: employeeId
+                }
+            }
+        });
+
+        return {
+            "Tasks": tasks,
+            "Employee": employees[0].Status
+        };
     }
 
     @Post("/completeTask/:processInstanceId")
