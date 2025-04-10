@@ -24,7 +24,6 @@ app.controller('templateController', ['$scope', '$http', function ($scope, $http
         .then(response => {
             $scope.taskList = response.data.Tasks;
             $scope.isCompleted = false;
-            // $scope.hasAvailableTasks = response.data.Tasks.length > 0;
         })
         .catch(function (error) {
             console.error("Error getting task data: ", error);
@@ -35,13 +34,7 @@ app.controller('templateController', ['$scope', '$http', function ($scope, $http
             .then(response => {
                 console.log("Task updated successfully", response.data);
                 $scope.isCompleted = true;
-                // return $http.get(tasksUrl);
             })
-            // .then(response => {
-            //     $scope.taskList = response.data;
-            //     $scope.hasAvailableTasks = response.data.length > 0;
-            //     console.log("Task list refreshed:", response.data);
-            // })
             .catch(function (error) {
                 console.error("Error completing tasks or refreshing task list", error);
             });
