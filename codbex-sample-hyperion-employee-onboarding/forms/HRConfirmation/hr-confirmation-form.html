@@ -22,15 +22,15 @@
 
             <div class="subtitle">Onboarding completion checklist</div>
 
-            <div ng-if="!hasAvailableTasks && !isCompleted" class="no-tasks-message">
+            <!-- <div ng-if="!hasAvailableTasks && !isCompleted" class="no-tasks-message">
                 <div class="no-tasks-icon">
                     <i class="fas fa-exclamation-circle"></i>
                 </div>
-                <div class="no-tasks-text">
+                <!-- <div class="no-tasks-text">
                     <h2>It seems that all onboarding tasks for {{newHire}} employee are not completed yet</h2>
                     <p>There are still some tasks pending for the employee. Please assign and complete them before proceeding.</p>
-                </div>
-            </div>
+                </div> -->
+            <!-- </div> -->
 
             <div ng-if="isCompleted" class="completed-message">
                 <div class="completed-icon">
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <div ng-if="hasAvailableTasks && !isCompleted">
+            <div ng-if="!isCompleted">
                 <div class="tasks" ng-repeat="next in taskList">
                     <i class="sap-icon--accept" role="presentation"></i>
                     <div class="taskName">{{next.Name}}</div>

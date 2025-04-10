@@ -33,8 +33,8 @@ const finalLink = `${task.Link}&processId=${processInstanceId}`;
 
 const content = `
   <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-    <div style="text-align: center; margin-bottom: 20px;">
-      <img src="https://github.com/codbex/codbex.github.io/blob/main/docs/images/logos/codbex-logo.png" alt="Company Logo" style="max-width: 150px; height: auto;">
+    <div style="text-align: left; margin-bottom: 20px;">
+      <img src="https://raw.githubusercontent.com/codbex/codbex.github.io/main/docs/images/logos/codbex-logo.png" alt="Company Logo" style="width: 50px; height: 50px;">
     </div>
     <h2 style="color: #2c3e50; text-align: center;">New Onboarding Task Assigned</h2>
     <p>Dear ${employee.Name},</p>
@@ -58,7 +58,7 @@ const content = `
       </a>
     </p>
     <p>If you have any questions or need support, please contact the HR team.</p>
-    <p>Best regards,<br>Your HR Team</p>
+    <p>Best regards.</p>
   </div>
 `;
 
