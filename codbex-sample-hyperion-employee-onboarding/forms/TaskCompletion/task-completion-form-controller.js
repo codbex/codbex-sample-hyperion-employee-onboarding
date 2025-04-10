@@ -12,22 +12,25 @@ app.controller('templateController', ['$scope', '$http', function ($scope, $http
         .then(response => {
             $scope.taskList = response.data;
             $scope.completed = response.data.length === 0;
-
         })
         .catch(function (error) {
             console.error("Error getting task data: ", error);
         });
 
     $scope.completeTask = function (task) {
-
         $http.post(completeTaskUrl, task)
             .then(response => {
                 console.log("Task updated successfully", task.Id, response.data);
+                return $http.get(tasksUrl);
+            })
+            .then(response => {
+                $scope.taskList = response.data;
+                $scope.completed = response.data.length === 0;
             })
             .catch(function (error) {
-                console.error("Error updating task", task.Id, error);
+                console.error("Error completing or refreshing task", error);
             });
-
     };
+
 
 }]);

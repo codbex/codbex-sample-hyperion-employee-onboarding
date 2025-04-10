@@ -1,5 +1,5 @@
 const app = angular.module('templateApp', ['ideUI', 'ideView'])
-app.controller('templateController', ['$scope', '$http', 'messageHub', function ($scope, $http, messageHub) {
+app.controller('templateController', ['$scope', '$http', function ($scope, $http) {
     const employeeId = new URLSearchParams(window.location.search).get('employeeId');
     const processInstanceId = new URLSearchParams(window.location.search).get('processId');
 
@@ -14,7 +14,7 @@ app.controller('templateController', ['$scope', '$http', 'messageHub', function 
     };
 
     const tasksUrl =
-        "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/tasksData/";
+        "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/tasksData/" + employeeId;
     const employeeUrl =
         "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/employeeData";
     const updateAssigneeUrl =
@@ -22,9 +22,10 @@ app.controller('templateController', ['$scope', '$http', 'messageHub', function 
     const completeTaskUrl =
         "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/completeTask/" + processInstanceId;
 
-    $http.get(tasksUrl + employeeId)
+    $http.get(tasksUrl)
         .then(response => {
             $scope.taskList = response.data;
+            $scope.hasAvailableTasks = response.data.length > 0;
 
             $http.get(employeeUrl)
                 .then(response => {
@@ -33,13 +34,11 @@ app.controller('templateController', ['$scope', '$http', 'messageHub', function 
                 })
                 .catch(function (error) {
                     console.error("Error getting employees data: ", error);
-                    $scope.closeDialog();
                 });
 
         })
         .catch(function (error) {
             console.error("Error getting tasks data: ", error);
-            $scope.closeDialog();
         });
 
 
@@ -77,19 +76,18 @@ app.controller('templateController', ['$scope', '$http', 'messageHub', function 
         const assigneeIds = Object.values($scope.entity.assignees);
 
         console.log("AssigneeIds: ", assigneeIds);
-
         $http.post(completeTaskUrl, assigneeIds)
             .then(response => {
-                console.log("Task completed: ", response.data);
+                console.log("Tasks completed: ", response.data);
+                return $http.get(tasksUrl);
+            })
+            .then(response => {
+                $scope.taskList = response.data;
+                $scope.hasAvailableTasks = response.data.length > 0;
             })
             .catch(function (error) {
-                console.error("Error completing task: ", error);
+                console.error("Error completing tasks or refreshing task list", error);
             });
-    };
-
-    $scope.closeDialog = () => {
-        $scope.showDialog = false;
-        messageHub.closeDialogWindow("manager-review-navigation");
     };
 
 }]);

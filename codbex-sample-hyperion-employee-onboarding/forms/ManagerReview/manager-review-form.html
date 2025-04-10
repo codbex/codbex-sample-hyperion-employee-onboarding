@@ -41,7 +41,18 @@
                     </fd-form-group>
                 </fd-fieldset>
             </fd-scrollbar>
+
+            <div ng-if="!hasAvailableTasks" class="no-tasks-message">
+                <div class="no-tasks-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="no-tasks-text">
+                    <h2>There Are No Tasks to Assign at the Moment</h2>
+                    <p>It looks like all the tasks have been completed or there are no new tasks to assign right now.</p>
+                </div>
+            </div>
         </div>
+
     </body>
 
 
