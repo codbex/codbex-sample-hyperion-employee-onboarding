@@ -1,5 +1,4 @@
-const app = angular.module('templateApp', ['ideUI', 'ideView'])
-app.controller('templateController', ['$scope', '$http', function ($scope, $http) {
+angular.module('templateApp', ['blimpKit']).controller('templateController', ($scope, $http) => {
 
     $scope.entity = {};
     $scope.forms = {
@@ -49,5 +48,5 @@ app.controller('templateController', ['$scope', '$http', function ($scope, $http
         $scope.entity = {};
     };
 
-}]);
+});
 
