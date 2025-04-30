@@ -1,5 +1,0 @@
-{
-    "module": "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/OnboardingTask/OnboardingTask/tile.js",
-    "extensionPoint": "codbex-sample-hyperion-employee-onboarding-tile",
-    "description": "codbex-sample-hyperion-employee-onboarding - Application Tile"
-}

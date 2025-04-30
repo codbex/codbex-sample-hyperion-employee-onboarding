@@ -4,14 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "OnboardingTask-filter",
-    label: "OnboardingTask Filter",
-    link: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/OnboardingTask/OnboardingTask/dialog-filter/index.html",
-    perspectiveName: "OnboardingTask"
+    id: 'OnboardingTask-filter',
+    label: 'OnboardingTask Filter',
+    path: '/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/OnboardingTask/OnboardingTask/dialog-filter/index.html',
+    perspectiveName: 'OnboardingTask'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

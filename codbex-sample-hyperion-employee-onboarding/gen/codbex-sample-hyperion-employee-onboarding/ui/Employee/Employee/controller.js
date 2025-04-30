@@ -1,31 +1,29 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-sample-hyperion-employee-onboarding.Employee.Employee';
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+	.config(['EntityServiceProvider', (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/Employee/EmployeeService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/Employee/EmployeeService.ts";
-	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
-
+	.controller('PageController', ($scope, $http, EntityService, Extensions, ButtonStates) => {
+		const Dialogs = new DialogHub();
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
 		$scope.dataOffset = 0;
 		$scope.dataLimit = 10;
-		$scope.action = "select";
+		$scope.action = 'select';
 
 		//-----------------Custom Actions-------------------//
-		Extensions.get('dialogWindow', 'codbex-sample-hyperion-employee-onboarding-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Employee" && e.view === "Employee" && (e.type === "page" || e.type === undefined));
+		Extensions.getWindows(['codbex-sample-hyperion-employee-onboarding-custom-action']).then((response) => {
+			$scope.pageActions = response.data.filter(e => e.perspective === 'Employee' && e.view === 'Employee' && (e.type === 'page' || e.type === undefined));
 		});
 
-		$scope.triggerPageAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{},
-				null,
-				true,
-				action
-			);
+		$scope.triggerPageAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: action.label,
+				path: action.path,
+				maxWidth: action.maxWidth,
+				maxHeight: action.maxHeight,
+				closeButton: true
+			});
 		};
 		//-----------------Custom Actions-------------------//
 
@@ -42,32 +40,29 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		}
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
-			$scope.$apply(function () {
+		Dialogs.addMessageListener({ topic: 'codbex-sample-hyperion-employee-onboarding.Employee.Employee.clearDetails', handler: () => {
+			$scope.$evalAsync(() => {
 				$scope.selectedEntity = null;
-				$scope.action = "select";
+				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("entityCreated", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-sample-hyperion-employee-onboarding.Employee.Employee.entityCreated', handler: () => {
 			refreshData();
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
-
-		messageHub.onDidReceiveMessage("entityUpdated", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-sample-hyperion-employee-onboarding.Employee.Employee.entityUpdated', handler: () => {
 			refreshData();
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
-
-		messageHub.onDidReceiveMessage("entitySearch", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-sample-hyperion-employee-onboarding.Employee.Employee.entitySearch', handler: (data) => {
 			resetPagination();
-			$scope.filter = msg.data.filter;
-			$scope.filterEntity = msg.data.entity;
+			$scope.filter = data.filter;
+			$scope.filterEntity = data.entity;
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
+		}});
 		//-----------------Events-------------------//
 
-		$scope.loadPage = function (pageNumber, filter) {
+		$scope.loadPage = (pageNumber, filter) => {
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
 			}
@@ -75,13 +70,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				filter = {};
 			}
 			$scope.selectedEntity = null;
-			entityApi.count(filter).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("Employee", `Unable to count Employee: '${response.message}'`);
-					return;
-				}
-				if (response.data) {
-					$scope.dataCount = response.data;
+			EntityService.count(filter).then((resp) => {
+				if (resp.data) {
+					$scope.dataCount = resp.data.count;
 				}
 				$scope.dataPages = Math.ceil($scope.dataCount / $scope.dataLimit);
 				filter.$offset = ($scope.dataPage - 1) * $scope.dataLimit;
@@ -91,16 +82,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					filter.$limit = $scope.dataPage * $scope.dataLimit;
 				}
 
-				entityApi.search(filter).then(function (response) {
-					if (response.status != 200) {
-						messageHub.showAlertError("Employee", `Unable to list/filter Employee: '${response.message}'`);
-						return;
-					}
+				EntityService.search(filter).then((response) => {
 					if ($scope.data == null || $scope.dataReset) {
 						$scope.data = [];
 						$scope.dataReset = false;
 					}
-
 					response.data.forEach(e => {
 						if (e.StartDate) {
 							e.StartDate = new Date(e.StartDate);
@@ -109,76 +95,98 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 					$scope.data = $scope.data.concat(response.data);
 					$scope.dataPage++;
+				}, (error) => {
+					const message = error.data ? error.data.message : '';
+					Dialogs.showAlert({
+						title: 'Employee',
+						message: `Unable to list/filter Employee: '${message}'`,
+						type: AlertTypes.Error
+					});
+					console.error('EntityService:', error);
 				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Employee',
+					message: `Unable to count Employee: '${message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 		$scope.loadPage($scope.dataPage, $scope.filter);
 
-		$scope.selectEntity = function (entity) {
+		$scope.selectEntity = (entity) => {
 			$scope.selectedEntity = entity;
-			messageHub.postMessage("entitySelected", {
+			Dialogs.postMessage({ topic: 'codbex-sample-hyperion-employee-onboarding.Employee.Employee.entitySelected', data: {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
 				optionsDepartment: $scope.optionsDepartment,
 				optionsOnboardingStatus: $scope.optionsOnboardingStatus,
-			});
+			}});
 		};
 
-		$scope.createEntity = function () {
+		$scope.createEntity = () => {
 			$scope.selectedEntity = null;
-			$scope.action = "create";
+			$scope.action = 'create';
 
-			messageHub.postMessage("createEntity", {
+			Dialogs.postMessage({ topic: 'codbex-sample-hyperion-employee-onboarding.Employee.Employee.createEntity', data: {
 				entity: {},
 				optionsDepartment: $scope.optionsDepartment,
 				optionsOnboardingStatus: $scope.optionsOnboardingStatus,
-			});
+			}});
 		};
 
-		$scope.updateEntity = function () {
-			$scope.action = "update";
-			messageHub.postMessage("updateEntity", {
+		$scope.updateEntity = () => {
+			$scope.action = 'update';
+			Dialogs.postMessage({ topic: 'codbex-sample-hyperion-employee-onboarding.Employee.Employee.updateEntity', data: {
 				entity: $scope.selectedEntity,
 				optionsDepartment: $scope.optionsDepartment,
 				optionsOnboardingStatus: $scope.optionsOnboardingStatus,
-			});
+			}});
 		};
 
-		$scope.deleteEntity = function () {
+		$scope.deleteEntity = () => {
 			let id = $scope.selectedEntity.Id;
-			messageHub.showDialogAsync(
-				'Delete Employee?',
-				`Are you sure you want to delete Employee? This action cannot be undone.`,
-				[{
-					id: "delete-btn-yes",
-					type: "emphasized",
-					label: "Yes",
-				},
-				{
-					id: "delete-btn-no",
-					type: "normal",
-					label: "No",
+			Dialogs.showDialog({
+				title: 'Delete Employee?',
+				message: `Are you sure you want to delete Employee? This action cannot be undone.`,
+				buttons: [{
+					id: 'delete-btn-yes',
+					state: ButtonStates.Emphasized,
+					label: 'Yes',
+				}, {
+					id: 'delete-btn-no',
+					label: 'No',
 				}],
-			).then(function (msg) {
-				if (msg.data === "delete-btn-yes") {
-					entityApi.delete(id).then(function (response) {
-						if (response.status != 204) {
-							messageHub.showAlertError("Employee", `Unable to delete Employee: '${response.message}'`);
-							return;
-						}
+				closeButton: false
+			}).then((buttonId) => {
+				if (buttonId === 'delete-btn-yes') {
+					EntityService.delete(id).then(() => {
 						refreshData();
 						$scope.loadPage($scope.dataPage, $scope.filter);
-						messageHub.postMessage("clearDetails");
+						Dialogs.triggerEvent('codbex-sample-hyperion-employee-onboarding.Employee.Employee.clearDetails');
+					}, (error) => {
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: 'Employee',
+							message: `Unable to delete Employee: '${message}'`,
+							type: AlertTypes.Error
+						});
+						console.error('EntityService:', error);
 					});
 				}
 			});
 		};
 
-		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("Employee-filter", {
-				entity: $scope.filterEntity,
-				optionsDepartment: $scope.optionsDepartment,
-				optionsOnboardingStatus: $scope.optionsOnboardingStatus,
+		$scope.openFilter = () => {
+			Dialogs.showWindow({
+				id: 'Employee-filter',
+				params: {
+					entity: $scope.filterEntity,
+					optionsDepartment: $scope.optionsDepartment,
+					optionsOnboardingStatus: $scope.optionsOnboardingStatus,
+				},
 			});
 		};
 
@@ -187,25 +195,37 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsOnboardingStatus = [];
 
 
-		$http.get("/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/Department/DepartmentService.ts").then(function (response) {
-			$scope.optionsDepartment = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/Settings/DepartmentService.ts').then((response) => {
+			$scope.optionsDepartment = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Department',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
 
-		$http.get("/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/entities/OnboardingStatusService.ts").then(function (response) {
-			$scope.optionsOnboardingStatus = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/Settings/OnboardingStatusService.ts').then((response) => {
+			$scope.optionsOnboardingStatus = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'OnboardingStatus',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
 
-		$scope.optionsDepartmentValue = function (optionKey) {
+		$scope.optionsDepartmentValue = (optionKey) => {
 			for (let i = 0; i < $scope.optionsDepartment.length; i++) {
 				if ($scope.optionsDepartment[i].value === optionKey) {
 					return $scope.optionsDepartment[i].text;
@@ -213,7 +233,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsOnboardingStatusValue = function (optionKey) {
+		$scope.optionsOnboardingStatusValue = (optionKey) => {
 			for (let i = 0; i < $scope.optionsOnboardingStatus.length; i++) {
 				if ($scope.optionsOnboardingStatus[i].value === optionKey) {
 					return $scope.optionsOnboardingStatus[i].text;
@@ -222,5 +242,4 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			return null;
 		};
 		//----------------Dropdowns-----------------//
-
-	}]);
+	});

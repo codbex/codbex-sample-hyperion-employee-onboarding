@@ -4,16 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "OnboardingTask-details",
-    label: "OnboardingTask",
-    factory: "frame",
-    region: "center",
-    link: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/OnboardingTask/OnboardingTask/main-details/index.html",
-    perspectiveName: "OnboardingTask"
+    id: 'OnboardingTask-details',
+    label: 'OnboardingTask',
+    region: 'center',
+    lazyLoad: false,
+	autoFocusTab: true,
+    path: '/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/OnboardingTask/OnboardingTask/main-details/index.html',
+    perspectiveName: 'OnboardingTask'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }

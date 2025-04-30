@@ -4,16 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Employee",
-    label: "Employee",
-    factory: "frame",
-    region: "left",
-    link: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/Employee/Employee/index.html",
-    perspectiveName: "Employee"
+    id: 'Employee',
+    label: 'Employee',
+    region: 'left',
+    lazyLoad: false,
+	autoFocusTab: false,
+    path: '/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/Employee/Employee/index.html',
+    perspectiveName: 'Employee'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }

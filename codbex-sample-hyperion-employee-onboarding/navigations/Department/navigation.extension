@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "dashboard-navigations",
-    "module": "codbex-sample-hyperion-employee-onboarding/navigations/Department/service.js",
-    "description": "Departments Navigation"
-}

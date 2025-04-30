@@ -6,12 +6,9 @@
 const viewData = {
     id: "Employee-details",
     label: "Employee",
-    link: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/Employee/Employee/dialog-window/index.html",
+    path: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/Employee/Employee/dialog-window/index.html",
     perspectiveName: "Employee",
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

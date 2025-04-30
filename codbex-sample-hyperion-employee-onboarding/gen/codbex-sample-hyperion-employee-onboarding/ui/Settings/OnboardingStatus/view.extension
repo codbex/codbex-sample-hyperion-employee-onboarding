@@ -1,0 +1,5 @@
+{
+    "module": "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/Settings/OnboardingStatus/view.js",
+    "extensionPoint": "application-settings",
+    "description": "codbex-sample-hyperion-employee-onboarding - Application View"
+}

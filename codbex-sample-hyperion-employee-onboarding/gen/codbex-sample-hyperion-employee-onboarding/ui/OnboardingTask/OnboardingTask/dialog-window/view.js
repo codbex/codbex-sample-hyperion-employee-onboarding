@@ -6,12 +6,9 @@
 const viewData = {
     id: "OnboardingTask-details",
     label: "OnboardingTask",
-    link: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/OnboardingTask/OnboardingTask/dialog-window/index.html",
+    path: "/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/OnboardingTask/OnboardingTask/dialog-window/index.html",
     perspectiveName: "OnboardingTask",
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

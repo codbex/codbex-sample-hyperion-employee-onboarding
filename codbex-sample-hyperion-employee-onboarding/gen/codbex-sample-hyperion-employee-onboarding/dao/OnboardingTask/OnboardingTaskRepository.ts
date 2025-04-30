@@ -95,7 +95,7 @@ export interface OnboardingTaskEntityOptions {
     },
     $select?: (keyof OnboardingTaskEntity)[],
     $sort?: string | (keyof OnboardingTaskEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -163,10 +163,10 @@ export class OnboardingTaskRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(OnboardingTaskRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(OnboardingTaskRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: OnboardingTaskEntityOptions): OnboardingTaskEntity[] {
+    public findAll(options: OnboardingTaskEntityOptions = {}): OnboardingTaskEntity[] {
         return this.dao.list(options).map((e: OnboardingTaskEntity) => {
             EntityUtils.setDate(e, "CompletedAt");
             return e;

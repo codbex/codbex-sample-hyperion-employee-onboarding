@@ -1,5 +1,5 @@
 {
     "module": "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/Employee/Employee/view.js",
-    "extensionPoint": "codbex-sample-hyperion-employee-onboarding-view",
+    "extensionPoint": "application-views",
     "description": "codbex-sample-hyperion-employee-onboarding - Application View"
 }
