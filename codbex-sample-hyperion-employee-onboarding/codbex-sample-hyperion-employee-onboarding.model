@@ -62,7 +62,7 @@
                         "relationshipName": "Employee_Department",
                         "relationshipEntityName": "Department",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": ""
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataName": "EMPLOYEE_STARTDATE",
@@ -94,7 +94,7 @@
                         "relationshipName": "Employee_OnboardingStatus",
                         "relationshipEntityName": "OnboardingStatus",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": ""
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity Employee",
@@ -162,14 +162,14 @@
                 "generateDefaultRoles": "false",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "department",
                 "menuLabel": "Department",
                 "name": "Department",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
@@ -217,14 +217,14 @@
                 "generateDefaultRoles": "false",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "onboardingstatus",
                 "menuLabel": "OnboardingStatus",
                 "name": "OnboardingStatus",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
@@ -330,7 +330,7 @@
                         "relationshipName": "OnboardingTask_OnboardingStatus",
                         "relationshipEntityName": "OnboardingStatus",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": ""
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataName": "ONBOARDINGTASK_COMPLETEDAT",
@@ -384,6 +384,13 @@
                 "navId": "Tasks",
                 "icon": "/services/web/resources/unicons/clipboard-blank.svg",
                 "order": "2"
+            },
+            {
+                "name": "NewHire",
+                "label": "NewHire",
+                "navId": "Employees",
+                "icon": "/services/web/resources/unicons/users-alt.svg",
+                "order": "3"
             }
         ],
         "navigations": [

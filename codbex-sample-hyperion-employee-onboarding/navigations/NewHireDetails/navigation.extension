@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "application-views",
-    "module": "codbex-sample-hyperion-employee-onboarding/navigations/NewHireDetails/service.js",
-    "description": "New hire details form"
-}
