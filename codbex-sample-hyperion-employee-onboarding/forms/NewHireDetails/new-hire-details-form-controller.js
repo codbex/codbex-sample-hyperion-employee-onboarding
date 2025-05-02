@@ -1,4 +1,4 @@
-angular.module('templateApp', ['blimpKit']).controller('templateController', ($scope, $http) => {
+angular.module('templateApp', ['blimpKit', 'platformView']).controller('templateController', ($scope, $http) => {
 
     $scope.entity = {};
     $scope.forms = {

@@ -1,4 +1,4 @@
-const perspectiveData = {
+const viewData = {
     id: 'NewHire',
     label: 'NewHire',
     path: '/services/web/codbex-sample-hyperion-employee-onboarding/forms/NewHireDetails/new-hire-details-form.html',
@@ -7,5 +7,5 @@ const perspectiveData = {
     icon: '/services/web/resources/unicons/users-alt.svg'
 };
 if (typeof exports !== 'undefined') {
-    exports.getPerspective = () => perspectiveData;
+    exports.getPerspective = () => viewData;
 }
