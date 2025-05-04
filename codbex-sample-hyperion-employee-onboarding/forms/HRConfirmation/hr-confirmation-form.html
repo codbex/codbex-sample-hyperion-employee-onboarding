@@ -19,38 +19,59 @@
             HR Confirmation
         </h1>
 
-        <div ng-if="isCompleted" class="completed-message">
-            <div class="completed-icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <div class="completed-text">
-                <h2>Employee Onboarding Finished</h2>
-                <p>The onboarding tasks for the employee have been completed. There is no further HR confirmation work needed.</p>
-            </div>
-        </div>
+        <bk-scrollbar class="bk-full-height bk-padding--sm">
 
-        <div ng-if="!isCompleted">
-            <div class="subtitle">Onboarding completion checklist</div>
+            <div class="bk-color-bg--positive bk-padding--md bk-restrict-width--sm bk-border" style="border-radius: 20px;" ng-if="isCompleted">
+                <bk-panel expanded="true" compact="true">
+                    <bk-panel-content>
+                        <span class="sap-icon--message-success" role="presentation" style="font-size:4rem" class="bk-margin-bottom--md"></span>
 
-            <div class="tasks" ng-repeat="next in taskList">
-                <i class="sap-icon--accept" role="presentation"></i>
-                <div class="taskName">{{next.Name}}</div>
+                        <h2 class="bk-margin-top--md">Onboarding Complete</h2>
+
+                        <p class="bk-margin-top--md">
+                            The onboarding tasks for the employee have been completed. There is no further HR confirmation work needed.
+                        </p>
+                    </bk-panel-content>
+                </bk-panel>
             </div>
 
-            <div class="confirmation-section">
-                <label class="checkbox-label">
-                    <input type="checkbox" ng-model="checkboxChecked">
-                    I confirm that all onboarding tasks have been completed successfully
-                </label>
+            <bk-panel ng-if="!isCompleted" expanded="true" compact="true">
+                <bk-panel-header>
+                    <h3 aria-label="title" class="fd-margin--md">Onboarding Completion Checklist</h3>
+                </bk-panel-header>
+                <bk-panel-content aria-label="Panel Content">
 
-                <div class="button-container">
-                    <fd-button class="button" dg-label="Submit" dg-type="emphasized" ng-click="completeOnboarding()" state="{{ checkboxChecked ? '' : 'disabled' }}">
-                    </fd-button>
-                </div>
-            </div>
-        </div>
-        </div>
+                    <bk-list>
+                        <bk-list-item ng-repeat="next in taskList">
+                            <bk-list-icon glyph="sap-icon sap-icon--accept"></bk-list-icon>
+                            <bk-list-title>{{ next.Name }}</bk-list-title>
+                        </bk-list-item>
+                    </bk-list>
+
+                    <bk-form-group ng-if="!isEmpty" class="fd-margin-top--md">
+                        <bk-form-item>
+                            <bk-checkbox id="confirmed" compact="false" ng-model="checkboxes.model"></bk-checkbox>
+                            <bk-checkbox-label for="confirmed"> I confirm that all onboarding tasks have been completed successfully</bk-checkbox-label>
+                        </bk-form-item>
+                    </bk-form-group>
+
+                </bk-panel-content>
+            </bk-panel>
+
+
+        </bk-scrollbar>
+
+        <bk-bar bar-design="footer" class="bk-margin-top--md bk-padding--sm" ng-if="!isCompleted">
+            <bk-bar-right>
+                <bk-bar-element>
+                    <bk-button label="Submit" state="emphasized" ng-click="completeOnboarding()" ng-disabled="!checkboxes.model">
+                    </bk-button>
+                </bk-bar-element>
+            </bk-bar-right>
+        </bk-bar>
+
         <theme></theme>
     </body>
+
 
 </html>
