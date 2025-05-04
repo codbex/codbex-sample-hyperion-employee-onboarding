@@ -6,41 +6,59 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
         <title dg-view-title></title>
-        <script type="text/javascript" src="codbex-sample-hyperion-employee-onboarding/navigations/TaskCompletion/service.js"></script>
-        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=ide-view-js"></script>
-        <link type="text/css" rel="stylesheet" href="/services/js/resources-core/services/loader.js?id=ide-view-css" />
-        <theme></theme>
-        <link rel="stylesheet" href="/services/web/codbex-sample-hyperion-employee-onboarding/forms/TaskCompletion/task-completion-form.css">
-        <link type="text/css" rel="stylesheet" href="/services/js/resources-core/services/loader.js?id=application-view-css" />
-        <script src="/services/web/codbex-sample-hyperion-employee-onboarding/forms/TaskCompletion/task-completion-form-controller.js">
+        <script type="text/javascript" src="task-completion-generate.js"></script>
+        <script type="text/javascript" src="/services/js/platform-core/services/loader.js?id=view-js"></script>
+        <link type="text/css" rel="stylesheet" href="/services/js/platform-core/services/loader.js?id=view-css" />
+        <script src="task-completion-form-controller.js">
         </script>
     </head>
 
-    <body>
-        <div class="title">Task completion</div>
+    <body class="bk-vbox">
 
-        <div ng-if="completed" class="completed-message">
-            <div class="completed-icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <div class="completed-text">
-                <h2>All Employee Tasks Have Been Completed!</h2>
-                <p>Great job! Every task in the list has been successfully completed.</p>
-            </div>
-        </div>
+        <h1 aria-label="title" class="fd-margin--md">
+            Task completion
+        </h1>
 
+        <bk-scrollbar class="bk-full-height bk-padding--sm">
 
-        <div class="tasks" ng-repeat="next in taskList">
-            <div class="task-content">
-                <div class="taskName">{{ next.Name }}</div>
-                <textarea class="taskDescription" rows="5">{{ next.Description }}</textarea>
-            </div>
-            <div class="button-container">
-                <fd-button class="button" dg-label="Complete" dg-type="emphasized" ng-click="completeTask(next)" state="{{ next.isCompleted ? 'disabled' : '' }}">
-                </fd-button>
-            </div>
-        </div>
+            <div class="bk-color-bg--positive bk-padding--md bk-restrict-width--sm bk-border" style="border-radius: 20px;" ng-if="completed">
+                <bk-panel expanded="true" compact="true">
+                    <bk-panel-content>
+                        <span class="sap-icon--message-success" role="presentation" style="font-size:4rem" class="bk-margin-bottom--md"></span>
 
+                        <h2 class="bk-margin-top--md">All Employee Tasks Have Been Completed!</h2>
+
+                        <p class="bk-margin-top--md">
+                            Great job! Every task in the list has been successfully completed.
+                        </p>
+                    </bk-panel-content>
+                </bk-panel>
+            </div>
+
+            <bk-panel ng-if="!completed" expanded="true" compact="true">
+                <bk-panel-content aria-label="Panel Content">
+
+                    <bk-list byline="true">
+                        <bk-list-item ng-repeat="next in taskList">
+                            <bk-list-content item-title="{{ next.Name }}">
+                                <bk-list-byline align="left">
+                                    {{ next.Description }}
+                                </bk-list-byline>
+
+                                <bk-list-byline align="right">
+                                    <bk-button ng-if="!next.isCompleted" label="Complete" state="emphasized" ng-click="completeTask(next)">
+                                    </bk-button>
+                                </bk-list-byline>
+
+                            </bk-list-content>
+                        </bk-list-item>
+                    </bk-list>
+
+                </bk-panel-content>
+            </bk-panel>
+        </bk-scrollbar>
+
+        <theme></theme>
     </body>
 
 </html>

@@ -398,6 +398,13 @@
                 "navId": "EmployeeOnboarding",
                 "icon": "/services/web/resources/unicons/file-question-alt.svg",
                 "order": "2"
+            },
+            {
+                "name": "TaskCompletion",
+                "label": "TaskCompletion",
+                "navId": "EmployeeOnboarding",
+                "icon": "/services/web/resources/unicons/file-check.svg",
+                "order": "3"
             }
         ],
         "navigations": [
