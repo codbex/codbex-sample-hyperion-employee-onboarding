@@ -38,7 +38,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.optionsDepartment = [];
-				$scope.optionsOnboardingStatus = [];
+				$scope.optionsStatus = [];
 				$scope.action = 'select';
 			});
 		}});
@@ -49,7 +49,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				}
 				$scope.entity = data.entity;
 				$scope.optionsDepartment = data.optionsDepartment;
-				$scope.optionsOnboardingStatus = data.optionsOnboardingStatus;
+				$scope.optionsStatus = data.optionsStatus;
 				$scope.action = 'select';
 			});
 		}});
@@ -57,7 +57,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.optionsDepartment = data.optionsDepartment;
-				$scope.optionsOnboardingStatus = data.optionsOnboardingStatus;
+				$scope.optionsStatus = data.optionsStatus;
 				$scope.action = 'create';
 			});
 		}});
@@ -68,13 +68,13 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				}
 				$scope.entity = data.entity;
 				$scope.optionsDepartment = data.optionsDepartment;
-				$scope.optionsOnboardingStatus = data.optionsOnboardingStatus;
+				$scope.optionsStatus = data.optionsStatus;
 				$scope.action = 'update';
 			});
 		}});
 
 		$scope.serviceDepartment = '/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/Settings/DepartmentService.ts';
-		$scope.serviceOnboardingStatus = '/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/Settings/OnboardingStatusService.ts';
+		$scope.serviceStatus = '/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/Settings/OnboardingStatusService.ts';
 
 		//-----------------Events-------------------//
 
@@ -142,7 +142,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				closeButton: false
 			});
 		};
-		$scope.createOnboardingStatus = () => {
+		$scope.createStatus = () => {
 			Dialogs.showWindow({
 				id: 'OnboardingStatus-details',
 				params: {
@@ -176,10 +176,10 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				});
 			});
 		};
-		$scope.refreshOnboardingStatus = () => {
-			$scope.optionsOnboardingStatus = [];
+		$scope.refreshStatus = () => {
+			$scope.optionsStatus = [];
 			$http.get('/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/Settings/OnboardingStatusService.ts').then((response) => {
-				$scope.optionsOnboardingStatus = response.data.map(e => ({
+				$scope.optionsStatus = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
 				}));
@@ -187,7 +187,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				console.error(error);
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: 'OnboardingStatus',
+					title: 'Status',
 					message: `Unable to load data: '${message}'`,
 					type: AlertTypes.Error
 				});

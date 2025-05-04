@@ -151,7 +151,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 
 		$scope.deleteEntity = (entity) => {
 			let id = entity.Id;
-			Dialog.showDialog({
+			Dialogs.showDialog({
 				title: 'Delete Department?',
 				message: `Are you sure you want to delete Department? This action cannot be undone.`,
 				buttons: [{

@@ -1,0 +1,5 @@
+{
+    "module": "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/navigation/EmployeeOnboarding/perspective-group.js",
+    "extensionPoint": "application-perspectives",
+    "description": "codbex-sample-hyperion-employee-onboarding - Perspective Group - EmployeeOnboarding"
+}

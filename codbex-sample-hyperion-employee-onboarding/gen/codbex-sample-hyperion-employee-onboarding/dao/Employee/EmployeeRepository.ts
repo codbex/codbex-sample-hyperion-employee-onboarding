@@ -10,7 +10,7 @@ export interface EmployeeEntity {
     Email?: string;
     Department?: number;
     StartDate?: Date;
-    OnboardingStatus?: number;
+    Status?: number;
 }
 
 export interface EmployeeCreateEntity {
@@ -18,7 +18,7 @@ export interface EmployeeCreateEntity {
     readonly Email?: string;
     readonly Department?: number;
     readonly StartDate?: Date;
-    readonly OnboardingStatus?: number;
+    readonly Status?: number;
 }
 
 export interface EmployeeUpdateEntity extends EmployeeCreateEntity {
@@ -33,7 +33,7 @@ export interface EmployeeEntityOptions {
             Email?: string | string[];
             Department?: number | number[];
             StartDate?: Date | Date[];
-            OnboardingStatus?: number | number[];
+            Status?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -41,7 +41,7 @@ export interface EmployeeEntityOptions {
             Email?: string | string[];
             Department?: number | number[];
             StartDate?: Date | Date[];
-            OnboardingStatus?: number | number[];
+            Status?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -49,7 +49,7 @@ export interface EmployeeEntityOptions {
             Email?: string;
             Department?: number;
             StartDate?: Date;
-            OnboardingStatus?: number;
+            Status?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -57,7 +57,7 @@ export interface EmployeeEntityOptions {
             Email?: string;
             Department?: number;
             StartDate?: Date;
-            OnboardingStatus?: number;
+            Status?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -65,7 +65,7 @@ export interface EmployeeEntityOptions {
             Email?: string;
             Department?: number;
             StartDate?: Date;
-            OnboardingStatus?: number;
+            Status?: number;
         };
         lessThan?: {
             Id?: number;
@@ -73,7 +73,7 @@ export interface EmployeeEntityOptions {
             Email?: string;
             Department?: number;
             StartDate?: Date;
-            OnboardingStatus?: number;
+            Status?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -81,7 +81,7 @@ export interface EmployeeEntityOptions {
             Email?: string;
             Department?: number;
             StartDate?: Date;
-            OnboardingStatus?: number;
+            Status?: number;
         };
     },
     $select?: (keyof EmployeeEntity)[],
@@ -139,7 +139,7 @@ export class EmployeeRepository {
                 type: "DATE",
             },
             {
-                name: "OnboardingStatus",
+                name: "Status",
                 column: "EMPLOYEE_ONBOARDINGSTATUS",
                 type: "INTEGER",
             }

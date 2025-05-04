@@ -25,7 +25,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsDepartment = params.optionsDepartment;
-			$scope.optionsOnboardingStatus = params.optionsOnboardingStatus;
+			$scope.optionsStatus = params.optionsStatus;
 		}
 
 		$scope.create = () => {
@@ -87,12 +87,12 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceOnboardingStatus = '/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/Settings/OnboardingStatusService.ts';
+		$scope.serviceStatus = '/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/Settings/OnboardingStatusService.ts';
 		
-		$scope.optionsOnboardingStatus = [];
+		$scope.optionsStatus = [];
 		
 		$http.get('/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/Settings/OnboardingStatusService.ts').then((response) => {
-			$scope.optionsOnboardingStatus = response.data.map(e => ({
+			$scope.optionsStatus = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
 			}));
@@ -100,7 +100,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			console.error(error);
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
-				title: 'OnboardingStatus',
+				title: 'Status',
 				message: `Unable to load data: '${message}'`,
 				type: AlertTypes.Error
 			});

@@ -151,7 +151,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 
 		$scope.deleteEntity = (entity) => {
 			let id = entity.Id;
-			Dialog.showDialog({
+			Dialogs.showDialog({
 				title: 'Delete OnboardingStatus?',
 				message: `Are you sure you want to delete OnboardingStatus? This action cannot be undone.`,
 				buttons: [{

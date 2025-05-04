@@ -83,7 +83,7 @@
                         "dataType": "INTEGER",
                         "description": "",
                         "isRequiredProperty": "true",
-                        "name": "OnboardingStatus",
+                        "name": "Status",
                         "tooltip": "",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",
@@ -388,9 +388,16 @@
             {
                 "name": "NewHire",
                 "label": "NewHire",
-                "navId": "Employees",
+                "navId": "EmployeeOnboarding",
                 "icon": "/services/web/resources/unicons/users-alt.svg",
-                "order": "3"
+                "order": "1"
+            },
+            {
+                "name": "HRConfirmation",
+                "label": "HRConfirmation",
+                "navId": "EmployeeOnboarding",
+                "icon": "/services/web/resources/unicons/file-question-alt.svg",
+                "order": "2"
             }
         ],
         "navigations": [
@@ -407,6 +414,13 @@
                 "expanded": "true",
                 "icon": "/services/web/resources/unicons/file-info-alt.svg",
                 "order": "2"
+            },
+            {
+                "id": "EmployeeOnboarding",
+                "label": "EmployeeOnboarding",
+                "expanded": "true",
+                "icon": "/services/web/resources/unicons/user-circle.svg",
+                "order": "3"
             }
         ]
     }

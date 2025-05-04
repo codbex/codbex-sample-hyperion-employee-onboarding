@@ -1631,7 +1631,7 @@ components:
         - Email
         - Department
         - StartDate
-        - OnboardingStatus
+        - Status
       properties:
         Id:
           type: integer
@@ -1648,7 +1648,7 @@ components:
           type: integer
           format: int32
         StartDate:
-        OnboardingStatus:
+        Status:
           type: integer
           format: int32
     EmployeeFilterOptions:
@@ -1700,7 +1700,7 @@ components:
                         format: int32
                 StartDate:
                   oneOf:
-                OnboardingStatus:
+                Status:
                   oneOf:
                     - type: integer
                       format: int32
@@ -1751,7 +1751,7 @@ components:
                         format: int32
                 StartDate:
                   oneOf:
-                OnboardingStatus:
+                Status:
                   oneOf:
                     - type: integer
                       format: int32
@@ -1773,7 +1773,7 @@ components:
                   maxLength: 80
                 Department:
                 StartDate:
-                OnboardingStatus:
+                Status:
             greaterThan:
               type: object
               properties:
@@ -1792,7 +1792,7 @@ components:
                   type: integer
                   format: int32
                 StartDate:
-                OnboardingStatus:
+                Status:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -1813,7 +1813,7 @@ components:
                   type: integer
                   format: int32
                 StartDate:
-                OnboardingStatus:
+                Status:
                   type: integer
                   format: int32
             lessThan:
@@ -1834,7 +1834,7 @@ components:
                   type: integer
                   format: int32
                 StartDate:
-                OnboardingStatus:
+                Status:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -1855,17 +1855,17 @@ components:
                   type: integer
                   format: int32
                 StartDate:
-                OnboardingStatus:
+                Status:
                   type: integer
                   format: int32
         $select:
           type: array
-          example: ["Id", "Name", "Email", "Department", "StartDate", "OnboardingStatus"]
+          example: ["Id", "Name", "Email", "Department", "StartDate", "Status"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Email,Department,StartDate,OnboardingStatus"
+            example: "Id,Name,Email,Department,StartDate,Status"
         $order:
           type: string
           enum: ["asc", "desc"]

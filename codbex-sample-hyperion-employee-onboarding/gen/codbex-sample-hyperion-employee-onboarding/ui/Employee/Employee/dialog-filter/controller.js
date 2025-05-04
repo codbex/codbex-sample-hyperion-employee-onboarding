@@ -17,7 +17,7 @@ angular.module('page', ['blimpKit', 'platformView']).controller('PageController'
 		$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 		$scope.selectedMainEntityId = params.selectedMainEntityId;
 		$scope.optionsDepartment = params.optionsDepartment;
-		$scope.optionsOnboardingStatus = params.optionsOnboardingStatus;
+		$scope.optionsStatus = params.optionsStatus;
 	}
 
 	$scope.filter = () => {
@@ -58,8 +58,8 @@ angular.module('page', ['blimpKit', 'platformView']).controller('PageController'
 		if (entity.StartDateTo) {
 			filter.$filter.lessThanOrEqual.StartDate = entity.StartDateTo;
 		}
-		if (entity.OnboardingStatus !== undefined) {
-			filter.$filter.equals.OnboardingStatus = entity.OnboardingStatus;
+		if (entity.Status !== undefined) {
+			filter.$filter.equals.Status = entity.Status;
 		}
 		Dialogs.postMessage({ topic: 'codbex-sample-hyperion-employee-onboarding.Employee.Employee.entitySearch', data: {
 			entity: entity,

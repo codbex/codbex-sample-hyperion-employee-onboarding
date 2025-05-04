@@ -1,17 +1,10 @@
-const app = angular.module('templateApp', ['ideUI', 'ideView'])
-app.controller('templateController', ['$scope', '$http', function ($scope, $http) {
-    const employeeId = new URLSearchParams(window.location.search).get('employeeId');
-    const processInstanceId = new URLSearchParams(window.location.search).get('processId');
+angular.module('templateApp', ['blimpKit', 'platformView']).controller('templateController', ($scope, $http) => {
 
-    $scope.showDialog = true;
-
-    $scope.entity = {
-
-    };
-
+    $scope.entity = {};
     $scope.forms = {
         details: {},
     };
+
 
     const tasksUrl =
         "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/HRConfirmation/api/HRConfirmationFormService.ts/tasksData/" + employeeId;
@@ -32,7 +25,6 @@ app.controller('templateController', ['$scope', '$http', function ($scope, $http
     $scope.completeOnboarding = function () {
         $http.post(completeTaskUrl)
             .then(response => {
-                console.log("Task updated successfully", response.data);
                 $scope.isCompleted = true;
             })
             .catch(function (error) {
@@ -40,4 +32,4 @@ app.controller('templateController', ['$scope', '$http', function ($scope, $http
             });
     }
 
-}]);
+});

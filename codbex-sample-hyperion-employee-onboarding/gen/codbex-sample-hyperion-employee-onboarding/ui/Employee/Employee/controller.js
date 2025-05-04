@@ -122,7 +122,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				entity: entity,
 				selectedMainEntityId: entity.Id,
 				optionsDepartment: $scope.optionsDepartment,
-				optionsOnboardingStatus: $scope.optionsOnboardingStatus,
+				optionsStatus: $scope.optionsStatus,
 			}});
 		};
 
@@ -133,7 +133,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			Dialogs.postMessage({ topic: 'codbex-sample-hyperion-employee-onboarding.Employee.Employee.createEntity', data: {
 				entity: {},
 				optionsDepartment: $scope.optionsDepartment,
-				optionsOnboardingStatus: $scope.optionsOnboardingStatus,
+				optionsStatus: $scope.optionsStatus,
 			}});
 		};
 
@@ -142,7 +142,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			Dialogs.postMessage({ topic: 'codbex-sample-hyperion-employee-onboarding.Employee.Employee.updateEntity', data: {
 				entity: $scope.selectedEntity,
 				optionsDepartment: $scope.optionsDepartment,
-				optionsOnboardingStatus: $scope.optionsOnboardingStatus,
+				optionsStatus: $scope.optionsStatus,
 			}});
 		};
 
@@ -185,14 +185,14 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				params: {
 					entity: $scope.filterEntity,
 					optionsDepartment: $scope.optionsDepartment,
-					optionsOnboardingStatus: $scope.optionsOnboardingStatus,
+					optionsStatus: $scope.optionsStatus,
 				},
 			});
 		};
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsDepartment = [];
-		$scope.optionsOnboardingStatus = [];
+		$scope.optionsStatus = [];
 
 
 		$http.get('/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/Settings/DepartmentService.ts').then((response) => {
@@ -211,7 +211,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		});
 
 		$http.get('/services/ts/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/api/Settings/OnboardingStatusService.ts').then((response) => {
-			$scope.optionsOnboardingStatus = response.data.map(e => ({
+			$scope.optionsStatus = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
 			}));
@@ -219,7 +219,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			console.error(error);
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
-				title: 'OnboardingStatus',
+				title: 'Status',
 				message: `Unable to load data: '${message}'`,
 				type: AlertTypes.Error
 			});
@@ -233,10 +233,10 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			}
 			return null;
 		};
-		$scope.optionsOnboardingStatusValue = (optionKey) => {
-			for (let i = 0; i < $scope.optionsOnboardingStatus.length; i++) {
-				if ($scope.optionsOnboardingStatus[i].value === optionKey) {
-					return $scope.optionsOnboardingStatus[i].text;
+		$scope.optionsStatusValue = (optionKey) => {
+			for (let i = 0; i < $scope.optionsStatus.length; i++) {
+				if ($scope.optionsStatus[i].value === optionKey) {
+					return $scope.optionsStatus[i].text;
 				}
 			}
 			return null;

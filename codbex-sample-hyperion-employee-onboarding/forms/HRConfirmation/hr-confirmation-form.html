@@ -6,52 +6,51 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
         <title dg-view-title></title>
-        <script type="text/javascript" src="codbex-sample-hyperion-employee-onboarding/navigations/HRConfirmation/service.js"></script>
-        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=ide-view-js"></script>
-        <link type="text/css" rel="stylesheet" href="/services/js/resources-core/services/loader.js?id=ide-view-css" />
-        <theme></theme>
-        <link rel="stylesheet" href="/services/web/codbex-sample-hyperion-employee-onboarding/forms/HRConfirmation/hr-confirmation-form.css">
-        <link type="text/css" rel="stylesheet" href="/services/js/resources-core/services/loader.js?id=application-view-css" />
-        <script src="/services/web/codbex-sample-hyperion-employee-onboarding/forms/HRConfirmation/hr-confirmation-form-controller.js">
+        <script type="text/javascript" src="hr-confirmation-generate.js"></script>
+        <script type="text/javascript" src="/services/js/platform-core/services/loader.js?id=view-js"></script>
+        <link type="text/css" rel="stylesheet" href="/services/js/platform-core/services/loader.js?id=view-css" />
+        <script src="hr-confirmation-form-controller.js">
         </script>
     </head>
 
-    <body>
-        <div class="form-container">
-            <div class="title">HR Confirmation</div>
+    <body class="bk-vbox">
 
-            <div ng-if="isCompleted" class="completed-message">
-                <div class="completed-icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <div class="completed-text">
-                    <h2>Employee Onboarding Finished</h2>
-                    <p>The onboarding tasks for the employee have been completed. There is no further HR confirmation work needed.</p>
-                </div>
+        <h1 aria-label="title" class="fd-margin--md">
+            HR Confirmation
+        </h1>
+
+        <div ng-if="isCompleted" class="completed-message">
+            <div class="completed-icon">
+                <i class="fas fa-check-circle"></i>
             </div>
-
-            <div ng-if="!isCompleted">
-                 <div class="subtitle">Onboarding completion checklist</div>
-                
-                <div class="tasks" ng-repeat="next in taskList">
-                    <i class="sap-icon--accept" role="presentation"></i>
-                    <div class="taskName">{{next.Name}}</div>
-                </div>
-
-                <div class="confirmation-section">
-                    <label class="checkbox-label">
-                        <input type="checkbox" ng-model="checkboxChecked">
-                        I confirm that all onboarding tasks have been completed successfully
-                    </label>
-
-                    <div class="button-container">
-                        <fd-button class="button" dg-label="Submit" dg-type="emphasized" ng-click="completeOnboarding()" state="{{ checkboxChecked ? '' : 'disabled' }}">
-                        </fd-button>
-                    </div>
-                </div>
+            <div class="completed-text">
+                <h2>Employee Onboarding Finished</h2>
+                <p>The onboarding tasks for the employee have been completed. There is no further HR confirmation work needed.</p>
             </div>
         </div>
 
+        <div ng-if="!isCompleted">
+            <div class="subtitle">Onboarding completion checklist</div>
+
+            <div class="tasks" ng-repeat="next in taskList">
+                <i class="sap-icon--accept" role="presentation"></i>
+                <div class="taskName">{{next.Name}}</div>
+            </div>
+
+            <div class="confirmation-section">
+                <label class="checkbox-label">
+                    <input type="checkbox" ng-model="checkboxChecked">
+                    I confirm that all onboarding tasks have been completed successfully
+                </label>
+
+                <div class="button-container">
+                    <fd-button class="button" dg-label="Submit" dg-type="emphasized" ng-click="completeOnboarding()" state="{{ checkboxChecked ? '' : 'disabled' }}">
+                    </fd-button>
+                </div>
+            </div>
+        </div>
+        </div>
+        <theme></theme>
     </body>
 
 </html>

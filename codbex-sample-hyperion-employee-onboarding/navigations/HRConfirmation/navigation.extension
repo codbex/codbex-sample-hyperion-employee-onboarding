@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "dashboard-navigations",
-    "module": "codbex-sample-hyperion-employee-onboarding/navigations/HRConfirmation/service.js",
-    "description": "HR confirmation form"
-}
