@@ -18,11 +18,11 @@ angular.module('templateApp', ['blimpKit', 'platformView']).controller('template
             $scope.taskList = response.data;
             $scope.completed = response.data.length === 0;
         })
-        .catch(function (error) {
+        .catch((error) => {
             console.error("Error getting task data: ", error);
         });
 
-    $scope.completeTask = function (task) {
+    $scope.completeTask = (task) => {
         $http.post(completeTaskUrl, task)
             .then(response => {
                 console.log("Task updated successfully", task.Id, response.data);
@@ -32,10 +32,8 @@ angular.module('templateApp', ['blimpKit', 'platformView']).controller('template
                 $scope.taskList = response.data;
                 $scope.completed = response.data.length === 0;
             })
-            .catch(function (error) {
+            .catch((error) => {
                 console.error("Error completing or refreshing task", error);
             });
     };
-
-
 });

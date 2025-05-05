@@ -14,28 +14,14 @@
     </head>
 
     <body class="bk-vbox">
-
-        <h1 aria-label="title" class="fd-margin--md">
-            Task completion
-        </h1>
-
-        <bk-scrollbar class="bk-full-height bk-padding--sm">
-
-            <div class="bk-color-bg--positive bk-padding--md bk-restrict-width--sm bk-border" style="border-radius: 20px;" ng-if="completed">
-                <bk-panel expanded="true" compact="true">
-                    <bk-panel-content>
-                        <span class="sap-icon--message-success" role="presentation" style="font-size:4rem" class="bk-margin-bottom--md"></span>
-
-                        <h2 class="bk-margin-top--md">All Employee Tasks Have Been Completed!</h2>
-
-                        <p class="bk-margin-top--md">
-                            Great job! Every task in the list has been successfully completed.
-                        </p>
-                    </bk-panel-content>
-                </bk-panel>
-            </div>
-
-            <bk-panel ng-if="!completed" expanded="true" compact="true">
+        <h2 bk-title class="bk-padding--md bk-center" wrap="true" header-size="2" aria-label="title" ng-if="!completed"> Task completion</h2>
+        <bk-scrollbar class="bk-full-height bk-padding--sm bk-center--horizontal">
+            <bk-message-page glyph="sap-icon--message-information" ng-if="completed">
+                <bk-message-page-title>All Employee Tasks Have Been Completed!</bk-message-page-title>
+                <bk-message-page-subtitle>Great job! Every task in the list has been successfully completed.
+                </bk-message-page-subtitle>
+            </bk-message-page>
+            <bk-panel ng-if="!completed" expanded="true" compact="true" class="bk-restrict-width--sm bk-full-width">
                 <bk-panel-content aria-label="Panel Content">
 
                     <bk-list byline="true">
@@ -44,16 +30,13 @@
                                 <bk-list-byline align="left">
                                     {{ next.Description }}
                                 </bk-list-byline>
-
                                 <bk-list-byline align="right">
                                     <bk-button ng-if="!next.isCompleted" label="Complete" state="emphasized" ng-click="completeTask(next)">
                                     </bk-button>
                                 </bk-list-byline>
-
                             </bk-list-content>
                         </bk-list-item>
                     </bk-list>
-
                 </bk-panel-content>
             </bk-panel>
         </bk-scrollbar>
