@@ -14,7 +14,7 @@ angular.module('templateApp', ['blimpKit', 'platformView']).controller('template
         .then(response => {
             $scope.optionsDepartment = response.data;
         })
-        .catch(function (error) {
+        .catch((error) => {
             console.error("Error getting departments data: ", error);
             $scope.resetForm();
         });
@@ -38,7 +38,7 @@ angular.module('templateApp', ['blimpKit', 'platformView']).controller('template
                     console.error("Error creating Employee: ", response.data);
                 }
             })
-            .catch(function (error) {
+            .catch((error) => {
                 console.error("Error creating Employee: ", error.data);
                 $scope.resetForm();
             });
