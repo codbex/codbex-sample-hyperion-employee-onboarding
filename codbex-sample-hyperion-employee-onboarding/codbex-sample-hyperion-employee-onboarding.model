@@ -405,6 +405,13 @@
                 "navId": "EmployeeOnboarding",
                 "icon": "/services/web/resources/unicons/file-check.svg",
                 "order": "3"
+            },
+            {
+                "name": "ManagerReview",
+                "label": "ManagerReview",
+                "navId": "EmployeeOnboarding",
+                "icon": "/services/web/resources/unicons/user-check.svg",
+                "order": "4"
             }
         ],
         "navigations": [

@@ -13,44 +13,14 @@ angular.module('templateApp', ['blimpKit', 'platformView']).controller('template
     const completeTaskUrl =
         "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/TaskCompletion/api/TaskCompletionFormService.ts/completeTask/" + processInstanceId;
 
-    // $http.get(tasksUrl)
-    //     .then(response => {
-    //         $scope.taskList = response.data;
-    //         $scope.completed = response.data.length === 0;
-    //     })
-    //     .catch(function (error) {
-    //         console.error("Error getting task data: ", error);
-    //     });
-
-    $scope.completed = false;
-    $scope.taskList = [
-        {
-            Name: "Prepare Report",
-            Description: "Compile Q1 financial results.",
-            isCompleted: false
-        },
-        {
-            Name: "Update Website",
-            Description: "Add new team member profiles.",
-            isCompleted: true
-        },
-        {
-            Name: "Client Meeting",
-            Description: "Discuss project milestones.",
-            isCompleted: false
-        },
-        {
-            Name: "Code Review",
-            Description: "Review pull requests in repo.",
-            isCompleted: true
-        },
-        {
-            Name: "Backup Database",
-            Description: "Ensure full snapshot before deployment.",
-            isCompleted: false
-        }
-    ];
-
+    $http.get(tasksUrl)
+        .then(response => {
+            $scope.taskList = response.data;
+            $scope.completed = response.data.length === 0;
+        })
+        .catch(function (error) {
+            console.error("Error getting task data: ", error);
+        });
 
     $scope.completeTask = function (task) {
         $http.post(completeTaskUrl, task)

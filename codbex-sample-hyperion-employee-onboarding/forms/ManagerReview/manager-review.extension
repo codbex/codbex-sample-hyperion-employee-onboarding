@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "application-perspectives",
+    "module": "codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/manager-review-generate.js",
+    "description": "Manager review form"
+}

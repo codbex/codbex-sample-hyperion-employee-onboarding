@@ -1,5 +1,5 @@
-const app = angular.module('templateApp', ['ideUI', 'ideView'])
-app.controller('templateController', ['$scope', '$http', function ($scope, $http) {
+angular.module('templateApp', ['blimpKit', 'platformView']).controller('templateController', ($scope, $http) => {
+
     const employeeId = new URLSearchParams(window.location.search).get('employeeId');
     const processInstanceId = new URLSearchParams(window.location.search).get('processId');
 
@@ -26,10 +26,8 @@ app.controller('templateController', ['$scope', '$http', function ($scope, $http
         .then(response => {
             $scope.taskList = response.data;
             $scope.hasAvailableTasks = response.data.length > 0;
-
             $http.get(employeeUrl)
                 .then(response => {
-
                     $scope.assigneeOptions = response.data;
                 })
                 .catch(function (error) {
@@ -40,7 +38,6 @@ app.controller('templateController', ['$scope', '$http', function ($scope, $http
         .catch(function (error) {
             console.error("Error getting tasks data: ", error);
         });
-
 
     $scope.submitAssignees = function () {
         $scope.taskList.forEach(function (task) {
@@ -81,4 +78,4 @@ app.controller('templateController', ['$scope', '$http', function ($scope, $http
             });
     };
 
-}]);
+});

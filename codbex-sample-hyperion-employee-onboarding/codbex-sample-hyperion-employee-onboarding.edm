@@ -42,6 +42,7 @@
   <perspective><name>NewHire</name><label>NewHire</label><navId>EmployeeOnboarding</navId><icon>/services/web/resources/unicons/users-alt.svg</icon><order>1</order></perspective>
   <perspective><name>HRConfirmation</name><label>HRConfirmation</label><navId>EmployeeOnboarding</navId><icon>/services/web/resources/unicons/file-question-alt.svg</icon><order>2</order></perspective>
   <perspective><name>TaskCompletion</name><label>TaskCompletion</label><navId>EmployeeOnboarding</navId><icon>/services/web/resources/unicons/file-check.svg</icon><order>3</order></perspective>
+  <perspective><name>ManagerReview</name><label>ManagerReview</label><navId>EmployeeOnboarding</navId><icon>/services/web/resources/unicons/user-check.svg</icon><order>4</order></perspective>
  </perspectives>
  <navigations>
   <item><id>Employees</id><label>Employees</label><expanded>true</expanded><icon>/services/web/resources/unicons/user.svg</icon><order>1</order></item>
