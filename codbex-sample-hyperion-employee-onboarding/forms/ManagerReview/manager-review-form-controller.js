@@ -3,10 +3,7 @@ angular.module('templateApp', ['blimpKit', 'platformView']).controller('template
     const employeeId = new URLSearchParams(window.location.search).get('employeeId');
     const processInstanceId = new URLSearchParams(window.location.search).get('processId');
 
-    $scope.showDialog = true;
-
     $scope.entity = {
-        selectedNewHire: null,
         assignees: {}
     };
     $scope.forms = {
@@ -22,25 +19,23 @@ angular.module('templateApp', ['blimpKit', 'platformView']).controller('template
     const completeTaskUrl =
         "/services/ts/codbex-sample-hyperion-employee-onboarding/forms/ManagerReview/api/ManagerReviewFormService.ts/completeTask/" + processInstanceId;
 
-    $http.get(tasksUrl)
-        .then(response => {
-            $scope.taskList = response.data;
-            $scope.hasAvailableTasks = response.data.length > 0;
-            $http.get(employeeUrl)
-                .then(response => {
-                    $scope.assigneeOptions = response.data;
-                })
-                .catch(function (error) {
-                    console.error("Error getting employees data: ", error);
-                });
+    $scope.hasAvailableTasks = false;
 
-        })
-        .catch(function (error) {
-            console.error("Error getting tasks data: ", error);
+    $http.get(tasksUrl).then(response => {
+        $scope.taskList = response.data;
+        $scope.hasAvailableTasks = response.data.length > 0;
+        $http.get(employeeUrl).then(response => {
+            $scope.assigneeOptions = response.data;
+        }).catch((error) => {
+            console.error("Error getting employees data: ", error);
         });
 
-    $scope.submitAssignees = function () {
-        $scope.taskList.forEach(function (task) {
+    }).catch((error) => {
+        console.error("Error getting tasks data: ", error);
+    });
+
+    $scope.submitAssignees = () => {
+        $scope.taskList.forEach((task) => {
 
             const assigneeId = $scope.entity.assignees[task.Id];
 
@@ -50,13 +45,11 @@ angular.module('templateApp', ['blimpKit', 'platformView']).controller('template
                     assigneeId: assigneeId,
                 };
 
-                $http.post(updateAssigneeUrl, updateData)
-                    .then(response => {
-                        console.log("Assignee updated successfully for task", task.Id, response.data);
-                    })
-                    .catch(function (error) {
-                        console.error("Error updating assignee for task", task.Id, error);
-                    });
+                $http.post(updateAssigneeUrl, updateData).then(response => {
+                    console.log("Assignee updated successfully for task", task.Id, response.data);
+                }).catch(function (error) {
+                    console.error("Error updating assignee for task", task.Id, error);
+                });
             } else {
                 console.log("No assignee selected for task with ID: ", task.Id);
             }
@@ -64,18 +57,18 @@ angular.module('templateApp', ['blimpKit', 'platformView']).controller('template
 
         const assigneeIds = Object.values($scope.entity.assignees);
 
-        $http.post(completeTaskUrl, assigneeIds)
-            .then(response => {
-                console.log("Tasks completed: ", response.data);
-                return $http.get(tasksUrl);
-            })
-            .then(response => {
+        $http.post(completeTaskUrl, assigneeIds).then(response => {
+            console.log("Tasks completed: ", response.data);
+            $http.get(tasksUrl).then(response => {
                 $scope.taskList = response.data;
+                $scope.entity.assignees = {};
                 $scope.hasAvailableTasks = response.data.length > 0;
-            })
-            .catch(function (error) {
-                console.error("Error completing tasks or refreshing task list", error);
+            }).catch((error) => {
+                console.error("Error refreshing task list", error);
             });
+        }).catch((error) => {
+            console.error("Error completing tasks list", error);
+        });
     };
 
 });
