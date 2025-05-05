@@ -14,53 +14,32 @@
     </head>
 
     <body class="bk-vbox">
-
-        <h1 aria-label="title" class="fd-margin--md">
-            HR Confirmation
-        </h1>
-
-        <bk-scrollbar class="bk-full-height bk-padding--sm">
-
-            <div class="bk-color-bg--positive bk-padding--md bk-restrict-width--sm bk-border" style="border-radius: 20px;" ng-if="isCompleted">
-                <bk-panel expanded="true" compact="true">
-                    <bk-panel-content>
-                        <span class="sap-icon--message-success" role="presentation" style="font-size:4rem" class="bk-margin-bottom--md"></span>
-
-                        <h2 class="bk-margin-top--md">Onboarding Complete</h2>
-
-                        <p class="bk-margin-top--md">
-                            The onboarding tasks for the employee have been completed. There is no further HR confirmation work needed.
-                        </p>
-                    </bk-panel-content>
-                </bk-panel>
-            </div>
-
-            <bk-panel ng-if="!isCompleted" expanded="true" compact="true">
+        <h2 bk-title class="bk-padding--sm bk-center" wrap="true" header-size="2" aria-label="title" ng-if="!isCompleted"> HR Confirmation</h2>
+        <bk-scrollbar class="bk-full-height bk-padding--sm bk-center--horizontal">
+            <bk-message-page glyph="sap-icon--message-information" ng-if="isCompleted">
+                <bk-message-page-title>Onboarding Complete</bk-message-page-title>
+                <bk-message-page-subtitle>The onboarding tasks for the employee have been completed. There is no further HR confirmation work needed.</bk-message-page-subtitle>
+            </bk-message-page>
+            <bk-panel ng-if="!isCompleted" expanded="true" compact="true" class="bk-restrict-width--sm bk-full-width">
                 <bk-panel-header>
                     <h3 aria-label="title" class="fd-margin--md">Onboarding Completion Checklist</h3>
                 </bk-panel-header>
                 <bk-panel-content aria-label="Panel Content">
-
                     <bk-list>
                         <bk-list-item ng-repeat="next in taskList">
                             <bk-list-icon glyph="sap-icon sap-icon--accept"></bk-list-icon>
                             <bk-list-title>{{ next.Name }}</bk-list-title>
                         </bk-list-item>
                     </bk-list>
-
                     <bk-form-group ng-if="!isEmpty" class="fd-margin-top--md">
                         <bk-form-item>
                             <bk-checkbox id="confirmed" compact="false" ng-model="checkboxes.model"></bk-checkbox>
                             <bk-checkbox-label for="confirmed"> I confirm that all onboarding tasks have been completed successfully</bk-checkbox-label>
                         </bk-form-item>
                     </bk-form-group>
-
                 </bk-panel-content>
             </bk-panel>
-
-
         </bk-scrollbar>
-
         <bk-bar bar-design="footer" class="bk-margin-top--md bk-padding--sm" ng-if="!isCompleted">
             <bk-bar-right>
                 <bk-bar-element>

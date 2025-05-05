@@ -22,17 +22,17 @@ angular.module('templateApp', ['blimpKit', 'platformView']).controller('template
             $scope.taskList = response.data.Tasks;
             $scope.isEmpty = $scope.taskList.length == 0;
         })
-        .catch(function (error) {
+        .catch((error) => {
             console.error("Error getting task data: ", error);
         });
 
-    $scope.completeOnboarding = function () {
+    $scope.completeOnboarding = () => {
         $http.post(completeTaskUrl)
             .then(response => {
                 console.log(response);
                 $scope.isCompleted = true;
             })
-            .catch(function (error) {
+            .catch((error) => {
                 console.error("Error completing tasks or refreshing task list", error);
             });
     }
