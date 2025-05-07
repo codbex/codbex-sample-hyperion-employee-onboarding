@@ -5,14 +5,12 @@
  */
 const perspectiveData = {
 	id: 'OnboardingTask',
-	name: 'OnboardingTask',
-	link: '/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/OnboardingTask/index.html',
-	order: '2',
+	label: 'OnboardingTask',
+	path: '/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/OnboardingTask/index.html',
+	groupId: 'Tasks',
+	order: 2,
 	icon: '/services/web/resources/unicons/clipboard-blank.svg'
 };
-
 if (typeof exports !== 'undefined') {
-	exports.getPerspective = function () {
-		return perspectiveData;
-	}
+	exports.getPerspective = () => perspectiveData;
 }

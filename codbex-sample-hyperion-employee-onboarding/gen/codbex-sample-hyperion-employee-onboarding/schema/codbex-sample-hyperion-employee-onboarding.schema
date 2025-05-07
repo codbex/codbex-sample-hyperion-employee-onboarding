@@ -80,7 +80,7 @@
                 ]
             },
             {
-                "name": "CODBEX_ONBBOARDINGTASK",
+                "name": "CODBEX_ONBOARDINGTASK",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -88,33 +88,39 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "ONBBOARDINGTASK_ID"
+                        "name": "ONBOARDINGTASK_ID"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "ONBBOARDINGTASK_EMPLOYEE"
+                        "name": "ONBOARDINGTASK_EMPLOYEE"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 100,
                         "nullable": true,
-                        "name": "ONBBOARDINGTASK_NAME"
+                        "name": "ONBOARDINGTASK_NAME"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "ONBBOARDINGTASK_ASSIGNEE"
+                        "name": "ONBOARDINGTASK_ASSIGNEE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 500,
+                        "nullable": true,
+                        "name": "ONBOARDINGTASK_DESCRIPTION"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "ONBBOARDINGTASK_STATUS"
+                        "name": "ONBOARDINGTASK_STATUS"
                     },
                     {
                         "type": "DATE",
                         "nullable": true,
-                        "name": "ONBBOARDINGTASK_COMPLETEDAT"
+                        "name": "ONBOARDINGTASK_COMPLETEDAT"
                     }
                 ]
             },
@@ -137,29 +143,29 @@
                 "referencedColumns": "ONBOARDINGSTATUS_ID"
             },
             {
-                "name": "OnbboardingTask_Employee",
+                "name": "OnboardingTask_Employee",
                 "type": "foreignKey",
-                "table": "CODBEX_ONBBOARDINGTASK",
-                "constraintName": "OnbboardingTask_Employee",
-                "columns": "ONBBOARDINGTASK_EMPLOYEE",
+                "table": "CODBEX_ONBOARDINGTASK",
+                "constraintName": "OnboardingTask_Employee",
+                "columns": "ONBOARDINGTASK_EMPLOYEE",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
             },
             {
-                "name": "OnbboardingTask_Employee",
+                "name": "OnboardingTask_Employee",
                 "type": "foreignKey",
-                "table": "CODBEX_ONBBOARDINGTASK",
-                "constraintName": "OnbboardingTask_Employee",
-                "columns": "ONBBOARDINGTASK_ASSIGNEE",
+                "table": "CODBEX_ONBOARDINGTASK",
+                "constraintName": "OnboardingTask_Employee",
+                "columns": "ONBOARDINGTASK_ASSIGNEE",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
             },
             {
-                "name": "OnbboardingTask_OnboardingStatus",
+                "name": "OnboardingTask_OnboardingStatus",
                 "type": "foreignKey",
-                "table": "CODBEX_ONBBOARDINGTASK",
-                "constraintName": "OnbboardingTask_OnboardingStatus",
-                "columns": "ONBBOARDINGTASK_STATUS",
+                "table": "CODBEX_ONBOARDINGTASK",
+                "constraintName": "OnboardingTask_OnboardingStatus",
+                "columns": "ONBOARDINGTASK_STATUS",
                 "referencedTable": "CODBEX_ONBOARDINGSTATUS",
                 "referencedColumns": "ONBOARDINGSTATUS_ID"
             }

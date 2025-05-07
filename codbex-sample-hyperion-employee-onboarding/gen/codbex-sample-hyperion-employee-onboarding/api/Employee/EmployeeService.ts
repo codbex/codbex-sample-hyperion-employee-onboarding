@@ -41,7 +41,7 @@ class EmployeeService {
     @Get("/count")
     public count() {
         try {
-            return this.repository.count();
+            return { count: this.repository.count() };
         } catch (error: any) {
             this.handleError(error);
         }
@@ -50,7 +50,7 @@ class EmployeeService {
     @Post("/count")
     public countWithFilter(filter: any) {
         try {
-            return this.repository.count(filter);
+            return { count: this.repository.count(filter) };
         } catch (error: any) {
             this.handleError(error);
         }
@@ -137,8 +137,8 @@ class EmployeeService {
         if (entity.StartDate === null || entity.StartDate === undefined) {
             throw new ValidationError(`The 'StartDate' property is required, provide a valid value`);
         }
-        if (entity.OnboardingStatus === null || entity.OnboardingStatus === undefined) {
-            throw new ValidationError(`The 'OnboardingStatus' property is required, provide a valid value`);
+        if (entity.Status === null || entity.Status === undefined) {
+            throw new ValidationError(`The 'Status' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

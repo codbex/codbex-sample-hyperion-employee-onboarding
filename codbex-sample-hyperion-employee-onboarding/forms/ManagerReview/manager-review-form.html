@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="templateApp" ng-controller="templateController">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title config-title></title>
+        <script type="text/javascript" src="manager-review-generate.js"></script>
+        <script type="text/javascript" src="/services/js/platform-core/services/loader.js?id=view-js"></script>
+        <link type="text/css" rel="stylesheet" href="/services/js/platform-core/services/loader.js?id=view-css" />
+        <script src="manager-review-form-controller.js"></script>
+    </head>
+
+    <body class="bk-vbox">
+        <h2 bk-title class="bk-padding--sm bk-center" wrap="true" header-size="2" aria-label="title" ng-if="hasAvailableTasks">Manager Review</h2>
+        <bk-scrollbar class="bk-full-height bk-padding--sm bk-center--horizontal">
+            <bk-fieldset ng-form="forms.details" class="bk-restrict-width--sm bk-full-width" ng-if="hasAvailableTasks">
+                <bk-form-group name="entityForm">
+                    <bk-form-item horizontal="false" ng-repeat="task in taskList track by task.Id">
+                        <bk-form-label for="assignee-{{ $index }}" ng-required="true" colon="true">{{task.Name}}</bk-form-label>
+                        <bk-combobox-input input-id="assignee-{{ $index }}" ng-required="true" ng-model="entity.assignees[task.Id]" dropdown-items="assigneeOptions" placeholder="Choose Assignee ..."
+                            btn-aria-label="show/hide Assignee options" list-aria-label="Assignee options"></bk-combobox-input>
+                    </bk-form-item>
+                </bk-form-group>
+            </bk-fieldset>
+            <bk-message-page glyph="sap-icon--message-information" ng-if="!hasAvailableTasks">
+                <bk-message-page-title>There are no tasks to assign at the moment</bk-message-page-title>
+                <bk-message-page-subtitle>It looks like all the tasks have been completed or there are no new tasks to assign right now.</bk-message-page-subtitle>
+            </bk-message-page>
+        </bk-scrollbar>
+        <bk-bar bar-design="footer" class="bk-margin-top--md" ng-if="hasAvailableTasks">
+            <bk-bar-right>
+                <bk-bar-element>
+                    <bk-button label="Submit" state="emphasized" ng-click="submitAssignees()" ng-disabled="!(forms.details.$valid)"></bk-button>
+                </bk-bar-element>
+            </bk-bar-right>
+        </bk-bar>
+        <theme></theme>
+    </body>
+
+</html>

@@ -1,0 +1,5 @@
+{
+    "module": "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/Settings/OnboardingStatus/dialog-filter/view.js",
+    "extensionPoint": "application-windows",
+    "description": "codbex-sample-hyperion-employee-onboarding - Application Dialog Window"
+}

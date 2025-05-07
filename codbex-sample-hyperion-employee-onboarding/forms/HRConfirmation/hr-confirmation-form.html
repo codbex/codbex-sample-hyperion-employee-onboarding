@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="templateApp" ng-controller="templateController">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title dg-view-title></title>
+        <script type="text/javascript" src="hr-confirmation-generate.js"></script>
+        <script type="text/javascript" src="/services/js/platform-core/services/loader.js?id=view-js"></script>
+        <link type="text/css" rel="stylesheet" href="/services/js/platform-core/services/loader.js?id=view-css" />
+        <script src="hr-confirmation-form-controller.js">
+        </script>
+    </head>
+
+    <body class="bk-vbox">
+        <h2 bk-title class="bk-padding--sm bk-center" wrap="true" header-size="2" aria-label="title" ng-if="!isCompleted"> HR Confirmation</h2>
+        <bk-scrollbar class="bk-full-height bk-padding--sm bk-center--horizontal">
+            <bk-message-page glyph="sap-icon--message-information" ng-if="isCompleted">
+                <bk-message-page-title>Onboarding Complete</bk-message-page-title>
+                <bk-message-page-subtitle>The onboarding tasks for the employee have been completed. There is no further HR confirmation work needed.</bk-message-page-subtitle>
+            </bk-message-page>
+            <bk-panel ng-if="!isCompleted" expanded="true" compact="true" class="bk-restrict-width--sm bk-full-width">
+                <bk-panel-header>
+                    <h3 aria-label="title" class="fd-margin--md">Onboarding Completion Checklist</h3>
+                </bk-panel-header>
+                <bk-panel-content aria-label="Panel Content">
+                    <bk-list>
+                        <bk-list-item ng-repeat="next in taskList">
+                            <bk-list-icon glyph="sap-icon sap-icon--accept"></bk-list-icon>
+                            <bk-list-title>{{ next.Name }}</bk-list-title>
+                        </bk-list-item>
+                    </bk-list>
+                    <bk-form-group ng-if="!isEmpty" class="fd-margin-top--md">
+                        <bk-form-item>
+                            <bk-checkbox id="confirmed" compact="false" ng-model="checkboxes.model"></bk-checkbox>
+                            <bk-checkbox-label for="confirmed"> I confirm that all onboarding tasks have been completed successfully</bk-checkbox-label>
+                        </bk-form-item>
+                    </bk-form-group>
+                </bk-panel-content>
+            </bk-panel>
+        </bk-scrollbar>
+        <bk-bar bar-design="footer" class="bk-margin-top--md bk-padding--sm" ng-if="!isCompleted">
+            <bk-bar-right>
+                <bk-bar-element>
+                    <bk-button label="Submit" state="emphasized" ng-click="completeOnboarding()" ng-disabled="!checkboxes.model">
+                    </bk-button>
+                </bk-bar-element>
+            </bk-bar-right>
+        </bk-bar>
+
+        <theme></theme>
+    </body>
+
+
+</html>

@@ -1,5 +1,5 @@
 {
-    "module": "{{projectName}}/gen/{{genFolderName}}/ui/{{perspectiveName}}/{{name}}/dialog-window/view.js",
-    "extensionPoint": "dialog-window",
-    "description": "{{projectName}} - Application Dialog Window"
+    "module": "codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/Employee/Employee/dialog-window/view.js",
+    "extensionPoint": "application-windows",
+    "description": "codbex-sample-hyperion-employee-onboarding - Application Dialog Window"
 }

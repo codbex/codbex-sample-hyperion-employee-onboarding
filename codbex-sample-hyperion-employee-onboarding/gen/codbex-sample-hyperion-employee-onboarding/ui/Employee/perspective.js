@@ -5,14 +5,12 @@
  */
 const perspectiveData = {
 	id: 'Employee',
-	name: 'Employee',
-	link: '/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/Employee/index.html',
-	order: '1',
+	label: 'Employee',
+	path: '/services/web/codbex-sample-hyperion-employee-onboarding/gen/codbex-sample-hyperion-employee-onboarding/ui/Employee/index.html',
+	groupId: 'Employees',
+	order: 1,
 	icon: '/services/web/resources/unicons/user.svg'
 };
-
 if (typeof exports !== 'undefined') {
-	exports.getPerspective = function () {
-		return perspectiveData;
-	}
+	exports.getPerspective = () => perspectiveData;
 }

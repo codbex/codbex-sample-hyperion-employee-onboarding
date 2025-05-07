@@ -41,7 +41,7 @@
                         "name": "Email",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "20",
+                        "widgetLength": "80",
                         "widgetSize": "",
                         "widgetType": "EMAIL"
                     },
@@ -61,7 +61,7 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Employee_Department",
                         "relationshipEntityName": "Department",
-                        "relationshipEntityPerspectiveName": "Department",
+                        "relationshipEntityPerspectiveName": "Settings",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
@@ -83,7 +83,7 @@
                         "dataType": "INTEGER",
                         "description": "",
                         "isRequiredProperty": "true",
-                        "name": "OnboardingStatus",
+                        "name": "Status",
                         "tooltip": "",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",
@@ -93,7 +93,7 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Employee_OnboardingStatus",
                         "relationshipEntityName": "OnboardingStatus",
-                        "relationshipEntityPerspectiveName": "entities",
+                        "relationshipEntityPerspectiveName": "Settings",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
@@ -110,10 +110,11 @@
                 "menuKey": "employee",
                 "menuLabel": "Employee",
                 "name": "Employee",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/user.svg",
                 "perspectiveLabel": "Employee",
                 "perspectiveName": "Employee",
+                "perspectiveNavId": "Employees",
                 "perspectiveOrder": "1",
                 "perspectiveRole": "",
                 "title": "Employee",
@@ -156,6 +157,8 @@
                 "dataName": "DEPARTMENT",
                 "dataQuery": "",
                 "description": "Manage entity Department",
+                "feedPassword": "YWRtaW4=",
+                "feedUsername": "YWRtaW4=",
                 "generateDefaultRoles": "false",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
@@ -164,15 +167,16 @@
                 "menuKey": "department",
                 "menuLabel": "Department",
                 "name": "Department",
-                "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/user-circle.svg",
-                "perspectiveLabel": "Department",
-                "perspectiveName": "Department",
-                "perspectiveOrder": "3",
+                "perspectiveHeader": "",
+                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
+                "perspectiveLabel": "Entities",
+                "perspectiveName": "Settings",
+                "perspectiveNavId": "",
+                "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "title": "Department",
                 "tooltip": "Department",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -218,21 +222,22 @@
                 "menuKey": "onboardingstatus",
                 "menuLabel": "OnboardingStatus",
                 "name": "OnboardingStatus",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
                 "perspectiveLabel": "Entities",
-                "perspectiveName": "entities",
+                "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "title": "OnboardingStatus",
                 "tooltip": "OnboardingStatus",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
                     {
                         "dataAutoIncrement": "true",
-                        "dataName": "ONBBOARDINGTASK_ID",
+                        "dataName": "ONBOARDINGTASK_ID",
                         "dataNullable": "true",
                         "dataPrimaryKey": "true",
                         "dataType": "INTEGER",
@@ -245,7 +250,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataName": "ONBBOARDINGTASK_EMPLOYEE",
+                        "dataName": "ONBOARDINGTASK_EMPLOYEE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
@@ -258,14 +263,14 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
-                        "relationshipName": "OnbboardingTask_Employee",
+                        "relationshipName": "OnboardingTask_Employee",
                         "relationshipEntityName": "Employee",
                         "relationshipEntityPerspectiveName": "Employee",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataLength": "100",
-                        "dataName": "ONBBOARDINGTASK_NAME",
+                        "dataName": "ONBOARDINGTASK_NAME",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
                         "description": "",
@@ -278,11 +283,10 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataName": "ONBBOARDINGTASK_ASSIGNEE",
+                        "dataName": "ONBOARDINGTASK_ASSIGNEE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
-                        "isRequiredProperty": "true",
                         "name": "Assignee",
                         "tooltip": "",
                         "widgetDropDownKey": "Id",
@@ -291,13 +295,26 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
-                        "relationshipName": "OnbboardingTask_Employee",
+                        "relationshipName": "OnboardingTask_Employee",
                         "relationshipEntityName": "Employee",
                         "relationshipEntityPerspectiveName": "Employee",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataName": "ONBBOARDINGTASK_STATUS",
+                        "dataLength": "500",
+                        "dataName": "ONBOARDINGTASK_DESCRIPTION",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "name": "Description",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "500",
+                        "widgetSize": "",
+                        "widgetType": "TEXTAREA"
+                    },
+                    {
+                        "dataName": "ONBOARDINGTASK_STATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
@@ -310,17 +327,16 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
-                        "relationshipName": "OnbboardingTask_OnboardingStatus",
+                        "relationshipName": "OnboardingTask_OnboardingStatus",
                         "relationshipEntityName": "OnboardingStatus",
-                        "relationshipEntityPerspectiveName": "entities",
+                        "relationshipEntityPerspectiveName": "Settings",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataName": "ONBBOARDINGTASK_COMPLETEDAT",
+                        "dataName": "ONBOARDINGTASK_COMPLETEDAT",
                         "dataNullable": "true",
                         "dataType": "DATE",
                         "description": "",
-                        "isRequiredProperty": "true",
                         "name": "CompletedAt",
                         "tooltip": "",
                         "widgetIsMajor": "true",
@@ -329,27 +345,28 @@
                         "widgetType": "DATE"
                     }
                 ],
-                "caption": "Manage entity OnbboardingTask",
-                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}ONBBOARDINGTASK\"",
-                "dataName": "ONBBOARDINGTASK",
+                "caption": "Manage entity OnboardingTask",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}ONBOARDINGTASK\"",
+                "dataName": "ONBOARDINGTASK",
                 "dataQuery": "",
-                "description": "Manage entity OnbboardingTask",
+                "description": "Manage entity OnboardingTask",
                 "generateDefaultRoles": "false",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
-                "menuKey": "onbboardingtask",
-                "menuLabel": "OnbboardingTask",
-                "name": "OnbboardingTask",
-                "navigationPath": "/Home",
+                "menuKey": "onboardingtask",
+                "menuLabel": "OnboardingTask",
+                "name": "OnboardingTask",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/clipboard-blank.svg",
                 "perspectiveLabel": "OnboardingTask",
                 "perspectiveName": "OnboardingTask",
+                "perspectiveNavId": "Tasks",
                 "perspectiveOrder": "2",
                 "perspectiveRole": "",
-                "title": "OnbboardingTask",
-                "tooltip": "OnbboardingTask",
+                "title": "OnboardingTask",
+                "tooltip": "OnboardingTask",
                 "type": "PRIMARY"
             }
         ],
@@ -357,25 +374,68 @@
             {
                 "name": "Employee",
                 "label": "Employee",
+                "navId": "Employees",
                 "icon": "/services/web/resources/unicons/user.svg",
-                "order": "1",
-                "role": {}
+                "order": "1"
             },
             {
                 "name": "OnboardingTask",
                 "label": "OnboardingTask",
+                "navId": "Tasks",
                 "icon": "/services/web/resources/unicons/clipboard-blank.svg",
-                "order": "2",
-                "role": {}
+                "order": "2"
             },
             {
-                "name": "Department",
-                "label": "Department",
-                "icon": "/services/web/resources/unicons/user-circle.svg",
-                "order": "3",
-                "role": {}
+                "name": "NewHire",
+                "label": "NewHire",
+                "navId": "EmployeeOnboarding",
+                "icon": "/services/web/resources/unicons/users-alt.svg",
+                "order": "1"
+            },
+            {
+                "name": "HRConfirmation",
+                "label": "HRConfirmation",
+                "navId": "EmployeeOnboarding",
+                "icon": "/services/web/resources/unicons/file-question-alt.svg",
+                "order": "2"
+            },
+            {
+                "name": "TaskCompletion",
+                "label": "TaskCompletion",
+                "navId": "EmployeeOnboarding",
+                "icon": "/services/web/resources/unicons/file-check.svg",
+                "order": "3"
+            },
+            {
+                "name": "ManagerReview",
+                "label": "ManagerReview",
+                "navId": "EmployeeOnboarding",
+                "icon": "/services/web/resources/unicons/user-check.svg",
+                "order": "4"
             }
         ],
-        "navigations": []
+        "navigations": [
+            {
+                "id": "Employees",
+                "label": "Employees",
+                "expanded": "true",
+                "icon": "/services/web/resources/unicons/user.svg",
+                "order": "1"
+            },
+            {
+                "id": "Tasks",
+                "label": "Tasks",
+                "expanded": "true",
+                "icon": "/services/web/resources/unicons/file-info-alt.svg",
+                "order": "2"
+            },
+            {
+                "id": "EmployeeOnboarding",
+                "label": "EmployeeOnboarding",
+                "expanded": "true",
+                "icon": "/services/web/resources/unicons/user-circle.svg",
+                "order": "3"
+            }
+        ]
     }
 }
