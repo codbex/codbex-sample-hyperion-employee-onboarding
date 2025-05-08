@@ -26,7 +26,7 @@ angular.module('templateApp', ['blimpKit', 'platformView']).controller('template
             Email: $scope.entity.Email,
             Department: $scope.entity.Department,
             StartDate: new Date($scope.entity.StartDate),
-            OnboardingStatus: 1
+            Status: 1
         }
 
         $http.post(employeeUrl, employeeBody)
