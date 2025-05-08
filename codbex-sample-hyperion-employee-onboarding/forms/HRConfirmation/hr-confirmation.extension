@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "application-perspectives",
-    "module": "codbex-sample-hyperion-employee-onboarding/forms/HRConfirmation/hr-confirmation-generate.js",
-    "description": "HR confirmation form"
-}

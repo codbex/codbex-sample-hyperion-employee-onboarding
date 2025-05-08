@@ -17,7 +17,6 @@ if (!employee) {
     throw new Error(`Employee with ID ${employeeId} not found!`);
 }
 
-//Added description
 const hrTaskSteps = `1. Gather required employee information.
 2. Draft and review the employment contract.
 3. Share the finalized contract with the new hire for signature.`;
@@ -67,6 +66,6 @@ tasks.forEach(task => {
 execution.setVariable("tasks", tasks);
 
 // Employee status set to In Progres
-employee.OnboardingStatus = 2;
+employee.Status = 2;
 
 employeeDao.update(employee);

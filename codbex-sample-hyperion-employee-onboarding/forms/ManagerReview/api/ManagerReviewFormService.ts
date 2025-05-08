@@ -37,7 +37,7 @@ class ManagerReviewFormService {
         return this.employeeDao.findAll({
             $filter: {
                 equals: {
-                    OnboardingStatus: 3
+                    Status: 3
                 }
             }
         }).map(function (value) {
@@ -53,7 +53,7 @@ class ManagerReviewFormService {
         return this.employeeDao.findAll({
             $filter: {
                 equals: {
-                    OnboardingStatus: 1
+                    Status: 1
                 }
             }
         }).map(function (value) {

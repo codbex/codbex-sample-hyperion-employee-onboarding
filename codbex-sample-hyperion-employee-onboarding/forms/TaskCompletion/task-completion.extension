@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "application-perspectives",
-    "module": "codbex-sample-hyperion-employee-onboarding/forms/TaskCompletion/task-completion-generate.js",
-    "description": "Task completion form"
-}
